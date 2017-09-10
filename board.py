@@ -25,7 +25,7 @@ class Board:
 
 		for shape in self.shapes:
 			shape_coordinates = shape.get_base_coordinates()
-			print(shape_coordinates)
+			#print(shape_coordinates)
 
 			### Find valid placement of shape
 			valid_state = False
@@ -56,7 +56,7 @@ class Board:
 
 			# Remove any occupied square left of where the last shape was placed
 			occupied_squares.sort()
-			print(occupied_squares)
+			#print(occupied_squares)
 			while occupied_squares[0][0] < x:
 				occupied_squares.pop(0)
 
@@ -70,15 +70,18 @@ class Board:
 		# Add remaining offset to current length
 		self.current_length += occupied_squares[-1][0] + 1
 
+		# Fitness Function
+		self.fitness = -self.current_length
+
 	def print_info(self):
 		# Should only be called when shape order no longer matters (end of program)
 		self.shapes.sort(key=lambda shape: shape.original_order)
 		for shape in self.shapes:
 			shape.print_offset_orientation()
-			print(shape.four_shapes[shape.active_state])
+			#print(shape.four_shapes[shape.active_state])
 
 	def __lt__(self, other):
-		return self.current_length < other.current_length
+		return self.fitness < other.fitness
 
 if __name__ == "__main__":
 	points = ["R1 D1", "D1 L4 R1 U3 R3"]
