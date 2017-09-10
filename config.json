@@ -2,7 +2,7 @@
 	"Input File": "./inputs/1.txt",
 	"Random Seed": null,
 	"Search Algorithm": "Random Search",
-	"Runs": 1,
+	"Runs": 2,
 	"Fitness Evaluations": 10,
 	"Log File Path": "",
 	"Solution File Path": "",

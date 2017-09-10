@@ -80,6 +80,16 @@ class Board:
 			shape.print_offset_orientation()
 			#print(shape.four_shapes[shape.active_state])
 
+	def get_info(self):
+		# Should only be called when shape order no longer matters (end of program)
+		self.shapes.sort(key=lambda shape: shape.original_order)
+
+		info = []
+		for shape in self.shapes:
+			info.append(shape.get_offset_orientation())
+
+		return info
+
 	def __lt__(self, other):
 		return self.fitness < other.fitness
 

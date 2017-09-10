@@ -96,6 +96,11 @@ class Shape:
 			"," + str(self.y_offset + self.original_point[self.active_state][1]) + 
 			"," + str(self.active_state))
 
+	def get_offset_orientation(self):
+		return (str(self.x_offset + self.original_point[self.active_state][0]) + 
+					"," + str(self.y_offset + self.original_point[self.active_state][1]) + 
+					"," + str(self.active_state))
+
 	def _generate_shape(self, direction, amount, x, y, generated_shape):
 		if direction == 'R':
 			for i in range(amount):

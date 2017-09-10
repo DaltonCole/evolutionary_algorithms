@@ -52,7 +52,7 @@ def config_parser(config_file_name):
 	if json_config_file['Solution File Path'] != '' and json_config_file['Solution File Path'] != None:
 		config_dict['solution_file_path'] = json_config_file['Solution File Path']
 	else:
-		config_dict['solution_file_path'] = './solutions/' + str(config_dict['random_seed'])
+		config_dict['solution_file_path'] = './solutions/' + str(config_dict['random_seed']) + '/'
 
 	if json_config_file['Algorithm Solution File Path'] != '' and json_config_file['Algorithm Solution File Path'] != None:
 		config_dict['algorithm_solution_file_path'] = json_config_file['Algorithm Solution File Path']
@@ -83,3 +83,11 @@ def create_log_file(config_dict):
 	#  'fitness_evaluations': 1, 'log_file_path': './', 
 	#  'solution_file_path': './', 'algorithm_solution_file_path': './'}
 	config_dict = config_parser(sys.argv[1])
+
+def create_solution_file(best_board, path, run_number):
+	opened_file = open_file(path + str(run_number))
+
+	for solution in best_board.get_info():
+		opened_file.write(solution + '\n')
+
+	opened_file.close()

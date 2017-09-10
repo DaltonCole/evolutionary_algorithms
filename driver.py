@@ -60,7 +60,7 @@ def main():
 	algorithm_log.write("Result Log\n\n")
 
 	### Constants ###
-	population_size = 10
+	population_size = 100
 	#################
 
 	max_height = 0
@@ -76,7 +76,7 @@ def main():
 	for run in range(config_dict['runs']):
 		# If random search, and "Run i" line to algo log file 
 		if config_dict['search_algorithm'] == 'Random Search':
-			algorithm_log.write('Run ' + str(run + 1) + '\n')
+			algorithm_log.write('\nRun ' + str(run + 1) + '\n')
 
 		population = []
 
@@ -106,23 +106,11 @@ def main():
 
 			if population[0].fitness > best_fitness or current_eval == 0:
 				best_fitness = population[0].fitness
-				algorithm_log.write(str(current_eval + 1) + ' \t' + str(best_fitness))
+				algorithm_log.write(str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
 
+		create_solution_file(population[0], config_dict['solution_file_path'], run + 1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	algorithm_log.close()
 
 
 if __name__ == '__main__':
