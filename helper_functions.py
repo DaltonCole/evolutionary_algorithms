@@ -47,17 +47,17 @@ def config_parser(config_file_name):
 	if json_config_file['Log File Path'] != '' and json_config_file['Log File Path'] != None:
 		config_dict['log_file_path'] = json_config_file['Log File Path']
 	else:
-		config_dict['log_file_path'] = './logs/' + str(config_dict['random_seed']) + '/'
+		config_dict['log_file_path'] = './logs/' + str(config_dict['random_seed'])
 
 	if json_config_file['Solution File Path'] != '' and json_config_file['Solution File Path'] != None:
 		config_dict['solution_file_path'] = json_config_file['Solution File Path']
 	else:
-		config_dict['solution_file_path'] = './solutions/' + str(config_dict['random_seed']) + '/'
+		config_dict['solution_file_path'] = './solutions/' + str(config_dict['random_seed'])
 
 	if json_config_file['Algorithm Solution File Path'] != '' and json_config_file['Algorithm Solution File Path'] != None:
 		config_dict['algorithm_solution_file_path'] = json_config_file['Algorithm Solution File Path']
 	else:
-		config_dict['algorithm_solution_file_path'] = './logs/algorithm_solution/' + str(config_dict['random_seed']) + '/'
+		config_dict['algorithm_solution_file_path'] = './logs/algorithm_solution/' + str(config_dict['random_seed'])
 
 	return config_dict
 
@@ -73,11 +73,11 @@ def create_log_file(config_dict):
 	log_dict['Algorithm Log File Path'] = config_dict['algorithm_solution_file_path']
 	log_dict['Config File'] = config_dict
 
-	open_file = open_file(config_dict['log_file_path'])
+	opened_file = open_file(config_dict['log_file_path'])
 
-	json.dump(log_dict, open_file, indent=4)
+	json.dump(log_dict, opened_file, indent=4)
 
-	open_file.close()
+	opened_file.close()
 
 # {'input_file': '', 'runs': 1, 'random_seed': 1, 'search_algorithm': '', 
 	#  'fitness_evaluations': 1, 'log_file_path': './', 

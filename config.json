@@ -3,7 +3,7 @@
 	"Random Seed": null,
 	"Search Algorithm": "Random Search",
 	"Runs": 1,
-	"Fitness Evaluations": 1000,
+	"Fitness Evaluations": 10,
 	"Log File Path": "",
 	"Solution File Path": "",
 	"Algorithm Solution File Path": ""

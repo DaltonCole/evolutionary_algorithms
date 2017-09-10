@@ -54,7 +54,10 @@ def main():
 	random.seed(config_dict['random_seed'])
 
 	# Create log file
-
+	create_log_file(config_dict)
+	# Initalize algorithm log file
+	algorithm_log = open_file(config_dict['algorithm_solution_file_path'])
+	algorithm_log.write("Result Log\n\n")
 
 	### Constants ###
 	population_size = 10
@@ -68,10 +71,12 @@ def main():
 		for line in f:
 			shapes.append(line)
 
+	
 	# Start run
 	for run in range(config_dict['runs']):
-		# Initalize algorithm log file
-		algorithm_log = open_file(config_dict['algorithm_solution_file_path'])
+		# If random search, and "Run i" line to algo log file 
+		if config_dict['search_algorithm'] == 'Random Search':
+			algorithm_log.write('Run ' + str(run + 1) + '\n')
 
 		population = []
 
@@ -82,9 +87,12 @@ def main():
 		population.sort(reverse=True)
 
 		# Apply fitness evals
+		best_fitness = 0
 		for current_eval in range(config_dict['fitness_evaluations']):
+			print(current_eval)
 			# Apply search algorithm
 			if config_dict['search_algorithm'] == 'Random Search':
+
 				# Double population
 				for i in range(population_size):
 					population.append(Board(shapes, max_height))
@@ -95,6 +103,12 @@ def main():
 				# Take best n/2 of population
 				for i in range(population_size):
 					population.pop(len(population) - 1)
+
+			if population[0].fitness > best_fitness or current_eval == 0:
+				best_fitness = population[0].fitness
+				algorithm_log.write(str(current_eval + 1) + ' \t' + str(best_fitness))
+
+
 
 
 
