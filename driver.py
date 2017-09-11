@@ -51,7 +51,7 @@ def main():
 	#  'solution_file_path': './', 'algorithm_solution_file_path': './'}
 	config_dict = config_parser(sys.argv[1])
 
-	random.seed(config_dict['random_seed'])
+	#random.seed(config_dict['random_seed'])
 
 	# Create log file
 	create_log_file(config_dict)
@@ -73,45 +73,25 @@ def main():
 
 	
 	# Start run
+	# Multiprocess
+	manager = multiprocessing.Manager()
+	return_dict = manager.dict()
+	jobs = []
+
 	for run in range(config_dict['runs']):
-		# If random search, and "Run i" line to algo log file 
-		if config_dict['search_algorithm'] == 'Random Search':
-			algorithm_log.write('\nRun ' + str(run + 1) + '\n')
+		p = multiprocessing.Process(target=run_algorithm, args=(config_dict, max_height, shapes, population_size, run, return_dict))
+		jobs.append(p)
+		p.start()
 
-		population = []
+	for proc in jobs:
+		proc.join()
 
-		for i in range(population_size):
-			population.append(Board(shapes, max_height))
-
-		# Sort from best fit to worst fit
-		population.sort(reverse=True)
-
-		# Apply fitness evals
-		best_fitness = 0
-		for current_eval in range(config_dict['fitness_evaluations']):
-			print(current_eval)
-			# Apply search algorithm
-			if config_dict['search_algorithm'] == 'Random Search':
-
-				# Double population
-				for i in range(population_size):
-					population.append(Board(shapes, max_height))
-
-				# Sort
-				population.sort(reverse=True)
-
-				# Take best n/2 of population
-				for i in range(population_size):
-					population.pop(len(population) - 1)
-
-			if population[0].fitness > best_fitness or current_eval == 0:
-				best_fitness = population[0].fitness
-				algorithm_log.write(str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
-
-		create_solution_file(population[0], config_dict['solution_file_path'], run + 1)
+	for i in range(config_dict['runs']):
+		algorithm_log.write(return_dict[i])
 
 	algorithm_log.close()
 
 
 if __name__ == '__main__':
 	main()
+

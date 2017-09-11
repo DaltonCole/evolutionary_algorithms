@@ -4,6 +4,7 @@ import random
 import signal	# ctrl-c handle
 import json
 import os
+import multiprocessing
 from time import time
 from copy import deepcopy
 
@@ -91,3 +92,46 @@ def create_solution_file(best_board, path, run_number):
 		opened_file.write(solution + '\n')
 
 	opened_file.close()
+
+def run_algorithm(config_dict, max_height, shapes, population_size, run_number, return_dict):
+	# Random number
+	random.seed(config_dict['random_seed'] + run_number)
+
+	algorithm_log = ''
+	# If random search, and "Run i" line to algo log file 
+	if config_dict['search_algorithm'] == 'Random Search':
+		algorithm_log += ('\nRun ' + str(run_number + 1) + '\n')
+
+	population = []
+
+	for i in range(population_size):
+		population.append(Board(shapes, max_height))
+
+	# Sort from best fit to worst fit
+	population.sort(reverse=True)
+
+	# Apply fitness evals
+	best_fitness = 0
+	for current_eval in range(config_dict['fitness_evaluations']):
+		print(current_eval)
+		# Apply search algorithm
+		if config_dict['search_algorithm'] == 'Random Search':
+
+			# Double population
+			for i in range(population_size):
+				population.append(Board(shapes, max_height))
+
+			# Sort
+			population.sort(reverse=True)
+
+			# Take best n/2 of population
+			for i in range(population_size):
+				population.pop(len(population) - 1)
+
+		if population[0].fitness > best_fitness or current_eval == 0:
+			best_fitness = population[0].fitness
+			algorithm_log += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
+
+	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
+
+	return_dict[run_number] = algorithm_log
