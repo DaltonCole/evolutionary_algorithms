@@ -169,7 +169,7 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 	b_set = set(tuple(x) for x in combined_points)
 	b = [ list(x) for x in b_set ]
 	b.sort(key=itemgetter(0,1))
-	if len(b) == len(combined_points) == False:
+	if (len(b) == len(combined_points)) == False:
 		print(len(b) == len(combined_points))
 	"""
 	print()

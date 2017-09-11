@@ -1,38 +1,82 @@
 from shape import Shape
+from random import shuffle 	# Shuffle list of Shapes
 
 class Board:
+	"""Board with shapes optimally placed given their current order and rotation
+
+	Fitness function used is -current_length of board.
+
+	Attributes:
+		shapes (list of Shape): All of the shapes are created (so 
+			shape.original_order is maintained) and then randomly shuffled.
+		max_height (int): Max height of the board (grid)
+		current_length (int): The current length (max x) of the board
+
+	"""
+
 	def __init__(self, shape_string_list, max_height):
+		"""Initializes a board with shapes in a random order
+		Populates the shapes list with shapes taken from shape_strings_list
+		and shuffles them into a random order. It then minimizes the
+		amount of space the shapes take on the board.
+
+		Args:
+			shape_string_list (list of str): A list of all of the shapes
+				Example: ['U2 L4', 'U5 R2 D1', ...]
+			max_height (int): Max height of the board
+		"""
 		self.shapes = []
 		self.max_height = max_height
 
+		# Populate shapes
 		for i in range(len(shape_string_list)):
 			self.shapes.append(Shape(shape_string_list[i], i))
 
-		self.worst_length = 0
-		for shape in self.shapes:
-			self.worst_length += shape.width
+		# Randomize the order of the shapes
+		shuffle(self.shapes)
 
+		# Minimize the space shapes take on the board
 		self.minimize()
 
 	def minimize(self):
-		"""Compress board into smalles form given the current shapes
+		"""Compress board into smallest form given the current shapes
+		The way minimize works is by finding the first place in 
+		occupied_squares where the current point of the current shape
+		can be placed. It then continues with the rest of the points in that
+		shape until all points are placed in occupied_squares. After placement,
+		the shape's offset is updated with the correct x and y values. Any 
+		square that is left of the last placed shape is removed from
+		ocupied_squares and all squares are shifted left such that the left
+		most part of the placed shape is [0, y]. This is done to reduce the
+		length of occupied_squares and speed up the 'in' operation performed.
+
+		After this is performed, current_length is updated and the fitness
+		function is evaluated.
+
+		The fitness function is -current_length.
 		"""
+		# Initialize x offset to 0
 		x_offset = 0
+		# No squares are currently occupied
 		occupied_squares = []
 		self.current_length = 0
-
+		# X value of where first point of shape is placed
 		first_x = -999
-		for shape in self.shapes:
-			shape_coordinates = shape.get_current_coordinates()
-			#print(shape_coordinates)
 
-			### Find valid placement of shape
+		### Find valid placement of shape ###
+		for shape in self.shapes:
+			# Get current points of the shape
+			shape_coordinates = shape.get_current_coordinates()
+
+			# See if we are in a valid state
 			valid_state = False
 			# x, y shape offset
 			x, y = 0, 0
+			# While not in valid state, look for a valid placement
 			while valid_state == False:
 				valid_state = True
 				for point in shape_coordinates:
+					# If point is already occupied or above board
 					if [point[0] + x, point[1] + y] in occupied_squares or (point[1] + y) >= self.max_height:
 						# Increment y
 						y += 1
@@ -44,8 +88,8 @@ class Board:
 						# No longer in valid state, try next offset
 						valid_state = False
 						first_x = -999
-						#print(str(point[0]+x) + " " + str(point[1]+y))
 						break
+					# Set first point's x value
 					if first_x == -999:
 						first_x = point[0] + x
 
@@ -59,41 +103,63 @@ class Board:
 
 			# Remove any occupied square left of where the last shape was placed
 			occupied_squares.sort()
-			#print(occupied_squares)
-			while occupied_squares[0][0] < first_x: ##############################
+			while occupied_squares[0][0] < first_x: 
 				occupied_squares.pop(0)
 			first_x = -999
 
 			# Shift points left by x positions
 			for point in occupied_squares:
 				point[0] -= x
-
-			# Add x to current length
-			self.current_length += x
+		#####################################
 
 		# Add remaining offset to current length
-		self.current_length += occupied_squares[-1][0] + 1
-
-		# Fitness Function
-		self.fitness = -self.current_length
-
-		## Testing width
+		# Find current length
 		self.current_length = 0
 		for shape in self.shapes:
 			x_value = shape.max_x_value()
 			if self.current_length < x_value:
 				self.current_length = x_value
+
+		# Fitness Function
 		self.fitness = -self.current_length
 
 	def print_info(self):
-		# Should only be called when shape order no longer matters (end of program)
+		"""Print original point with offset and active rotation of each shape
+		Prints the original point (what was [0, 0] before normalizing) in
+		the following format:
+			(x + x_offset),(y + y_offset),(active rotation)
+		This would look something like this:
+			5,7,1
+		If the base x and y are [2,1] and the offsets are 3 and 6 for x, y with
+		a 90 degree rotation.
+
+		NOTE:
+			Should only be called when shape order no longer matters (end of 
+			program). This is because the original order is brought back.
+		"""
 		self.shapes.sort(key=lambda shape: shape.original_order)
 		for shape in self.shapes:
 			shape.print_offset_orientation()
-			#print(shape.four_shapes[shape.active_state])
 
 	def get_info(self):
-		# Should only be called when shape order no longer matters (end of program)
+		"""Returns original point with offset and active rotation
+		Return the original point (what was [0, 0] before normalizing) in
+		the following format:
+			(x + x_offset),(y + y_offset),(active rotation)
+		This would look something like this:
+			5,7,1
+		If the base x and y are [2,1] and the offsets are 3 and 6 for x, y with
+		a 90 degree rotation.
+
+		NOTE:
+			Should only be called when shape order no longer matters (end of 
+			program). This is because the original order is brought back.
+
+		Returns:
+			(list of str): List of strings for each shape's x,y,rotation where
+				x and y are the original's point with offset
+				Example: ['x,y,rotation', '1,2,0', ...]
+		"""
 		self.shapes.sort(key=lambda shape: shape.original_order)
 
 		info = []
@@ -103,6 +169,12 @@ class Board:
 		return info
 
 	def __lt__(self, other):
+		"""Defines less than to be the lower fitness value
+		Less than is the lower fitness value. For sorting, max fitness
+		value should be considered
+		Returns:
+			(bool) Fitness value is less than other's
+		"""
 		return self.fitness < other.fitness
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-from itertools import groupby
-from random import randrange
+from itertools import groupby 	# Used to make a list of unique lists
+from random import randrange 	# Used to set a random orientation
 
 """
 TODO: Make 1 = 90 degrees and 3 = 270 degrees within the class, not just
