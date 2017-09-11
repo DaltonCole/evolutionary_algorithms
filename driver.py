@@ -57,7 +57,7 @@ def main():
 	create_log_file(config_dict)
 
 	### Constants ###
-	population_size = 10
+	population_size = 100
 	#################
 
 	# Multiprocess

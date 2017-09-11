@@ -1,0 +1,15 @@
+{
+    "Algorithm Log File Path": "./logs/algorithm_solution/1",
+    "Random Seed": 1,
+    "Problem Instance Files": "./solutions/1/",
+    "Config File": {
+        "fitness_evaluations": 1,
+        "search_algorithm": "Random Search",
+        "input_file": "./inputs/1.txt",
+        "random_seed": 1,
+        "solution_file_path": "./solutions/1/",
+        "runs": 1,
+        "log_file_path": "./logs/1",
+        "algorithm_solution_file_path": "./logs/algorithm_solution/1"
+    }
+}

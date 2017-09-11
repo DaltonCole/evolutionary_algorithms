@@ -23,7 +23,7 @@ class Board:
 
 		first_x = -999
 		for shape in self.shapes:
-			shape_coordinates = shape.get_base_coordinates()
+			shape_coordinates = shape.get_current_coordinates()
 			#print(shape_coordinates)
 
 			### Find valid placement of shape
