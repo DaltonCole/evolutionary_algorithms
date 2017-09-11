@@ -97,9 +97,15 @@ class Shape:
 			"," + str(self.active_state))
 
 	def get_offset_orientation(self):
+		state = self.active_state
+		if state == 1:
+			state = 3
+		elif state == 3:
+			state = 1
+
 		return (str(self.x_offset + self.original_point[self.active_state][0]) + 
 					"," + str(self.y_offset + self.original_point[self.active_state][1]) + 
-					"," + str(self.active_state))
+					"," + str(state))
 
 	def print_all_shapes(self):
 		for point in self.four_shapes[self.active_state]:
