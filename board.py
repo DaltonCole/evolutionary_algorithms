@@ -73,6 +73,15 @@ class Board:
 		# Fitness Function
 		self.fitness = -self.current_length
 
+		## Testing width
+		self.current_length = 0
+		for shape in self.shapes:
+			x_value = shape.max_x_value()
+			if self.current_length < x_value:
+				self.current_length = x_value
+		self.fitness = -self.current_length
+		print(self.current_length)
+
 	def print_info(self):
 		# Should only be called when shape order no longer matters (end of program)
 		self.shapes.sort(key=lambda shape: shape.original_order)

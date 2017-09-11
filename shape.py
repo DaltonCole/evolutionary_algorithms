@@ -107,10 +107,16 @@ class Shape:
 					"," + str(self.y_offset + self.original_point[self.active_state][1]) + 
 					"," + str(state))
 
-	def print_all_shapes(self):
+	def print_all_points(self):
 		for point in self.four_shapes[self.active_state]:
 			print("[" + str(self.x_offset + point[0]) + ", " + str(self.y_offset + point[1])+"]", end=", ")
 		print()
+
+	def get_all_points(self):
+		all_points = []
+		for point in self.four_shapes[self.active_state]:
+			all_points.append([self.x_offset + point[0], self.y_offset + point[1]])
+		return all_points
 
 	def _generate_shape(self, direction, amount, x, y, generated_shape):
 		if direction == 'R':
@@ -195,6 +201,15 @@ class Shape:
 		for point in generated_shape:
 			if point[0] > max_x:
 				max_x = point[0]
+
+		return max_x
+
+	def max_x_value(self):
+		max_x = 0
+
+		for point in self.four_shapes[self.active_state]:
+			if max_x < point[1]:
+				max_x = point[1]
 
 		return max_x
 

@@ -1,8 +1,8 @@
 {
-	"Input File": "./inputs/small.txt",
+	"Input File": "./inputs/1.txt",
 	"Random Seed": null,
 	"Search Algorithm": "Random Search",
-	"Runs": 3,
+	"Runs": 1,
 	"Fitness Evaluations": 5,
 	"Log File Path": "",
 	"Solution File Path": "",

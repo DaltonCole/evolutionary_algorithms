@@ -154,6 +154,24 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
 
 	for shape in population[0].shapes:
-		shape.print_all_shapes()
+		shape.print_all_points()
 
-	print(population[0].current_length)
+	combined_points = []
+	for shape in population[0].shapes:
+		combined_points += shape.get_all_points()
+
+	combined_points.sort(key=lambda x:x[0])
+
+	b_set = set(tuple(x) for x in combined_points)
+	b = [ list(x) for x in b_set ]
+	b.sort(key = lambda x: combined_points.index(x) )
+
+	print(len(b) == len(combined_points))
+
+	print()
+	print()
+	print(combined_points)
+	print()
+	print(b)
+
+	#print(population[0].current_length)
