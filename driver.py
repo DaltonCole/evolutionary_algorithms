@@ -55,13 +55,18 @@ def main():
 
 	# Create log file
 	create_log_file(config_dict)
-	# Initalize algorithm log file
-	algorithm_log = open_file(config_dict['algorithm_solution_file_path'])
-	algorithm_log.write("Result Log\n\n")
 
 	### Constants ###
 	population_size = 100
 	#################
+
+	# Multiprocess
+	manager = multiprocessing.Manager()
+	return_dict = manager.dict()
+	jobs = []
+
+	# ctrl-c handler
+	signal.signal(signal.SIGINT, partial(signal_handler, return_dict, config_dict))
 
 	max_height = 0
 	shapes = []
@@ -73,11 +78,6 @@ def main():
 
 	
 	# Start run
-	# Multiprocess
-	manager = multiprocessing.Manager()
-	return_dict = manager.dict()
-	jobs = []
-
 	for run in range(config_dict['runs']):
 		p = multiprocessing.Process(target=run_algorithm, args=(config_dict, max_height, shapes, population_size, run, return_dict))
 		jobs.append(p)
@@ -86,10 +86,8 @@ def main():
 	for proc in jobs:
 		proc.join()
 
-	for i in range(config_dict['runs']):
-		algorithm_log.write(return_dict[i])
-
-	algorithm_log.close()
+	# Write to algorithm log file
+	write_algorithm_log(config_dict['algorithm_solution_file_path'], config_dict['runs'], return_dict)
 
 
 if __name__ == '__main__':

@@ -5,12 +5,23 @@ import signal	# ctrl-c handle
 import json
 import os
 import multiprocessing
+from functools import partial
 from time import time
 from copy import deepcopy
 
-def signal_handler(signal, frame):
+def signal_handler(return_dict, config_dict, signal, frame):
 	print('You pressed Ctrl+C!')
-	#print_info()
+
+	"""
+	print('return dict')
+	print(return_dict)
+
+	print("length: " + str(len(return_dict)))
+
+	# Write to algorithm log file
+	write_algorithm_log(config_dict['algorithm_solution_file_path'], config_dict['runs'], return_dict)
+	"""
+
 	sys.exit(0)
 
 def config_parser(config_file_name):
@@ -67,6 +78,14 @@ def open_file(file):
 		os.makedirs(os.path.dirname(file))
 	return open(file, 'w')
 
+def write_algorithm_log(file, runs, return_dict):
+	if not os.path.exists(os.path.dirname(file)):
+		os.makedirs(os.path.dirname(file))
+
+	with open(file, 'w') as f:
+		for i in range(runs):
+			f.write(return_dict[i])
+
 def create_log_file(config_dict):
 	log_dict = {}
 	log_dict['Problem Instance Files'] = config_dict['solution_file_path']
@@ -97,10 +116,10 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 	# Random number
 	random.seed(config_dict['random_seed'] + run_number)
 
-	algorithm_log = ''
+	return_dict[run_number] = ''
 	# If random search, and "Run i" line to algo log file 
 	if config_dict['search_algorithm'] == 'Random Search':
-		algorithm_log += ('\nRun ' + str(run_number + 1) + '\n')
+		return_dict[run_number] += ('\nRun ' + str(run_number + 1) + '\n')
 
 	population = []
 
@@ -130,8 +149,11 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 
 		if population[0].fitness > best_fitness or current_eval == 0:
 			best_fitness = population[0].fitness
-			algorithm_log += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
+			return_dict[run_number] += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
 
 	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
 
-	return_dict[run_number] = algorithm_log
+	for shape in population[0].shapes:
+		shape.print_all_shapes()
+
+	print(population[0].current_length)

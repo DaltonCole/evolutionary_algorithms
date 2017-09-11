@@ -101,6 +101,11 @@ class Shape:
 					"," + str(self.y_offset + self.original_point[self.active_state][1]) + 
 					"," + str(self.active_state))
 
+	def print_all_shapes(self):
+		for point in self.four_shapes[self.active_state]:
+			print("[" + str(self.x_offset + point[0]) + ", " + str(self.y_offset + point[1])+"]", end=", ")
+		print()
+
 	def _generate_shape(self, direction, amount, x, y, generated_shape):
 		if direction == 'R':
 			for i in range(amount):
