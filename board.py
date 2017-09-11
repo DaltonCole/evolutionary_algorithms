@@ -16,13 +16,12 @@ class Board:
 
 	def minimize(self):
 		"""Compress board into smalles form given the current shapes
-
-		TODO: Random placement on y axis
 		"""
 		x_offset = 0
 		occupied_squares = []
 		self.current_length = 0
 
+		first_x = -999
 		for shape in self.shapes:
 			shape_coordinates = shape.get_base_coordinates()
 			#print(shape_coordinates)
@@ -44,11 +43,15 @@ class Board:
 							x_offset += 1
 						# No longer in valid state, try next offset
 						valid_state = False
+						first_x = -999
 						#print(str(point[0]+x) + " " + str(point[1]+y))
 						break
+					if first_x == -999:
+						first_x = point[0] + x
+
 
 			# Update shape's offsets
-			shape.update_offset(x, y)
+			shape.update_offset(x_offset, y)
 
 			# Add points to occupied squares
 			for point in shape_coordinates:
@@ -57,8 +60,9 @@ class Board:
 			# Remove any occupied square left of where the last shape was placed
 			occupied_squares.sort()
 			#print(occupied_squares)
-			while occupied_squares[0][0] < x:
+			while occupied_squares[0][0] < first_x: ##############################
 				occupied_squares.pop(0)
+			first_x = -999
 
 			# Shift points left by x positions
 			for point in occupied_squares:
@@ -80,7 +84,6 @@ class Board:
 			if self.current_length < x_value:
 				self.current_length = x_value
 		self.fitness = -self.current_length
-		print(self.current_length)
 
 	def print_info(self):
 		# Should only be called when shape order no longer matters (end of program)

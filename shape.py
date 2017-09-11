@@ -208,8 +208,8 @@ class Shape:
 		max_x = 0
 
 		for point in self.four_shapes[self.active_state]:
-			if max_x < point[1]:
-				max_x = point[1]
+			if max_x < point[1] + self.x_offset:
+				max_x = point[1] + self.x_offset
 
 		return max_x
 

@@ -1,9 +1,9 @@
 {
 	"Input File": "./inputs/1.txt",
-	"Random Seed": null,
+	"Random Seed": 1,
 	"Search Algorithm": "Random Search",
 	"Runs": 1,
-	"Fitness Evaluations": 5,
+	"Fitness Evaluations": 1,
 	"Log File Path": "",
 	"Solution File Path": "",
 	"Algorithm Solution File Path": ""
