@@ -76,3 +76,7 @@ Directory where graph.py script and *.png files reside.
 ### inputs/
 
 Directory with default inputs.
+
+### EC Assignment 1a.pdf
+
+File containing the three graphs in pdf format.
