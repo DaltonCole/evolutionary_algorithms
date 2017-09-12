@@ -1,3 +1,6 @@
+# File name:      board.py
+# Author:         Dalton Cole
+
 from shape import Shape
 from random import shuffle 	# Shuffle list of Shapes
 

@@ -1,55 +1,20 @@
-""" Config file:
-Random Seed: 1234567890
-Search Algorithm: Random Search
-Runs: 20
-Fitness Evaluations: 20
-Log File Path: ./logs/1234567890.log
-Solution File Path: ./solution/1234567890.txt
-"""
-
-""" Log file:
-{
-	"Problem Instance Files": "../solution/1234567890.txt",
-	"Random Seed": "1234567890",
-	"Config File": {
-		"Random Seed": 1234567890,
-		"Search Algorithm": "Random Search",
-		"Runs": 20,
-		"Fitness Evaluations": 20,
-		"Log File Path": "./logs/1234567890.log",
-		"Solution File Path": "./solution/1234567890.txt"
-	}
-	"Algorithm Log File Path:": "../algorithm_log/1234567890.txt"
-"""
-
-""" Algoirthm log:
-Result Log
-
-Run 1
-1	1
-2	10
-14	11
-15	12
-48	14
-
-Run 2
-1	2
-10	3
-100	5
-
-"""
+# File name:      driver.py
+# Author:         Dalton Cole
 
 from helper_functions import *
 
 def main():
-	if len(sys.argv) != 2:
-		print('Usage: python3 driver.py <config file>')
+	if len(sys.argv) != 3:
+		print('Usage: python3 driver.py <config file> <problem>')
 		quit()
 
 	# {'input_file': '', 'runs': 1, 'random_seed': 1, 'search_algorithm': '', 
 	#  'fitness_evaluations': 1, 'log_file_path': './', 
 	#  'solution_file_path': './', 'algorithm_solution_file_path': './'}
 	config_dict = config_parser(sys.argv[1])
+
+	# Set problem file
+	config_dict['input_file'] = sys.argv[2]
 
 	#random.seed(config_dict['random_seed'])
 
@@ -66,7 +31,8 @@ def main():
 	jobs = []
 
 	# ctrl-c handler
-	signal.signal(signal.SIGINT, partial(signal_handler, return_dict, config_dict))
+	signal.signal(signal.SIGINT, signal_handler)
+	# signal.signal(signal.SIGINT, partial(signal_handler, return_dict, config_dict)) # With partial
 
 	max_height = 0
 	shapes = []

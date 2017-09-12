@@ -1,3 +1,6 @@
+# File name:      shape.py
+# Author:         Dalton Cole
+
 from itertools import groupby 	# Used to make a list of unique lists
 from random import randrange 	# Used to set a random orientation
 
