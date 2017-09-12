@@ -1,5 +1,5 @@
 {
-	"Random Seed": 1,
+	"Random Seed": 3,
 	"Search Algorithm": "Random Search",
 	"Runs": 30,
 	"Fitness Evaluations": 1000,

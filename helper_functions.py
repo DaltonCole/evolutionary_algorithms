@@ -337,8 +337,9 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 			# Add new best fitness to algorithm_log
 			return_dict[run_number] += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
 
-	# If printing progress bar, add new line when completed
+	# If printing progress bar, add new line when completed and print 100% completed
 	if print_progress_bar:
+		printProgressBar(1, 1, prefix = 'Progress:', suffix = 'Complete', length = 100)
 		print()
 
 	# Create solution log from best Board in the population

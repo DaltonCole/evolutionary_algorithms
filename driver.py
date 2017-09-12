@@ -1,6 +1,13 @@
 # File name:      driver.py
 # Author:         Dalton Cole
 
+"""
+TODO: Make it so only one board is made, then make deep copies
+		to cover the rest of the population. Then randomly shuffle
+		the orientation of each shape and randomize the order
+		of the shapes on the board
+"""
+
 from helper_functions import *
 
 def main():
@@ -24,7 +31,6 @@ def main():
 
 	### Constants ###
 	population_size = config_dict['population_size']
-	print(population_size)
 	#################
 
 	# Multiprocess
