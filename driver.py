@@ -23,7 +23,8 @@ def main():
 	config_dict['input_file'] = sys.argv[2]
 
 	### Constants ###
-	population_size = 100
+	population_size = config_dict['population_size']
+	print(population_size)
 	#################
 
 	# Multiprocess

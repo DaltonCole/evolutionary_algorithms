@@ -79,6 +79,7 @@ def config_parser(config_file_name):
 	config_dict['search_algorithm'] = "Random Search"
 	config_dict['runs'] = 30
 	config_dict['fitness_evaluations'] = 1000
+	config_dict['population_size'] = 100
 	config_dict['log_file_path'] = ''
 	config_dict['solution_file_path'] = ''
 	config_dict['algorithm_solution_file_path'] = ''
@@ -133,6 +134,15 @@ def config_parser(config_file_name):
 	except:
 		print("You need {'Fitness Evaluations': int} in your JSON File! I'll let you \
 			go this time by using " + str(config_dict['fitness_evaluations']) + " \
+			but never again will I be this kind!")
+
+	# Population Size
+	try:
+		if json_config_file['Population Size'] != None:
+			config_dict['population_size'] = int(json_config_file['Population Size'])
+	except:
+		print("You need {'Population Size': int} in your JSON File! I'll let you \
+			go this time by using " + str(config_dict['population_size']) + " \
 			but never again will I be this kind!")
 
 	# Log File Path
@@ -229,6 +239,10 @@ def create_log_file(config_dict):
 	log_dict['Algorithm Log File Path'] = config_dict['algorithm_solution_file_path']
 	log_dict['Config File'] = config_dict
 	log_dict['Run Time'] = config_dict['run_time']
+	log_dict['Input File'] = config_dict['input_file']
+
+	config_dict.pop('input_file', None)
+	config_dict.pop('run_time', None)
 
 	# Open file, create directories if needed
 	opened_file = open_file(config_dict['log_file_path'])
@@ -263,7 +277,8 @@ def create_solution_file(best_board, path, run_number):
 	opened_file.close()
 
 def run_algorithm(config_dict, max_height, shapes, population_size, run_number, return_dict):
-
+	"""TODO: DOCSTRING
+	"""
 
 	# Seed the random number generator with random_seed + run number
 	# This makes each run unique
