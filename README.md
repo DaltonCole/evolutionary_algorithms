@@ -61,7 +61,7 @@ If any of the above are null, then default values are used. The default "Random 
 
 The default file path for log files.
 
-### solutions/<random seed>/
+### solutions/\<random seed\>/
 
 The default file path for solution files.
 
