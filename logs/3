@@ -1,0 +1,17 @@
+{
+    "Algorithm Log File Path": "./logs/algorithm_solution/3",
+    "Config File": {
+        "algorithm_solution_file_path": "./logs/algorithm_solution/3",
+        "fitness_evaluations": 1000,
+        "log_file_path": "./logs/3",
+        "population_size": 1,
+        "random_seed": 3,
+        "runs": 30,
+        "search_algorithm": "Random Search",
+        "solution_file_path": "./solutions/3/"
+    },
+    "Input File": "inputs/3.txt",
+    "Problem Instance Files": "./solutions/3/",
+    "Random Seed": 3,
+    "Run Time": 306
+}

@@ -197,7 +197,7 @@ def open_file(file):
 
 def write_algorithm_log(file, runs, return_dict):
 	"""Write evals to algorithm log file, creating sub-directory if needed
-	Writes algorithm log's in the following format:
+	Writes algorithm log's \nin the following format:
 		<run number><tab><fitness function value>
 	These lines are only written if the fitness function value improves
 	
@@ -210,6 +210,7 @@ def write_algorithm_log(file, runs, return_dict):
 		os.makedirs(os.path.dirname(file))
 
 	with open(file, 'w') as f:
+		f.write("Result Log\n")
 		for i in range(runs):
 			f.write(return_dict[i])
 
