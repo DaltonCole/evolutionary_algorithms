@@ -1,8 +1,8 @@
 {
-	"Random Seed": null,
+	"Random Seed": 1,
 	"Search Algorithm": "Random Search",
-	"Runs": 30,
-	"Fitness Evaluations": 1000,
+	"Runs": 1,
+	"Fitness Evaluations": 100,
 	"Log File Path": "",
 	"Solution File Path": "",
 	"Algorithm Solution File Path": ""

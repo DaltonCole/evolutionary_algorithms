@@ -1,0 +1,15 @@
+{
+    "Algorithm Log File Path": "./logs/algorithm_solution/1505177688",
+    "Config File": {
+        "algorithm_solution_file_path": "./logs/algorithm_solution/1505177688",
+        "fitness_evaluations": 1000,
+        "input_file": "inputs/1.txt",
+        "log_file_path": "./logs/1505177688",
+        "random_seed": 1505177688,
+        "runs": 30,
+        "search_algorithm": "Random Search",
+        "solution_file_path": "./solutions/1505177688/"
+    },
+    "Problem Instance Files": "./solutions/1505177688/",
+    "Random Seed": 1505177688
+}

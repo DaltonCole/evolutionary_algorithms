@@ -228,6 +228,7 @@ def create_log_file(config_dict):
 	log_dict['Random Seed'] = config_dict['random_seed']
 	log_dict['Algorithm Log File Path'] = config_dict['algorithm_solution_file_path']
 	log_dict['Config File'] = config_dict
+	log_dict['Run Time'] = config_dict['run_time']
 
 	# Open file, create directories if needed
 	opened_file = open_file(config_dict['log_file_path'])

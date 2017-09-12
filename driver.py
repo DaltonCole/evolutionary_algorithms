@@ -9,6 +9,9 @@ def main():
 		print('Usage: python3 driver.py <config file> <problem>')
 		quit()
 
+	# Start timer
+	start_time = int(time())
+
 	"""Dictionary from the config file in the following format:
 		{'input_file': '', 'runs': 1, 'random_seed': 1, 'search_algorithm': '', 
 	  	 'fitness_evaluations': 1, 'log_file_path': './', 
@@ -18,9 +21,6 @@ def main():
 
 	# Set problem file
 	config_dict['input_file'] = sys.argv[2]
-
-	# Create log file
-	create_log_file(config_dict)
 
 	### Constants ###
 	population_size = 100
@@ -55,6 +55,12 @@ def main():
 	# Wait for jobs to finish
 	for proc in jobs:
 		proc.join()
+
+	# Add total run time to log file
+	config_dict['run_time'] = int(time()) - start_time
+
+	# Create log file
+	create_log_file(config_dict)
 
 	# Write to algorithm log file
 	write_algorithm_log(config_dict['algorithm_solution_file_path'], config_dict['runs'], return_dict)
