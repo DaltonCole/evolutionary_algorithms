@@ -317,6 +317,90 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 	# Start with an empty population
 	population = []
 
+	# Set Board's max height
+	Board.max_height = max_height
+
+	# Populate to capacity with Boards in random shape order with
+	# random orientation
+	for i in range(population_size):
+		population.append(Board(shape_list))
+
+	# Sort from best fit to worst fit
+	population.sort(reverse=True)
+
+	# If last run, print progress bar
+	print_progress_bar = False
+	if run_number + 1 == config_dict['runs']:
+		print_progress_bar = True
+
+	if print_progress_bar:
+		printProgressBar(0, config_dict['fitness_evaluations'], prefix = 'Progress:', suffix = 'Complete', length = 100)
+
+	# Apply fitness evals
+	best_fitness = 0
+	for current_eval in range(config_dict['fitness_evaluations']):
+		if print_progress_bar:
+			printProgressBar(current_eval, config_dict['fitness_evaluations'], prefix = 'Progress:', suffix = 'Complete', length = 100)
+		
+		### Apply search algorithm ###
+		# Add population_size members to population
+		for i in range(population_size):
+			population.append(Board(shape_list))
+
+		# Sort
+		population.sort(reverse=True)
+
+		# Take best 1 of population
+		for i in range(len(population) - 1):
+			population.pop(len(population) - 1)
+		##############################
+
+		# If current best fitness is better than previous best fitness
+		if population[0].fitness > best_fitness or current_eval == 0:
+			# Update best_fitness
+			best_fitness = population[0].fitness
+			# Add new best fitness to algorithm_log
+			return_dict[run_number] += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
+
+	# If printing progress bar, add new line when completed and print 100% completed
+	if print_progress_bar:
+		printProgressBar(1, 1, prefix = 'Progress:', suffix = 'Complete', length = 100)
+		print()
+
+	# Create solution log from best Board in the population
+	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
+
+def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
+	"""
+
+	Args:
+		config_dict (dict: {str: val}): A dictionary of configuration values
+		max_height (int): The max height of the board
+		shape_string_list (list of str): A list of shapes in string format
+		population_size (int): The population size
+		run_number (int): This run's number
+		return_dict (dict: {int: val}): A dictionary used to store the needed
+			solution to be returned to the main process
+	"""
+
+	# Seed the random number generator with random_seed + run number
+	# This makes each run unique
+	random.seed(config_dict['random_seed'] + run_number)
+
+	# Initialize return_dict with an empty string
+	return_dict[run_number] = ''
+
+	# Add "Run i" line top of algorithm log file 
+	return_dict[run_number] += ('\nRun ' + str(run_number + 1) + '\n')
+
+	# Create a list of all the shapes
+	shape_list = []
+	for i in range(len(shape_string_list)):
+		shape_list.append(Shape_base(shape_string_list[i], i))
+
+	# Start with an empty population
+	population = []
+
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
@@ -366,9 +450,6 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 
 	# Create solution log from best Board in the population
 	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
-
-def ea_search():
-	return
 
 """ 
 	NOTE: printProgressBar is BORROWED FROM: 

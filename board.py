@@ -17,8 +17,8 @@ class Board:
 		current_length (int): The current length (max x) of the board
 
 	"""
-
-	def __init__(self, shape_list, max_height):
+	max_height = 0
+	def __init__(self, shape_list):
 		"""Initializes a board with shapes in a random order
 		Populates the shapes list with shapes taken from shape_strings_list
 		and shuffles them into a random order. It then minimizes the
@@ -29,7 +29,6 @@ class Board:
 			max_height (int): Max height of the board
 		"""
 		self.shapes = []
-		self.max_height = max_height
 
 		# Populate shapes
 		for shape in shape_list:

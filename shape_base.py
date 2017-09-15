@@ -58,7 +58,7 @@ class Shape_base:
 		# Order in which shape was created in
 		self.original_order = original_order
 		# Randomize the current rotation
-		self.active_state = randrange(4)
+		self.active_state = 0
 
 		# Split movement string into each action
 		movements = shape_string.split()
@@ -386,26 +386,14 @@ class Shape_base:
 		Returns:
 			(int) Highest x value of base shape
 		"""
-		max_x = 0
-
-		for point in generated_shape:
-			if point[0] > max_x:
-				max_x = point[0]
-
-		return max_x
+		return self.four_shapes[0][-1][0]
 
 	def max_x_value(self):
 		"""Find the max x value of the shape
 		Returns:
 			(int) The highest x value
 		"""
-		max_x = 0
-
-		for point in self.four_shapes[self.active_state]:
-			if max_x < point[0]:
-				max_x = point[0]
-
-		return max_x + self.x_offset
+		return self.current_coordinates[-1][0] + self.x_offset
 
 if __name__ == '__main__':
 	# s = Shape("R5 L7 U2 R3 D2")
