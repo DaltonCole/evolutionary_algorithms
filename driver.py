@@ -55,7 +55,14 @@ def main():
 	# Start each run as different processes. 
 	# Last run should display the progress bar.
 	for run in range(config_dict['runs']):
-		p = multiprocessing.Process(target=run_algorithm, args=(config_dict, max_height, shapes, population_size, run, return_dict))
+		if config_dict['search_algorithm'] == 'Random Search':
+			p = multiprocessing.Process(target=random_search, args=( \
+				config_dict, max_height, shapes, population_size, run, \
+				return_dict))
+		elif config_dict['search_algorithm'] == 'EA':
+			p = multiprocessing.Process(target=ea_search, args=( \
+				config_dict, max_height, shapes, population_size, run, \
+				return_dict))
 		jobs.append(p)
 		p.start()
 

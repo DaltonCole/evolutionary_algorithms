@@ -6,12 +6,12 @@
         "log_file_path": "./logs/4",
         "population_size": 1,
         "random_seed": 4,
-        "runs": 10,
+        "runs": 3,
         "search_algorithm": "Random Search",
         "solution_file_path": "./solutions/4/"
     },
     "Input File": "inputs/1.txt",
     "Problem Instance Files": "./solutions/4/",
     "Random Seed": 4,
-    "Run Time": 8
+    "Run Time": 3
 }
