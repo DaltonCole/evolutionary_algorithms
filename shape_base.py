@@ -256,6 +256,26 @@ class Shape_base:
 			all_points.append([self.x_offset + point[0], self.y_offset + point[1]])
 		return all_points
 
+	def get_all_tuple_points(self):
+		"""Get a list of tuples of all points.
+		List of tuples of all the shapes. This is useful for adding the shapes
+		to a set().
+		Returns:
+			(list of tuple of (int, int)): List of all the points in tuple
+				format
+		"""
+		all_points = []
+		for point in self.four_shapes[self.active_state]:
+			all_points.append((self.x_offset + point[0], self.y_offset + point[1]))
+		return all_points
+
+	def get_number_of_points(self):
+		"""Return the number of points in the shape
+		Returns:
+			(int): The number of points in the shape
+		"""
+		return len(self.current_coordinates)
+
 	def _generate_shape(self, direction, amount, x, y, generated_shape):
 		"""Append point to the generated shape and return x, y value of point
 

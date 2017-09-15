@@ -57,11 +57,7 @@ class Board:
 		occupied_squares where the current point of the current shape
 		can be placed. It then continues with the rest of the points in that
 		shape until all points are placed in occupied_squares. After placement,
-		the shape's offset is updated with the correct x and y values. Any 
-		square that is left of the last placed shape is removed from
-		ocupied_squares and all squares are shifted left such that the left
-		most part of the placed shape is [0, y]. This is done to reduce the
-		length of occupied_squares and speed up the 'in' operation performed.
+		the shape's offset is updated with the correct x and y values.
 
 		After this is performed, current_length is updated and the fitness
 		function is evaluated.
@@ -72,19 +68,17 @@ class Board:
 			non_optimal_change (int): The % chance of not trying the first
 				block that the first point could fit in. Should be between 
 				0 for no chance and 100 for 100% chance 
-
-		TODO: Make occupided_squares a set() instead. This will require implementing each point as a tuple instead
-			of a list. To do this, I'll have to get rid of the moving left idea.
-			The reason to make a set() is because sets are search-able using "in" in constant time (via hashing), while 
-			lists take linear time to look up.
 		"""
 		# Initialize x offset to 0
 		x_offset = 0
 		# No squares are currently occupied
-		occupied_squares = []
+		occupied_squares = set()
 		self.current_length = 0
 		# X value of where first point of shape is placed
 		first_x = -999
+
+		# x, y shape offset
+		x, y = 0, 0
 
 		### Find valid placement of shape ###
 		for shape in self.shapes:
@@ -93,15 +87,14 @@ class Board:
 
 			# See if we are in a valid state
 			valid_state = False
-			# x, y shape offset
-			x, y = 0, 0
+			
 			# While not in valid state, look for a valid placement
 			while valid_state == False:
 				valid_state = True
 				for point in shape_coordinates:
 					# If point is already occupied or above board or if we
 					# don't want to select the first possible point
-					if [point[0] + x, point[1] + y] in occupied_squares or (point[1] + y) >= self.max_height \
+					if (point[0] + x, point[1] + y) in occupied_squares or (point[1] + y) >= self.max_height \
 						or (randrange(100) >= 100 - non_optimal_change and first_x != 999):
 						# Increment y
 						y += 1
@@ -120,21 +113,11 @@ class Board:
 
 
 			# Update shape's offsets
-			shape.update_offset(x_offset, y)
+			shape.update_offset(x, y)
 
 			# Add points to occupied squares
 			for point in shape_coordinates:
-				occupied_squares.append([point[0] + x, point[1] + y])
-
-			# Remove any occupied square left of where the last shape was placed
-			occupied_squares.sort()
-			while occupied_squares[0][0] < first_x: 
-				occupied_squares.pop(0)
-			first_x = -999
-
-			# Shift points left by x positions
-			for point in occupied_squares:
-				point[0] -= x
+				occupied_squares.add((point[0] + x, point[1] + y))
 		#####################################
 
 		# Add remaining offset to current length
@@ -192,6 +175,39 @@ class Board:
 			info.append(shape.get_offset_orientation())
 
 		return info
+
+	def get_area(self):
+		"""Get the area of occupied points the board takes up
+		This is to test for overlap. This returns the number of points
+		that are covered on the board.
+
+		Returns:
+			(int): Area covered on board
+		"""
+		points = set()
+
+		for shape in self.shapes:
+			for point in shape.get_all_tuple_points():
+				points.add(point)
+
+		return len(points)
+
+	def test_for_overlap(self):
+		"""Test to see if there is overlap. True = overlap
+		Tests to see if there is overlap. This happens by finding the total
+		area the board takes up and seeing if that is equal to the number
+		of points in all the shapes.
+
+		Returns:
+			(bool): True if overlap occurs, False otherwise
+		"""
+		total_area = self.get_area()
+
+		num_points = 0
+		for shape in self.shapes:
+			num_points += shape.get_number_of_points()
+
+		return total_area != num_points
 
 	def __lt__(self, other):
 		"""Defines less than to be the lower fitness value

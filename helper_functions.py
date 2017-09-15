@@ -7,6 +7,7 @@
 from board import Board
 from shape_base import Shape_base
 from shape import Shape
+from progressBar import ProgressBar
 import sys					# Used for args and exiting
 import random 				# Populate population randomly and mutate/permute
 import signal				# Used to implement ctrl-c handling
@@ -333,15 +334,17 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 	if run_number + 1 == config_dict['runs']:
 		print_progress_bar = True
 
+	progress_bar = 0
 	if print_progress_bar:
-		printProgressBar(0, config_dict['fitness_evaluations'], prefix = 'Progress:', suffix = 'Complete', length = 100)
+		progress_bar = ProgressBar(config_dict['fitness_evaluations'])
+		progress_bar.printProgressBar(0)
 
 	# Apply fitness evals
 	best_fitness = 0
 	for current_eval in range(config_dict['fitness_evaluations']):
 		if print_progress_bar:
-			printProgressBar(current_eval, config_dict['fitness_evaluations'], prefix = 'Progress:', suffix = 'Complete', length = 100)
-		
+			progress_bar.printProgressBar(current_eval)
+
 		### Apply search algorithm ###
 		# Add population_size members to population
 		for i in range(population_size):
@@ -362,9 +365,15 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 			# Add new best fitness to algorithm_log
 			return_dict[run_number] += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
 
+		##### DEBUG ####
+		if population[0].test_for_overlap():
+			print("BAD BOARD")
+			quit()
+		################
+
 	# If printing progress bar, add new line when completed and print 100% completed
 	if print_progress_bar:
-		printProgressBar(1, 1, prefix = 'Progress:', suffix = 'Complete', length = 100)
+		progress_bar.printProgressBar(config_dict['fitness_evaluations'])
 		print()
 
 	# Create solution log from best Board in the population
@@ -414,14 +423,17 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	if run_number + 1 == config_dict['runs']:
 		print_progress_bar = True
 
+	# Initialize progress_bar if last run
+	progress_bar = 0
 	if print_progress_bar:
-		printProgressBar(0, config_dict['fitness_evaluations'], prefix = 'Progress:', suffix = 'Complete', length = 100)
+		progress_bar = ProgressBar(config_dict['fitness_evaluations'])
+		progress_bar.printProgressBar(0)
 
 	# Apply fitness evals
 	best_fitness = 0
 	for current_eval in range(config_dict['fitness_evaluations']):
 		if print_progress_bar:
-			printProgressBar(current_eval, config_dict['fitness_evaluations'], prefix = 'Progress:', suffix = 'Complete', length = 100)
+			progress_bar.printProgressBar(current_eval)
 		
 		### Apply search algorithm ###
 		# Add population_size members to population
@@ -445,36 +457,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 
 	# If printing progress bar, add new line when completed and print 100% completed
 	if print_progress_bar:
-		printProgressBar(1, 1, prefix = 'Progress:', suffix = 'Complete', length = 100)
+		progress_bar.printProgressBar(config_dict['fitness_evaluations'])
 		print()
 
 	# Create solution log from best Board in the population
 	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
-
-""" 
-	NOTE: printProgressBar is BORROWED FROM: 
-		https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
-"""
-# Print iterations progress
-def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█'):
-    """
-    Call in a loop to create terminal progress bar
-    @params:
-        iteration   - Required  : current iteration (Int)
-        total       - Required  : total iterations (Int)
-        prefix      - Optional  : prefix string (Str)
-        suffix      - Optional  : suffix string (Str)
-        decimals    - Optional  : positive number of decimals in percent complete (Int)
-        length      - Optional  : character length of bar (Int)
-        fill        - Optional  : bar fill character (Str)
-    """
-    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
-    filledLength = int(length * iteration // total)
-    bar = fill * filledLength + '-' * (length - filledLength)
-    try:    
-        print('\r%s |%s| %s%% %s' % (prefix, bar, percent, suffix), end = '\r')
-    except:
-        print('\r' + str(percent) + ' ' + str(suffix), end = '\r')
-    # Print New Line on Complete
-    if iteration == total: 
-        print()

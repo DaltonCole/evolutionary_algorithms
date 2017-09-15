@@ -2,16 +2,16 @@
     "Algorithm Log File Path": "./logs/algorithm_solution/4",
     "Config File": {
         "algorithm_solution_file_path": "./logs/algorithm_solution/4",
-        "fitness_evaluations": 1000,
+        "fitness_evaluations": 100000,
         "log_file_path": "./logs/4",
-        "population_size": 10,
+        "population_size": 1,
         "random_seed": 4,
-        "runs": 1,
+        "runs": 4,
         "search_algorithm": "Random Search",
         "solution_file_path": "./solutions/4/"
     },
     "Input File": "inputs/1.txt",
     "Problem Instance Files": "./solutions/4/",
     "Random Seed": 4,
-    "Run Time": 23
+    "Run Time": 149
 }
