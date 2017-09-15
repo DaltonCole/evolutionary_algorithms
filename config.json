@@ -1,7 +1,7 @@
 {
-	"Random Seed":1,
+	"Random Seed": 4,
 	"Search Algorithm": "Random Search",
-	"Runs": 30,
+	"Runs": 10,
 	"Fitness Evaluations": 1000,
 	"Population Size": 1,
 	"Log File Path": "",

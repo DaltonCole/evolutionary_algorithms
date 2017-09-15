@@ -3,6 +3,7 @@
 
 from shape import Shape
 from random import shuffle 	# Shuffle list of Shapes
+from random import randrange
 
 class Board:
 	"""Board with shapes optimally placed given their current order and rotation
@@ -17,31 +18,36 @@ class Board:
 
 	"""
 
-	def __init__(self, shape_string_list, max_height):
+	def __init__(self, shape_list, max_height):
 		"""Initializes a board with shapes in a random order
 		Populates the shapes list with shapes taken from shape_strings_list
 		and shuffles them into a random order. It then minimizes the
 		amount of space the shapes take on the board.
 
 		Args:
-			shape_string_list (list of str): A list of all of the shapes
-				Example: ['U2 L4', 'U5 R2 D1', ...]
+			shape_string_list (list of Shape): A list of all of the shapes
 			max_height (int): Max height of the board
 		"""
 		self.shapes = []
 		self.max_height = max_height
 
 		# Populate shapes
-		for i in range(len(shape_string_list)):
-			self.shapes.append(Shape(shape_string_list[i], i))
+		for shape in shape_list:
+			self.shapes.append(Shape(shape))
 
-		# Randomize the order of the shapes
+		# Randomize the order of the shapes and minimize the space shapes 
+		# take on the board
+		self.shuffle_minimize()
+
+	def shuffle_minimize(self):
 		shuffle(self.shapes)
 
-		# Minimize the space shapes take on the board
+		for shape in self.shapes:
+			shape.update_orientation(randrange(4))
+
 		self.minimize()
 
-	def minimize(self):
+	def minimize(self, non_optimal_change=10):
 		"""Compress board into smallest form given the current shapes
 		The way minimize works is by finding the first place in 
 		occupied_squares where the current point of the current shape
@@ -57,6 +63,11 @@ class Board:
 		function is evaluated.
 
 		The fitness function is -current_length.
+
+		Args:
+			non_optimal_change (int): The % chance of not trying the first
+				block that the first point could fit in. Should be between 
+				0 for no chance and 100 for 100% chance 
 		"""
 		# Initialize x offset to 0
 		x_offset = 0
@@ -79,8 +90,10 @@ class Board:
 			while valid_state == False:
 				valid_state = True
 				for point in shape_coordinates:
-					# If point is already occupied or above board
-					if [point[0] + x, point[1] + y] in occupied_squares or (point[1] + y) >= self.max_height:
+					# If point is already occupied or above board or if we
+					# don't want to select the first possible point
+					if [point[0] + x, point[1] + y] in occupied_squares or (point[1] + y) >= self.max_height \
+						or (randrange(100) >= 100 - non_optimal_change and first_x != 999):
 						# Increment y
 						y += 1
 						# If y is at max height, reset y, move right 1

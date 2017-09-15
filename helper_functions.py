@@ -5,6 +5,8 @@
 """
 
 from board import Board
+from shape_base import Shape_base
+from shape import Shape
 import sys					# Used for args and exiting
 import random 				# Populate population randomly and mutate/permute
 import signal				# Used to implement ctrl-c handling
@@ -277,7 +279,7 @@ def create_solution_file(best_board, path, run_number):
 	# Close file
 	opened_file.close()
 
-def run_algorithm(config_dict, max_height, shapes, population_size, run_number, return_dict):
+def run_algorithm(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
 	"""TODO: DOCSTRING
 	"""
 
@@ -292,13 +294,18 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 	if config_dict['search_algorithm'] == 'Random Search':
 		return_dict[run_number] += ('\nRun ' + str(run_number + 1) + '\n')
 
+	# Create a list of all the shapes
+	shape_list = []
+	for i in range(len(shape_string_list)):
+		shape_list.append(Shape_base(shape_string_list[i], i))
+
 	# Start with an empty population
 	population = []
 
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
-		population.append(Board(shapes, max_height))
+		population.append(Board(shape_list, max_height))
 
 	# Sort from best fit to worst fit
 	population.sort(reverse=True)
@@ -322,7 +329,7 @@ def run_algorithm(config_dict, max_height, shapes, population_size, run_number, 
 
 			# Add population_size members to population
 			for i in range(population_size):
-				population.append(Board(shapes, max_height))
+				population.append(Board(shape_list, max_height))
 
 			# Sort
 			population.sort(reverse=True)
