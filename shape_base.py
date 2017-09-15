@@ -1,4 +1,4 @@
-# File name:      shape.py
+# File name:      shape_base.py
 # Author:         Dalton Cole
 
 from itertools import groupby 	# Used to make a list of unique lists

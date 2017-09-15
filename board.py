@@ -40,11 +40,16 @@ class Board:
 		self.shuffle_minimize()
 
 	def shuffle_minimize(self):
+		"""Shuffles the order and orientation of the shapes, and then minimizes
+		"""
+		# Shuffle shape list
 		shuffle(self.shapes)
 
+		# For each shape, randomly rotate it
 		for shape in self.shapes:
 			shape.update_orientation(randrange(4))
 
+		# Minimize board space
 		self.minimize()
 
 	def minimize(self, non_optimal_change=10):
