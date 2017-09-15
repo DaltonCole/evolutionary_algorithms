@@ -2,6 +2,7 @@
 # Author:         Dalton Cole
 
 from time import time
+from datetime import datetime, timedelta
 
 class ProgressBar():
 	"""Creates a progress bar with percent and time remaining
@@ -54,10 +55,10 @@ class ProgressBar():
 
 		try:
 			bar = self.fill * filledLength + '-' * (self.length - filledLength)
-			print('\r%s |%s| %s%% %s [ %s seconds remaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+			print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
 		except:
 			bar = self.non_unicode_fill * filledLength + '-' * (self.length - filledLength)
-			print('\r%s |%s| %s%% %s [ %s seconds remaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+			print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
 
 	def time_remaining(self):
 		"""Calculates the estimated time remaining in seconds
@@ -66,9 +67,23 @@ class ProgressBar():
 		the percent remaining.
 
 		Returns:
-			(int): Time remaining in seconds
+			(str): Time remaining
 		"""
 		time_diff = int(time()) - self.start_time
 		delta = time_diff / float(self.percent)
 		time_remaining = int(delta * (100 - float(self.percent)))
-		return time_remaining
+
+		sec = timedelta(seconds=time_remaining)
+		d = datetime(1,1,1) + sec
+
+		time_string = ''
+		if d.day - 1 != 0:
+			time_string += str(d.day - 1) + ' days '
+		if d.hour != 0:
+			time_string += str(d.hour) + ' hours '
+		if d.minute != 0:
+			time_string += str(d.minute) + ' minutes '
+		if d.second != 0:
+			time_string += str(d.second) + ' seconds '
+
+		return time_string
