@@ -3,7 +3,7 @@
 	"Search Algorithm": "Random Search",
 	"Runs": 1,
 	"Fitness Evaluations": 1000,
-	"Population Size": 1,
+	"Population Size": 10,
 	"Log File Path": "",
 	"Solution File Path": "",
 	"Algorithm Solution File Path": ""

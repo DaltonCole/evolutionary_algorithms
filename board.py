@@ -51,7 +51,7 @@ class Board:
 		# Minimize board space
 		self.minimize()
 
-	def minimize(self, non_optimal_change=10):
+	def minimize(self, non_optimal_change=1):
 		"""Compress board into smallest form given the current shapes
 		The way minimize works is by finding the first place in 
 		occupied_squares where the current point of the current shape
@@ -72,6 +72,11 @@ class Board:
 			non_optimal_change (int): The % chance of not trying the first
 				block that the first point could fit in. Should be between 
 				0 for no chance and 100 for 100% chance 
+
+		TODO: Make occupided_squares a set() instead. This will require implementing each point as a tuple instead
+			of a list. To do this, I'll have to get rid of the moving left idea.
+			The reason to make a set() is because sets are search-able using "in" in constant time (via hashing), while 
+			lists take linear time to look up.
 		"""
 		# Initialize x offset to 0
 		x_offset = 0
