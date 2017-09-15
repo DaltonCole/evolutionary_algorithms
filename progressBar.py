@@ -69,21 +69,37 @@ class ProgressBar():
 		Returns:
 			(str): Time remaining
 		"""
+		# Time taken so far
 		time_diff = int(time()) - self.start_time
+		# Change in time per percent
 		delta = time_diff / float(self.percent)
+		# Estamated time remaining = change in time so far * percent remaining
 		time_remaining = int(delta * (100 - float(self.percent)))
 
+		### Convert seconds to days, hours, minutes, seconds ###
 		sec = timedelta(seconds=time_remaining)
 		d = datetime(1,1,1) + sec
 
 		time_string = ''
-		if d.day - 1 != 0:
+		if d.day - 1 == 1:
+			time_string += str(d.day - 1) + ' day '
+		elif d.day - 1 != 0:
 			time_string += str(d.day - 1) + ' days '
-		if d.hour != 0:
+
+		if d.hour == 1:
+			time_string += str(d.hour) + ' hour '
+		elif d.hour != 0:
 			time_string += str(d.hour) + ' hours '
-		if d.minute != 0:
+
+		if d.minute == 1:
+			time_string += str(d.minute) + ' minute '
+		elif d.minute != 0:
 			time_string += str(d.minute) + ' minutes '
-		if d.second != 0:
+
+		if d.second == 1:
+			time_string += str(d.second) + ' second '
+		elif d.second != 0:
 			time_string += str(d.second) + ' seconds '
+		########################################################
 
 		return time_string
