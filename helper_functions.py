@@ -63,10 +63,18 @@ def config_parser(config_file_name):
 			search_algorithm: "Random Search"
 			runs: 30
 			fitness_evaluations: 1000
+			population_size: 100
 			log_file_path: "./log/<random seed>"
 			solution_file_path: "./solution/<random seed>"
 			algorithm_solution_file_path: 
 				"./log/algorithm_solution/<random seed>"
+			offspring_count: population_size // 2
+			t_size_parent: population_size // 2
+			t_size_survival: int(population_size * .9)
+			mutation_rate: 10 (ie 10%)
+			convergence: 25
+			parent_selection_algorithm: 
+				"k-Tournament Selection with replacement"
 
 	Args:
 		config_file_name (str): File name of configuration JSON file
@@ -86,6 +94,12 @@ def config_parser(config_file_name):
 	config_dict['log_file_path'] = ''
 	config_dict['solution_file_path'] = ''
 	config_dict['algorithm_solution_file_path'] = ''
+	config_dict['offspring_count'] = 0
+	config_dict['t_size_parent'] = 0
+	config_dict['t_size_survival'] = int(config_dict['population_size'] * .9)
+	config_dict['mutation_rate'] = 10
+	config_dict['convergence'] = 25
+	config_dict['parent_selection_algorithm'] = 'k-Tournament Selection with replacement'
 
 	# Load JSON config file
 	json_config_file = ''
@@ -141,8 +155,8 @@ def config_parser(config_file_name):
 
 	# Population Size
 	try:
-		if json_config_file['Population Size'] != None:
-			config_dict['population_size'] = int(json_config_file['Population Size'])
+		if json_config_file['µ, Population Size'] != None:
+			config_dict['population_size'] = int(json_config_file['µ, Population Size'])
 	except:
 		print("You need {'Population Size': int} in your JSON File! I'll let you \
 			go this time by using " + str(config_dict['population_size']) + " \
@@ -183,6 +197,66 @@ def config_parser(config_file_name):
 		print("You need {'Algorithm Solution File Path': ''} in your JSON File! I'll let you \
 			go this time by using " + str(config_dict['algorithm_solution_file_path']) + " \
 			but never again will I be this kind!")
+
+	# Offspring Count
+	try:
+		if json_config_file['λ, Offspring Count'] != '' and json_config_file['λ, Offspring Count'] != None:
+			config_dict['offspring_count'] = json_config_file['λ, Offspring Count']
+		else:
+			config_dict['offspring_count'] = config_dict['population_size'] // 2
+	except:
+		config_dict['offspring_count'] = config_dict['population_size'] // 2
+		print("You need {'λ, Offspring Count': null} in your JSON File! I'll let you \
+			go this time by using " + str(config_dict['offspring_count']) + " \
+			but never again will I be this kind!")
+
+	# Tournament Size For Parent Selection
+	try:
+		if json_config_file['Tournament Size For Parent Selection'] != '' and json_config_file['Tournament Size For Parent Selection'] != None:
+			config_dict['t_size_parent'] = json_config_file['Tournament Size For Parent Selection']
+		else:
+			config_dict['t_size_parent'] = config_dict['population_size'] // 2
+	except:
+		config_dict['t_size_parent'] = config_dict['population_size'] // 2
+		print("You need {'Tournament Size For Parent Selection': null} in your JSON File! I'll let you \
+			go this time by using " + str(config_dict['t_size_parent']) + " \
+			but never again will I be this kind!") 
+
+	# Tournament Size For Survival Selection
+	try:
+		if json_config_file['Tournament Size For Survival Selection'] != '' and json_config_file['Tournament Size For Survival Selection'] != None:
+			config_dict['t_size_survival'] = json_config_file['Tournament Size For Survival Selection']
+		else:
+			config_dict['t_size_survival'] = int(config_dict['population_size'] *.9)
+	except:
+		config_dict['t_size_survival'] = int(config_dict['population_size'] * .9)
+		print("You need {'Tournament Size For Survival Selection': null} in your JSON File! I'll let you \
+			go this time by using " + str(config_dict['t_size_survival']) + " \
+			but never again will I be this kind!") 
+
+	# Mutation Rate
+	try:
+		if json_config_file['Mutation Rate %'] != '' and json_config_file['Mutation Rate %'] != None:
+			config_dict['mutation_rate'] = json_config_file['Mutation Rate %']
+		else:
+			config_dict['mutation_rate'] = 10
+	except:
+		config_dict['mutation_rate'] = 10
+		print("You need {'Mutation Rate %': null} in your JSON File! I'll let you \
+			go this time by using " + str(config_dict['mutation_rate']) + " \
+			but never again will I be this kind!") 
+
+	# Termination Convergence Criterion
+	try:
+		if json_config_file['Termination Convergence Criterion'] != '' and json_config_file['Termination Convergence Criterion'] != None:
+			config_dict['convergence'] = json_config_file['Termination Convergence Criterion']
+		else:
+			config_dict['convergence'] = 25
+	except:
+		config_dict['convergence'] = 25
+		print("You need {'Termination Convergence Criterion': null} in your JSON File! I'll let you \
+			go this time by using " + str(config_dict['convergence']) + " \
+			but never again will I be this kind!") 
 
 	return config_dict
 
@@ -324,7 +398,8 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
-		population.append(Board(shape_list))
+		new_board = Board(shape_list)
+		population.append(new_board)
 
 	# Sort from best fit to worst fit
 	population.sort(reverse=True)
@@ -348,7 +423,8 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 		### Apply search algorithm ###
 		# Add population_size members to population
 		for i in range(population_size):
-			population.append(Board(shape_list))
+			new_board = Board(shape_list)
+			population.append(new_board)
 
 		# Sort
 		population.sort(reverse=True)
@@ -378,6 +454,84 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 
 	# Create solution log from best Board in the population
 	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
+
+
+
+
+def get_best_fitness_value(population):
+	"""Find the best fitness value out of all the boards in the population
+
+	Args:
+		population (list of Board): The current population
+
+	Returns:
+		(int): The best fitness eval
+	"""
+	best_fitness = population[0].fitness
+	for board in population:
+		if best_fitness < board.fitness:
+			best_fitness = board.fitness
+	return best_fitness
+
+def get_best_fitness_board(population):
+	"""Find the board with the best fitness value
+
+	Args:
+		population (list of Board): The population to chose from
+
+	Returns:
+		(Board): The board with the best fitness value
+	"""
+	best_fitness = get_best_fitness_value(population):
+	for board in population:
+		if board.fitness == best_fitness:
+			return board
+	print("ERROR IN: get_best_fitness_board")
+
+def get_average_fitness_value(population):
+	"""Find the average fitness value of all the boards in the population
+
+	Args:
+		population (list of Board): The current population
+
+	Returns:
+		(int): The average fitness value, rounded down
+	"""
+	average_fitness = 0
+	for board in population:
+		average_fitness += board.fitness
+
+	return average_fitness // len(population)
+
+def find_parents(population, config_dict):
+	"""Finds the parents to reproduce using an algorithm specified in configs
+
+	Args:
+		population (list of Board): The current population
+		config_dict (dict {str: val}): Contains the algorithm to use in
+			config_dict['parent_selection_algorithm']
+
+	Returns:
+		(list of Board): The parents
+	"""
+	if config_dict['parent_selection_algorithm'] == 'k-Tournament Selection with replacement':
+		return k_tournament_selection_with_replacement(population, config_dict['t_size_parent'], config_dict['offspring_count'] * 2)
+
+
+def k_tournament_selection_with_replacement(population, t_size, number_of_parents):
+	parents = []
+	# If tournament size is greater than population size, use population size
+	if t_size > len(population):
+		t_size = len(population)
+
+	# While we need more parents, add parents
+	while len(parents) < number_of_parents:
+		# Randomly chose t_size boards from the population
+		# Append best board to parents list
+		parents.append(get_best_fitness_board(random.sample(population, t_size)))
+
+	return parents
+
 
 def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
 	"""
@@ -413,10 +567,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
-		population.append(Board(shape_list, max_height))
-
-	# Sort from best fit to worst fit
-	population.sort(reverse=True)
+		new_board = Board(shape_list, max_height)
+		population.append(new_board)
 
 	# If last run, print progress bar
 	print_progress_bar = False
@@ -429,31 +581,56 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		progress_bar = ProgressBar(config_dict['fitness_evaluations'])
 		progress_bar.printProgressBar(0)
 
-	# Apply fitness evals
+	### Set Stoping Creteria ###
+	# Current evaluation number
+	current_eval = 0
+	# Current fitness
 	best_fitness = 0
-	for current_eval in range(config_dict['fitness_evaluations']):
+	average_fitness = 0
+	# Times with same fitness
+	same_fitness = 0
+	same_average_fitness = 0
+	# Previous fitness
+	previous_fitness = get_best_fitness_value(population)
+	previous_average_fitness = get_average_fitness_value(population)
+
+	# While not at stoping creteria, continue
+	while current_eval < config_dict['fitness_evaluations'] and same_fitness < config_dict['convergence'] and same_average_fitness < config_dict['convergence']:
+		# Increment evaulation count
+		current_eval += 1
+
+		# Print progress bar if last run
 		if print_progress_bar:
 			progress_bar.printProgressBar(current_eval)
-		
-		### Apply search algorithm ###
-		# Add population_size members to population
-		for i in range(population_size):
-			population.append(Board(shape_list, max_height))
 
-		# Sort
-		population.sort(reverse=True)
+		# Find the parents
+		parents = find_parents(population, config_dict)
 
-		# Take best 1 of population
-		for i in range(len(population) - 1):
-			population.pop(len(population) - 1)
-		##############################
+		# Make and add children
+		population += make_children(parents, config_dict)
 
-		# If current best fitness is better than previous best fitness
-		if population[0].fitness > best_fitness or current_eval == 0:
-			# Update best_fitness
-			best_fitness = population[0].fitness
-			# Add new best fitness to algorithm_log
-			return_dict[run_number] += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
+		# Mutate
+		mutate_population(population, config_dict)
+
+		# Survival Selection
+		select_survivors(population)
+
+		# Find best and average fitness
+		best_fitness = get_best_fitness_value(population)
+		average_fitness = get_average_fitness_value(population)
+
+		# Update stoping creteria
+		if best_fitness == previous_fitness:
+			same_fitness += 1
+		else:
+			previous_fitness = best_fitness
+			same_fitness = 0
+
+		if average_fitness == previous_average_fitness:
+			same_average_fitness += 1
+		else:
+			previous_average_fitness = average_fitness
+			same_average_fitness = 0
 
 	# If printing progress bar, add new line when completed and print 100% completed
 	if print_progress_bar:

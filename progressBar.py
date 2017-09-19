@@ -45,13 +45,15 @@ class ProgressBar():
 			iteration (int): The current iteration. Should be less than or 
 				equal to self.total
 		"""
-		self.percent = ("{0:." + str(self.decimals) + "f}").format(100 * (iteration / float(self.total)))
+		self.percent = 100 * (iteration / float(self.total))
 		filledLength = int(self.length * iteration // self.total)
 
 		if float(self.percent) != 0.0:
 			remaining_time = str(self.time_remaining())
 		else:
 			remaining_time = '999'
+
+		self.percent = ("{0:." + str(self.decimals) + "f}").format(100 * (iteration / float(self.total)))
 
 		try:
 			bar = self.fill * filledLength + '-' * (self.length - filledLength)

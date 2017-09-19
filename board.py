@@ -15,7 +15,7 @@ class Board:
 			shape.original_order is maintained) and then randomly shuffled.
 		max_height (int): Max height of the board (grid)
 		current_length (int): The current length (max x) of the board
-
+		fitness (int): Fitness eval = -current_length
 	"""
 	max_height = 0
 	def __init__(self, shape_list):
@@ -34,9 +34,8 @@ class Board:
 		for shape in shape_list:
 			self.shapes.append(Shape(shape))
 
-		# Randomize the order of the shapes and minimize the space shapes 
-		# take on the board
-		self.shuffle_minimize()
+		# Minimize the space shapes take on the board
+		self.minimize()
 
 	def shuffle_minimize(self):
 		"""Shuffles the order and orientation of the shapes, and then minimizes
@@ -51,7 +50,7 @@ class Board:
 		# Minimize board space
 		self.minimize()
 
-	def minimize(self, non_optimal_change=1):
+	def minimize(self, non_optimal_change=0):
 		"""Compress board into smallest form given the current shapes
 		The way minimize works is by finding the first place in 
 		occupied_squares where the current point of the current shape

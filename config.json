@@ -3,8 +3,13 @@
 	"Search Algorithm": "Random Search",
 	"Runs": 1,
 	"Fitness Evaluations": 1000,
-	"Population Size": 100,
+	"µ, Population Size": 100,
 	"Log File Path": "",
 	"Solution File Path": "",
-	"Algorithm Solution File Path": ""
+	"Algorithm Solution File Path": "",
+	"λ, Offspring Count": 50,
+	"Tournament Size For Parent Selection": 50,
+	"Tournament Size For Survival Selection": 90,
+	"Mutation Rate %": 90,
+	"Termination Convergence Criterion": null
 }
