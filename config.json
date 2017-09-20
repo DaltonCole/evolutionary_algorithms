@@ -1,15 +1,15 @@
 {
 	"Random Seed": 4,
 	"Search Algorithm": "Random Search",
-	"Runs": 1,
+	"Runs": 30,
 	"Fitness Evaluations": 1000,
-	"µ, Population Size": 100,
+	"µ, Population Size": 1,
 	"Log File Path": "",
 	"Solution File Path": "",
 	"Algorithm Solution File Path": "",
 	"λ, Offspring Count": 50,
 	"Tournament Size For Parent Selection": 50,
 	"Tournament Size For Survival Selection": 90,
-	"Mutation Rate %": 90,
-	"Termination Convergence Criterion": null
+	"Mutation Rate": 0.1,
+	"Termination Convergence Criterion": 1000
 }

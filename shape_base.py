@@ -276,6 +276,13 @@ class Shape_base:
 		"""
 		return len(self.current_coordinates)
 
+	def get_original_order(self):
+		"""Returns the original order number of shape
+		Returns:
+			(int): The original order number
+		"""
+		return self.original_order
+
 	def _generate_shape(self, direction, amount, x, y, generated_shape):
 		"""Append point to the generated shape and return x, y value of point
 

@@ -69,12 +69,17 @@ def config_parser(config_file_name):
 			algorithm_solution_file_path: 
 				"./log/algorithm_solution/<random seed>"
 			offspring_count: population_size // 2
-			t_size_parent: population_size // 2
-			t_size_survival: int(population_size * .9)
-			mutation_rate: 10 (ie 10%)
+			t_size_parent: 2
+			t_size_survival: 2
+			mutation_rate: 0.1 (ie 10%)
 			convergence: 25
 			parent_selection_algorithm: 
 				"k-Tournament Selection with replacement"
+			recombination_algorithm:
+				"Partially Mapped Crossover"
+			mutation_algorithm:
+				"Both" This means both "Flip" and "Switch"
+			survivor_algorithm: "Truncation"
 
 	Args:
 		config_file_name (str): File name of configuration JSON file
@@ -86,20 +91,11 @@ def config_parser(config_file_name):
 	# Initialize default inputs
 	config_dict = {}
 	config_dict['input_file'] = 'input.txt'
-	config_dict['random_seed'] = int(time())
-	config_dict['search_algorithm'] = "Random Search"
-	config_dict['runs'] = 30
-	config_dict['fitness_evaluations'] = 1000
-	config_dict['population_size'] = 100
-	config_dict['log_file_path'] = ''
-	config_dict['solution_file_path'] = ''
-	config_dict['algorithm_solution_file_path'] = ''
-	config_dict['offspring_count'] = 0
-	config_dict['t_size_parent'] = 0
-	config_dict['t_size_survival'] = int(config_dict['population_size'] * .9)
-	config_dict['mutation_rate'] = 10
-	config_dict['convergence'] = 25
+
 	config_dict['parent_selection_algorithm'] = 'k-Tournament Selection with replacement'
+	config_dict['recombination_algorithm'] = 'Partially Mapped Crossover'
+	config_dict['mutation_algorithm'] = 'Both'
+	config_dict['survivor_algorithm'] = 'Truncation'
 
 	# Load JSON config file
 	json_config_file = ''
@@ -118,147 +114,73 @@ def config_parser(config_file_name):
 		pass
 
 	# Random Seed
-	try:
-		if json_config_file['Random Seed'] != None:
-			config_dict['random_seed'] = int(json_config_file['Random Seed'])
-	except:
-		print("You need {'Random Seed': int} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['random_seed']) + " but \
-			never again will I be this kind!")
+	config_parser_helper(config_dict, 'random_seed', 'Random Seed', json_config_file, int(time()))
 
 	# Search Algorithm
-	try:
-		if json_config_file['Search Algorithm'] != ''  and json_config_file['Search Algorithm'] != None:
-			config_dict['search_algorithm'] = json_config_file['Search Algorithm']
-	except:
-		print("You need {'Search Algorithm': ''} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['search_algorithm']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'search_algorithm', 'Search Algorithm', json_config_file, "Random Search")
 		
 	# Runs
-	try:
-		if json_config_file['Runs'] != None:
-			config_dict['runs'] = int(json_config_file['Runs'])
-	except:
-		print("You need {'Runs': int} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['runs']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'runs', 'Runs', json_config_file, 30)
 
 	# Fitness Evaluations
-	try:
-		if json_config_file['Fitness Evaluations'] != None:
-			config_dict['fitness_evaluations'] = int(json_config_file['Fitness Evaluations'])
-	except:
-		print("You need {'Fitness Evaluations': int} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['fitness_evaluations']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'fitness_evaluations', 'Fitness Evaluations', json_config_file, 1000)
 
 	# Population Size
-	try:
-		if json_config_file['µ, Population Size'] != None:
-			config_dict['population_size'] = int(json_config_file['µ, Population Size'])
-	except:
-		print("You need {'Population Size': int} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['population_size']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'population_size', 'µ, Population Size', json_config_file, 100)
 
 	# Log File Path
-	try:
-		if json_config_file['Log File Path'] != '' and json_config_file['Log File Path'] != None:
-			config_dict['log_file_path'] = json_config_file['Log File Path']
-		else:
-			config_dict['log_file_path'] = './logs/' + str(config_dict['random_seed'])
-	except:
-		config_dict['log_file_path'] = './logs/' + str(config_dict['random_seed'])
-		print("You need {'Log File Path': ''} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['log_file_path']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'log_file_path', 'Log File Path', json_config_file, './logs/' + str(config_dict['random_seed']))
 
 	# Solution File Path
-	try:
-		if json_config_file['Solution File Path'] != '' and json_config_file['Solution File Path'] != None:
-			config_dict['solution_file_path'] = json_config_file['Solution File Path']
-		else:
-			config_dict['solution_file_path'] = './solutions/' + str(config_dict['random_seed']) + '/'
-	except:
-		config_dict['solution_file_path'] = './solutions/' + str(config_dict['random_seed']) + '/'
-		print("You need {'Solution File Path': ''} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['solution_file_path']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'solution_file_path', 'Solution File Path', json_config_file, './solutions/' + str(config_dict['random_seed']) + '/')
 
 	# Algorithm Solution File Path
-	try:
-		if json_config_file['Algorithm Solution File Path'] != '' and json_config_file['Algorithm Solution File Path'] != None:
-			config_dict['algorithm_solution_file_path'] = json_config_file['Algorithm Solution File Path']
-		else:
-			config_dict['algorithm_solution_file_path'] = './logs/algorithm_solution/' + str(config_dict['random_seed'])
-	except:
-		config_dict['algorithm_solution_file_path'] = './logs/algorithm_solution/' + str(config_dict['random_seed'])
-		print("You need {'Algorithm Solution File Path': ''} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['algorithm_solution_file_path']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'algorithm_solution_file_path', 'Algorithm Solution File Path', json_config_file, './logs/algorithm_solution/' + str(config_dict['random_seed']))
 
 	# Offspring Count
-	try:
-		if json_config_file['λ, Offspring Count'] != '' and json_config_file['λ, Offspring Count'] != None:
-			config_dict['offspring_count'] = json_config_file['λ, Offspring Count']
-		else:
-			config_dict['offspring_count'] = config_dict['population_size'] // 2
-	except:
-		config_dict['offspring_count'] = config_dict['population_size'] // 2
-		print("You need {'λ, Offspring Count': null} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['offspring_count']) + " \
-			but never again will I be this kind!")
+	config_parser_helper(config_dict, 'offspring_count', 'λ, Offspring Count', json_config_file, int(config_dict['population_size'] // 2))
 
 	# Tournament Size For Parent Selection
-	try:
-		if json_config_file['Tournament Size For Parent Selection'] != '' and json_config_file['Tournament Size For Parent Selection'] != None:
-			config_dict['t_size_parent'] = json_config_file['Tournament Size For Parent Selection']
-		else:
-			config_dict['t_size_parent'] = config_dict['population_size'] // 2
-	except:
-		config_dict['t_size_parent'] = config_dict['population_size'] // 2
-		print("You need {'Tournament Size For Parent Selection': null} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['t_size_parent']) + " \
-			but never again will I be this kind!") 
+	config_parser_helper(config_dict, 't_size_parent', 'Tournament Size For Parent Selection', json_config_file, 2)
 
 	# Tournament Size For Survival Selection
-	try:
-		if json_config_file['Tournament Size For Survival Selection'] != '' and json_config_file['Tournament Size For Survival Selection'] != None:
-			config_dict['t_size_survival'] = json_config_file['Tournament Size For Survival Selection']
-		else:
-			config_dict['t_size_survival'] = int(config_dict['population_size'] *.9)
-	except:
-		config_dict['t_size_survival'] = int(config_dict['population_size'] * .9)
-		print("You need {'Tournament Size For Survival Selection': null} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['t_size_survival']) + " \
-			but never again will I be this kind!") 
+	config_parser_helper(config_dict, 't_size_survival', 'Tournament Size For Survival Selection', json_config_file, 2) 
 
 	# Mutation Rate
-	try:
-		if json_config_file['Mutation Rate %'] != '' and json_config_file['Mutation Rate %'] != None:
-			config_dict['mutation_rate'] = json_config_file['Mutation Rate %']
-		else:
-			config_dict['mutation_rate'] = 10
-	except:
-		config_dict['mutation_rate'] = 10
-		print("You need {'Mutation Rate %': null} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['mutation_rate']) + " \
-			but never again will I be this kind!") 
+	config_parser_helper(config_dict, 'mutation_rate', 'Mutation Rate', json_config_file, .1)
 
 	# Termination Convergence Criterion
-	try:
-		if json_config_file['Termination Convergence Criterion'] != '' and json_config_file['Termination Convergence Criterion'] != None:
-			config_dict['convergence'] = json_config_file['Termination Convergence Criterion']
-		else:
-			config_dict['convergence'] = 25
-	except:
-		config_dict['convergence'] = 25
-		print("You need {'Termination Convergence Criterion': null} in your JSON File! I'll let you \
-			go this time by using " + str(config_dict['convergence']) + " \
-			but never again will I be this kind!") 
+	config_parser_helper(config_dict, 'convergence', 'Termination Convergence Criterion', json_config_file, 25)
 
 	return config_dict
+
+def config_parser_helper(config_dict, key_string, json_string, json_config_file, default_value):
+	"""Helps config_parser by adding an element into config_dict
+
+	Args:
+		config_dict (dict {str: val}): Dictionary of configuration values
+		key_string (str): String of key value in dictionary
+		json_string (str): JSON term corresponding to the key_string
+		json_config_file (dict {str: val}): JSON dictionary
+		default_value (any): Value for config_dict[key_string] if null in
+			json_config_file[json_string]
+
+	Returns:
+		Nothing. Modifies config_dict by adding key:value 
+	"""
+	try:
+		if json_config_file[json_string] != '' and json_config_file[json_string] != None:
+			config_dict[key_string] = json_config_file[json_string]
+		else:
+			config_dict[key_string] = default_value
+	except:
+		config_dict[key_string] = default_value
+		print("You need {'", end='')
+		print(json_string, end='')
+		print("': null} in your JSON File! I'll let  you go this", end='')
+		print(" time by using ", end='')
+		print(config_dict[key_string], end='')
+		print(", but never again will I be this kind!")
 
 def open_file(file):
 	"""Open a file and create sub-directories as needed
@@ -399,6 +321,7 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 	# random orientation
 	for i in range(population_size):
 		new_board = Board(shape_list)
+		new_board.shuffle_minimize()
 		population.append(new_board)
 
 	# Sort from best fit to worst fit
@@ -424,6 +347,7 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 		# Add population_size members to population
 		for i in range(population_size):
 			new_board = Board(shape_list)
+			new_board.shuffle_minimize()
 			population.append(new_board)
 
 		# Sort
@@ -482,11 +406,26 @@ def get_best_fitness_board(population):
 	Returns:
 		(Board): The board with the best fitness value
 	"""
-	best_fitness = get_best_fitness_value(population):
+	best_fitness = get_best_fitness_value(population)
 	for board in population:
 		if board.fitness == best_fitness:
 			return board
 	print("ERROR IN: get_best_fitness_board")
+
+def get_best_fitness_board_index(population):
+	"""Find the best board in the population and return the index of that board
+	
+	Args:
+		population (list of Board): The population to chose from
+
+	Returns:
+		(int): The index of the board with the best fitness value
+	"""
+	best_fitness = get_best_fitness_value(population)
+	for i, board in list(enumerate(population)):
+		if board.fitness == best_fitness:
+			return i
+	print("ERROR IN: get_best_fitness_board_index")
 
 def get_average_fitness_value(population):
 	"""Find the average fitness value of all the boards in the population
@@ -514,11 +453,27 @@ def find_parents(population, config_dict):
 	Returns:
 		(list of Board): The parents
 	"""
+	# Call k tournament function if specified
 	if config_dict['parent_selection_algorithm'] == 'k-Tournament Selection with replacement':
-		return k_tournament_selection_with_replacement(population, config_dict['t_size_parent'], config_dict['offspring_count'] * 2)
+		# Use t_size_parent as the k, 2 * offspring for number of parents
+		return k_tournament_selection_with_replacement(population, config_dict['t_size_parent'], config_dict['offspring_count'])
+
+	print("ERROR IN: find_parents"); quit()
 
 
 def k_tournament_selection_with_replacement(population, t_size, number_of_parents):
+	"""Create a population using k-tournament with replacement
+
+	Args:
+		population (list of Board): A population of Boards
+		t_size (int): The size of each tournament
+		number_of_parents (int): The size of the returned population
+			Should be less than the size of the population
+
+	Returns:
+		(list of Board): A new population of size number_of_parents 
+			that was selected using k-tournament with replacement
+	"""
 	parents = []
 	# If tournament size is greater than population size, use population size
 	if t_size > len(population):
@@ -531,6 +486,218 @@ def k_tournament_selection_with_replacement(population, t_size, number_of_parent
 		parents.append(get_best_fitness_board(random.sample(population, t_size)))
 
 	return parents
+
+def k_tournament_selection_without_replacement(population, t_size, return_population_size):
+	"""Create a population using k-tournament without replacement
+
+	Args:
+		population (list of Board): A population of Boards
+		t_size (int): The size of each tournament
+		return_population_size (int): The size of the returned population
+			Should be less than the size of the population
+
+	Returns:
+		(list of Board): A new population of size return_population_size 
+			that was selected using k-tournament without replacement
+	"""
+	# New population list
+	new_population = []
+	# Create a set of indexes form 0 to len(pop)
+	# This is so we don't have to remote elements from the population for speed
+	index_set = {x for x in range(len(population))}
+
+	# While we need more elements in the new population
+	while len(new_population) < return_population_size:
+		#person = get_best_fitness_board(random.sample(population, t_size))
+		#new_population.append(person)
+		sample_list = []
+		# Get t_size number of elements from index_set, or as many
+		# as possible if there are not t_size elements left
+		try:
+			sample_list = random.sample(index_set, t_size)
+		except:
+			sample_list = random.sample(index_set, len(index_set) - 1)
+
+		# Create small population
+		population_list = [population[x] for x in sample_list]
+
+		# Find the index of the best fitness value
+		best_fitness_index = get_best_fitness_board_index(population_list)
+
+		# Add element to new population
+		new_population.append(population[best_fitness_index])
+
+		# Remove element from original population's index_set
+		index_set.remove(sample_list[best_fitness_index])
+
+def make_children(parents, config_dict):
+	"""Makes the number of children specified in the config_dict
+	This is done using the algorithm specified in config_dict.
+
+	Args:
+		parents (list of Board): The population to make children from
+		config_dict (dict {str: val}): Configuration parameters
+			'offspring_count' will be used as the number of children
+			'recombination_algorithm' will be the algorithm used
+
+	Returns:
+		(list of Board): The created children
+	"""
+	# Initialize children list
+	children_list = []
+
+	# If using PMX
+	if config_dict['recombination_algorithm'] == 'Partially Mapped Crossover':
+		# For each pair of parents
+		for i in range(0, len(parents), 2):
+			# Make a baby! :D
+			children_list.append(partially_mapped_crossover(parents[i], parents[i + 1], config_dict))
+			children_list.append(partially_mapped_crossover(parents[i + 1], parents[i], config_dict))
+
+		return children_list
+
+	print('ERROR IN: make_children'); quit()
+
+def partially_mapped_crossover(parent1, parent2, config_dict):
+	"""Partially mapped crossover algorithm to make children
+	Apply PMX by using two randomly chosen crossover points
+
+	If there are only 3 or fewer shapes on the board, return parent1
+
+	Args:
+		parent1 (Board): Parent 1
+		parent2 (Board): Parent 2
+
+	Returns:
+		(Board): Child
+	"""
+	if len(parent1) <= 3:
+		return parent1
+
+	point1 = random.randrange(1, len(parent1) - 3)
+	point2 = random.randrange(point1 + 1, len(parent1))
+
+	child = Board(config_dict['shape_list'])
+	included_set = set()
+
+	for i in range(point1, point2):
+		child[i] = parent1[i]
+		included_set.add(child[i].get_original_order())
+
+	for i in range(point1, point2):
+		if parent2[i].get_original_order() not in included_set:
+			other_spot = parent2.find_original_order(parent1[i].get_original_order())
+			child[other_spot] = parent2[i]
+			included_set.add(parent2[i].get_original_order())
+
+	for i in range(len(parent1)):
+		if parent2[i] not in included_set:
+			child[i] = parent2[i]
+			included_set.add(parent2[i].get_original_order())
+
+	if len(included_set) != len(parent1):
+		print("ERROR IN: partially_mapped_crossover")
+
+	return child
+
+
+def mutate_population(population, config_dict):
+	"""Mutates the population with the given algorithm and rate in config_dict
+	Mutates the population variable given the values in config_dict
+
+	Args:
+		parents (list of Board): The population to mutate
+		config_dict (dict {str: val}): Configuration parameters
+			'mutation_rate' Rate of mutation between [0,1]
+			'mutation_algorithm' will be the algorithm used
+
+	Returns:
+		Nothing, alters population
+	"""
+	if config_dict['mutation_algorithm'] == 'Flip':
+		mutate_flip(population, config_dict)
+	elif config_dict['mutation_algorithm'] == 'Switch':
+		mutate_switch(population, config_dict)
+	elif config_dict['mutation_algorithm'] == 'Both':
+		mutate_flip(population, config_dict)
+		mutate_switch(population, config_dict)
+
+	return
+
+def mutate_flip(population, config_dict):
+	"""Flips each shape of each board with the probability given in config_dict
+
+	Args:
+		population (list of Board): Population to mutate
+		config_dict (dict {str: val}): Configuration parameters
+			'mutation_rate' is the rate of mutation
+
+	Returns:
+		Nothing, alters the population
+	"""
+	for board in population:
+		for shape in board.shapes:
+			if random.uniform(0, 1) < config_dict['mutation_rate']:
+				shape.update_orientation(random.randrange(4))
+
+def mutate_switch(population, config_dict):
+	"""Flips two shapes given a probability of flipping for each shape in pop
+	For each shape in each board in pop, there is a 
+	config_dict['mutation_rate'] chance of switching that shape and another
+	shape
+
+	Args:
+		population (list of Board): Population to mutate
+		config_dict (dict {str: val}): Configuration parameters
+			'mutation_rate' is the rate of mutation
+
+	Returns:
+		Nothing, alters the population
+	"""
+	num_shapes_in_board = len(population[0])
+	for board in population:
+		for i in range(num_shapes_in_board):
+			if random.uniform(0, 1) < config_dict['mutation_rate']:
+				switch_with = random.randrange(0, num_shapes_in_board)
+				board[i], board[switch_with] = board[switch_with], board[i]
+
+
+def select_survivors(population, config_dict):
+	"""Select survivors form the population according to config_dict parameters
+
+	Args:
+		population (list of Board): Population to kill! I mean, reduce
+		config_dict (dict {str: val}): Configuration parameters
+			'population_size': End population size
+			't_size_survival': Tournament size
+			'survivor_algorithm': Algorithm to use
+
+	Returns:
+		Nothing, alters population
+	"""
+	if config_dict['survivor_algorithm'] == 'Truncation':
+		survivor_selection_truncation(population, config_dict)
+
+
+def survivor_selection_truncation(population, config_dict):
+	"""Select the best n survivors form the population
+
+	Args:
+		population (list of Board): Population to kill! I mean, reduce
+		config_dict (dict {str: val}): Configuration parameters
+			'population_size': End population size
+			'survivor_algorithm': Algorithm to use
+
+	Returns:
+		Nothing, alters population
+	"""
+	# Sort elements from best to worst
+	population.sort(reverse=True)
+
+	# While there are too many people, I mean boards, kill the worst ones
+	while len(population) > config_dict['population_size']:
+		# Remove from back
+		del population[-1]
 
 
 def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
@@ -556,18 +723,23 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	# Add "Run i" line top of algorithm log file 
 	return_dict[run_number] += ('\nRun ' + str(run_number + 1) + '\n')
 
-	# Create a list of all the shapes
+	# Create a list of all the shapes and add to config_dict
 	shape_list = []
 	for i in range(len(shape_string_list)):
 		shape_list.append(Shape_base(shape_string_list[i], i))
+	config_dict['shape_list'] = shape_list
 
 	# Start with an empty population
 	population = []
 
+	# Set Board's max height
+	Board.max_height = max_height
+
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
-		new_board = Board(shape_list, max_height)
+		new_board = Board(shape_list)
+		new_board.shuffle_minimize()
 		population.append(new_board)
 
 	# If last run, print progress bar
@@ -612,14 +784,18 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		# Mutate
 		mutate_population(population, config_dict)
 
+		# Minimize Boards
+		for board in population:
+			board.minimize()
+
 		# Survival Selection
-		select_survivors(population)
+		select_survivors(population, config_dict)
 
 		# Find best and average fitness
 		best_fitness = get_best_fitness_value(population)
 		average_fitness = get_average_fitness_value(population)
 
-		# Update stoping creteria
+		# Update stopping criteria
 		if best_fitness == previous_fitness:
 			same_fitness += 1
 		else:
@@ -639,3 +815,21 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 
 	# Create solution log from best Board in the population
 	create_solution_file(population[0], config_dict['solution_file_path'], run_number + 1)
+
+
+	##### DEBUG ####
+	if population[0].test_for_overlap():
+		print("BAD BOARD")
+		quit()
+	################
+	print(current_eval)
+	print(same_fitness)
+	print(population[0].fitness)
+
+	population.sort(reverse=True)
+	test = ''
+	for i in population[0].get_info():
+		test += (i + '\n')
+
+	with open('test2', 'w') as f:
+		f.write(test)

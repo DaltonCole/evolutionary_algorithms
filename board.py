@@ -2,8 +2,10 @@
 # Author:         Dalton Cole
 
 from shape import Shape
+from shape_base import Shape_base
 from random import shuffle 	# Shuffle list of Shapes
 from random import randrange
+from copy import copy
 
 class Board:
 	"""Board with shapes optimally placed given their current order and rotation
@@ -208,6 +210,13 @@ class Board:
 
 		return total_area != num_points
 
+	def find_original_order(self, original_order_to_find):
+		"""
+		"""
+		for i, shape in enumerate(self.shapes):
+			if shape.get_original_order() == original_order_to_find:
+				return i
+
 	def __lt__(self, other):
 		"""Defines less than to be the lower fitness value
 		Less than is the lower fitness value. For sorting, max fitness
@@ -217,11 +226,51 @@ class Board:
 		"""
 		return self.fitness < other.fitness
 
+	def __len__(self):
+		"""Defines len() for Board as the number of shapes
+
+		Returns:
+			(int): The number of shapes
+		"""
+		return len(self.shapes)
+
+	def __getitem__(self, index):
+		"""Define get [] as shape[index]
+
+		Returns:
+			(Shape): Shape at index
+		"""
+		return self.shapes[index]
+
+	def __setitem__(self, index, value):
+		"""Define set []
+
+		Updates shapes[index] with value. Updates orientation
+		to make sure not shallow copy.
+		"""
+		self.shapes[index] = copy(value)
+		self.shapes[index].update_orientation(value.get_current_orientation())
+
 if __name__ == "__main__":
 	points = ["R1 D1", "D1 L4 R1 U3 R3"]
 	#points = ["R1", "R1 D3 U4 L2", "R1 L4", "R1 U2 R1"]
+	shape_list = []
+	for i in range(len(points)):
+		shape_list.append(Shape_base(points[i], i))
 
-	b = Board(points, 5)
+	Board.max_height = 50
+
+	b = Board(shape_list)
 
 	print(b.current_length)
 	b.print_info()
+	print()
+
+	c = Board(shape_list)
+	c.print_info()
+	c[0] = b[1]
+	print()
+	
+	c[0].update_orientation(3)
+	c.print_info()
+	print(c[0].active_state)
