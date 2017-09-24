@@ -121,7 +121,7 @@ def config_parser(config_file_name):
 	config_parser_helper(config_dict, 'fitness_evaluations', 'Fitness Evaluations', json_config_file, 1000)
 
 	# Population Size
-	config_parser_helper(config_dict, 'population_size', 'µ, Population Size', json_config_file, 100)
+	config_parser_helper(config_dict, 'population_size', 'Population Size', json_config_file, 100)
 
 	# Log File Path
 	config_parser_helper(config_dict, 'log_file_path', 'Log File Path', json_config_file, './logs/' + str(config_dict['random_seed']))
@@ -130,7 +130,7 @@ def config_parser(config_file_name):
 	config_parser_helper(config_dict, 'solution_file_path', 'Solution File Path', json_config_file, './solutions/' + str(config_dict['random_seed']))
 
 	# Offspring Count
-	config_parser_helper(config_dict, 'offspring_count', 'λ, Offspring Count', json_config_file, int(config_dict['population_size'] // 2))
+	config_parser_helper(config_dict, 'offspring_count', 'Offspring Count', json_config_file, int(config_dict['population_size'] // 2))
 
 	# Tournament Size For Parent Selection
 	config_parser_helper(config_dict, 't_size_parent', 'Tournament Size For Parent Selection', json_config_file, 2)
