@@ -1,10 +1,10 @@
-# EC Assignment 1a
+# EC Assignment 1b
 
 ## General Info
 
 * Name: Dalton Cole
 * Email: drcgy5@mst.edu
-* Assignment: COMP SCI 5401 FS2017 Assignment 1a
+* Assignment: COMP SCI 5401 FS2017 Assignment 1b
 
 ## Description
 
@@ -41,53 +41,53 @@ The face of the program
 
 ### config.json
 
-The configuation file used to feed into the program. There are the following options (*bold* represents default):
+The configuation file used to feed into the program. There are the following options (**bold** represents default):
 * Random Seed:
 	* Any Int
-	* *Time in seconds since epoch*
+	* **Time in seconds since epoch**
 * Search Algorithm:
-	* *"Random Search"*
+	* **"Random Search"**
 	* "EA"
 * Runs
 	* Any Int
-	* *30*
+	* **30**
 * Fitness Evaulations
 	* Any Int
-	* *1000*
+	* **1000**
 * µ, Population Size
 	* Any Int
-	* *100*
+	* **100**
 * Log File Path
 	* File path from running directory or absolute
-	* */log/(random seed)*
+	* **/log/(random seed)**
 * Solution File Path
 	* File path from running directory or absolute
-	* */solution/(random seed)*
+	* **/solution/(random seed)**
 * λ, Offspring Count
 	* Any Int
-	* *µ // 2*
+	* **µ // 2**
 * Tournament Size For Parent Selection
 	* Any Int < population
-	* *2*
+	* **2**
 * Tournament Size For Survival Selection
 	* Any Int < population
-	* *2*
+	* **2**
 * Mutation Rate
 	* Float between (0,1)
-	* *0.1*
+	* **0.1**
 * Termination Convergence Criterion:
 	* Any Int < Fitness Evaulations
-	* *100*
+	* **100**
 * Parent Selection Algorithm
-	* *k-Tournament Selection with replacement*
+	* **k-Tournament Selection with replacement**
 * Recombination Algorithm
-	* *Partially Mapped Crossover*
+	* **Partially Mapped Crossover**
 * Mutation Algorithm
 	* Flip
 	* Switch
-	* *Both* flip and switch
+	* **Both** flip and switch
 * Survivor Algorithm
-	* *Truncation*
+	* **Truncation**
 	* k-Tournament Selection without replacement
 
 
