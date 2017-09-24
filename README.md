@@ -41,19 +41,55 @@ The face of the program
 
 ### config.json
 
-The configuation file used to feed into the program. The default format is the following:
-```
-{
-	"Random Seed": 1,
-	"Search Algorithm": "Random Search",
-	"Runs": 30,
-	"Fitness Evaluations": 1000,
-	"Population Size": 1,
-	"Log File Path": "./logs/1",
-	"Solution File Path": "./solution/1/",
-	"Algorithm Solution File Path": "./logs/algorithm_solution/"
-}
-```
+The configuation file used to feed into the program. There are the following options (*bold* represents default):
+* Random Seed:
+	* Any Int
+	* *Time in seconds since epoch*
+* Search Algorithm:
+	* *"Random Search"*
+	* "EA"
+* Runs
+	* Any Int
+	* *30*
+* Fitness Evaulations
+	* Any Int
+	* *1000*
+* µ, Population Size
+	* Any Int
+	* *100*
+* Log File Path
+	* File path from running directory or absolute
+	* */log/(random seed)*
+* Solution File Path
+	* File path from running directory or absolute
+	* */solution/(random seed)*
+* λ, Offspring Count
+	* Any Int
+	* *µ // 2*
+* Tournament Size For Parent Selection
+	* Any Int < population
+	* *2*
+* Tournament Size For Survival Selection
+	* Any Int < population
+	* *2*
+* Mutation Rate
+	* Float between (0,1)
+	* *0.1*
+* Termination Convergence Criterion:
+	* Any Int < Fitness Evaulations
+	* *100*
+* Parent Selection Algorithm
+	* *k-Tournament Selection with replacement*
+* Recombination Algorithm
+	* *Partially Mapped Crossover*
+* Mutation Algorithm
+	* Flip
+	* Switch
+	* *Both* flip and switch
+* Survivor Algorithm
+	* *Truncation*
+	* k-Tournament Selection without replacement
+
 
 If any of the above are null, then default values are used. The default "Random Seed" is time. Log and solution files generated have the same name as "Random Seed".
 
@@ -71,7 +107,7 @@ The default file path for algorithm solution files.
 
 ### graphs/
 
-Directory where graph.py script and *.png files reside.
+Directory where graph.py script and \*.png files reside.
 
 ### inputs/
 

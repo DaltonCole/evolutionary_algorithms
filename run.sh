@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 driver.py $1 $2
+python3 ./program_files/driver.py $1 $2

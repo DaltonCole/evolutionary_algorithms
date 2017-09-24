@@ -1,15 +1,18 @@
 {
-	"Random Seed": 4,
-	"Search Algorithm": "Random Search",
+	"Random Seed": 1,
+	"Search Algorithm": "EA",
 	"Runs": 30,
 	"Fitness Evaluations": 1000,
-	"µ, Population Size": 1,
+	"µ, Population Size": 100,
 	"Log File Path": "",
 	"Solution File Path": "",
-	"Algorithm Solution File Path": "",
 	"λ, Offspring Count": 50,
-	"Tournament Size For Parent Selection": 50,
-	"Tournament Size For Survival Selection": 90,
+	"Tournament Size For Parent Selection": 2,
+	"Tournament Size For Survival Selection": 2,
 	"Mutation Rate": 0.1,
-	"Termination Convergence Criterion": 1000
+	"Termination Convergence Criterion": 100,
+	"Parent Selection Algorithm": "k-Tournament Selection with replacement",
+	"Recombination Algorithm": "Partially Mapped Crossover",
+	"Mutation Algorithm": "Both",
+	"Survivor Algorithm": "Truncation"
 }
