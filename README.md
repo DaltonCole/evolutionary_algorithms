@@ -54,7 +54,7 @@ The configuation file used to feed into the program. There are the following opt
 * Fitness Evaulations
 	* Any Int
 	* **1000**
-* µ, Population Size
+* Population Size
 	* Any Int
 	* **100**
 * Log File Path
@@ -63,7 +63,7 @@ The configuation file used to feed into the program. There are the following opt
 * Solution File Path
 	* File path from running directory or absolute
 	* **/solution/(random seed)**
-* λ, Offspring Count
+* Offspring Count
 	* Any Int
 	* **µ // 2**
 * Tournament Size For Parent Selection

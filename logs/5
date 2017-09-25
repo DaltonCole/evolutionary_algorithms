@@ -1,0 +1,212 @@
+{
+    "Config File": {
+        "convergence": 100,
+        "fitness_evaluations": 1000,
+        "log_file_path": "./logs/5",
+        "mutation_algorithm": "Both",
+        "mutation_rate": 0.1,
+        "offspring_count": 10,
+        "parent_selection_algorithm": "k-Tournament Selection with replacement",
+        "population_size": 1,
+        "random_seed": 5,
+        "recombination_algorithm": "Partially Mapped Crossover",
+        "runs": 30,
+        "search_algorithm": "Random Search",
+        "solution_file_path": "./solutions/5",
+        "survivor_algorithm": "Truncation",
+        "t_size_parent": 2,
+        "t_size_survival": 2
+    },
+    "Input File": "inputs/2.txt",
+    "Problem Instance Files": "./solutions/5",
+    "Random Seed": 5,
+    "Run Time": 43
+}
+
+Result Log
+
+Run 1
+1 	-45
+426 	-44
+
+Run 2
+1 	-50
+8 	-46
+
+Run 3
+1 	-51
+5 	-50
+6 	-49
+19 	-48
+25 	-47
+66 	-46
+987 	-45
+
+Run 4
+1 	-50
+5 	-47
+217 	-45
+
+Run 5
+1 	-48
+30 	-47
+59 	-46
+227 	-45
+
+Run 6
+1 	-51
+3 	-50
+10 	-49
+36 	-48
+50 	-47
+267 	-46
+
+Run 7
+1 	-49
+37 	-47
+117 	-46
+387 	-45
+
+Run 8
+1 	-51
+2 	-50
+14 	-49
+16 	-48
+82 	-47
+267 	-46
+
+Run 9
+1 	-48
+2 	-47
+33 	-46
+51 	-45
+
+Run 10
+1 	-49
+35 	-48
+83 	-47
+641 	-46
+
+Run 11
+1 	-51
+5 	-48
+25 	-47
+75 	-46
+525 	-45
+
+Run 12
+1 	-52
+2 	-50
+4 	-46
+708 	-45
+
+Run 13
+1 	-46
+
+Run 14
+1 	-49
+13 	-48
+27 	-47
+277 	-45
+
+Run 15
+1 	-51
+2 	-49
+21 	-47
+72 	-46
+202 	-45
+
+Run 16
+1 	-53
+3 	-51
+4 	-48
+44 	-47
+312 	-45
+
+Run 17
+1 	-52
+2 	-48
+15 	-46
+140 	-45
+636 	-44
+
+Run 18
+1 	-50
+10 	-48
+45 	-47
+109 	-46
+
+Run 19
+1 	-54
+2 	-49
+5 	-48
+6 	-45
+
+Run 20
+1 	-52
+2 	-51
+3 	-50
+12 	-46
+963 	-45
+
+Run 21
+1 	-49
+19 	-47
+74 	-45
+
+Run 22
+1 	-52
+2 	-51
+11 	-50
+12 	-49
+50 	-47
+129 	-46
+
+Run 23
+1 	-48
+105 	-47
+154 	-46
+666 	-45
+
+Run 24
+1 	-51
+4 	-50
+10 	-48
+27 	-47
+423 	-45
+
+Run 25
+1 	-50
+10 	-49
+47 	-48
+77 	-46
+
+Run 26
+1 	-47
+50 	-46
+171 	-45
+
+Run 27
+1 	-53
+2 	-50
+8 	-49
+17 	-47
+237 	-46
+
+Run 28
+1 	-50
+3 	-47
+98 	-46
+744 	-45
+
+Run 29
+1 	-49
+4 	-47
+68 	-46
+389 	-45
+
+Run 30
+1 	-50
+3 	-48
+17 	-47
+33 	-45
