@@ -816,8 +816,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		progress_bar.printProgressBar(0)
 
 	### Set Stoping Creteria ###
-	# Current evaluation number
-	current_eval = 0
+	# Set Current evaluation number to population size
+	current_eval = population_size
 	# Current fitness
 	best_fitness = 0
 	average_fitness = 0
@@ -833,8 +833,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 
 	# While not at stoping creteria, continue
 	while current_eval < config_dict['fitness_evaluations'] and same_fitness < config_dict['convergence'] and same_average_fitness < config_dict['convergence']:
-		# Increment evaulation count
-		current_eval += 1
+		# Increment evaulation count by children count
+		current_eval += config_dict['offspring_count']
 
 		# Print progress bar if last run
 		if print_progress_bar:
@@ -843,18 +843,28 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		# Find the parents
 		parents = find_parents(population, config_dict)
 
-		# Make and add children
-		population += make_children(parents, config_dict)
+		# Make children
+		children = make_children(parents, config_dict)
 
-		# Mutate
-		mutate_population(population, config_dict)
+		# Mutate children
+		mutate_population(children, config_dict)
 
-		# Minimize Boards
-		for board in population:
+		# Minimize Children
+		for board in children:
 			board.minimize()
+
+		# Add children
+		population += children
 
 		# Survival Selection
 		select_survivors(population, config_dict)
+
+		population = list(set(population))
+		while len(population) != population_size:
+			temp = Board(shape_list)
+			temp.shuffle_minimize()
+			population.append(temp)
+		
 
 		# Find best and average fitness
 		best_fitness = get_best_fitness_value(population)
@@ -862,13 +872,13 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 
 		# Update stopping criteria
 		if best_fitness == previous_fitness:
-			same_fitness += 1
+			same_fitness += config_dict['offspring_count']
 		else:
 			previous_fitness = best_fitness
 			same_fitness = 0
 
 		if average_fitness == previous_average_fitness:
-			same_average_fitness += 1
+			same_average_fitness += config_dict['offspring_count']
 		else:
 			previous_average_fitness = average_fitness
 			same_average_fitness = 0

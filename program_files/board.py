@@ -251,6 +251,22 @@ class Board:
 		self.shapes[index] = copy(value)
 		self.shapes[index].update_orientation(value.get_current_orientation())
 
+	def __eq__(self, other):
+		for s, t in zip(self.shapes, other.shapes):
+			if s != t:
+				return False
+		return True
+
+	def __hash__(self):
+		s = ''
+		for shape in self.shapes:
+			s += str(shape.original_order)
+			s += ' '
+			s += str(shape.active_state)
+			s += ' '
+		return hash(s)
+
+
 if __name__ == "__main__":
 	points = ["R1 D1", "D1 L4 R1 U3 R3"]
 	#points = ["R1", "R1 D3 U4 L2", "R1 L4", "R1 U2 R1"]
@@ -261,7 +277,15 @@ if __name__ == "__main__":
 	Board.max_height = 50
 
 	b = Board(shape_list)
+	c = Board(shape_list)
 
+	print(b == c)
+	b.print_info()
+	print()
+	c.print_info()
+
+
+	"""
 	print(b.current_length)
 	b.print_info()
 	print()
@@ -274,3 +298,4 @@ if __name__ == "__main__":
 	c[0].update_orientation(3)
 	c.print_info()
 	print(c[0].active_state)
+	"""

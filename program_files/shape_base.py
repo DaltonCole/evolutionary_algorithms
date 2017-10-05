@@ -422,10 +422,25 @@ class Shape_base:
 		"""
 		return self.current_coordinates[-1][0] + self.x_offset
 
+	def __eq__(self, other):
+		if self.original_order != other.original_order:
+			return False
+		if self.active_state != other.active_state:
+			return False
+		if self.x_offset != other.x_offset:
+			return False
+		if self.y_offset != other.y_offset:
+			return False
+
+		return True
+
+	def __hash__(self):
+		return hash(str(self.original_order) + ' ' + str(self.active_state) + ' ' + \
+			str(self.x_offset) + ' ' + str(self.y_offset))
+
 if __name__ == '__main__':
 	# s = Shape("R5 L7 U2 R3 D2")
 	# s = Shape("D2 L3 U2 R3")
-	s = Shape("D1 L4 R1 U3 R3")
-	print(s.get_current_orientation())
-	print(s.get_base_coordinates())
-	print(len(s.get_base_coordinates()))
+	s = Shape_base("D1 L4 R1 U3 R3", 1)
+	t = Shape_base("D1 L4 R1 U3 R3", 2)
+	print(s == t)
