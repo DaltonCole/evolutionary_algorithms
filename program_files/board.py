@@ -28,12 +28,16 @@ class Board:
 			"Minimize": Minimize by placing in most bottom left corner
 			"Random": Randomly place shapes
 			"Random with Repair": Randomly place shapes with repair
+		penalty_value (int): What each constraint penalty costs
+		penalty_weight (int): The weight to scale each penalty_value
 	"""
 	max_height = 0
 	max_width = 0
 	placement_algorithm = "Minimize"
 	divide_max_width = 0
 	fail_max = 20
+	penalty_value = 1
+	penalty_weight = 1
 
 	def __init__(self, shape_list):
 		"""Initializes a board with shapes in a random order
@@ -78,8 +82,10 @@ class Board:
 			self.random_placement()
 		elif self.placement_algorithm == "Random with Repair":
 			self.random_placement_with_repair()
+		elif self.placement_algorithm == "Random with Penalty":
+			self.random_placement_with_penalty()
 		else:
-			print("ERROR IN: place_shapes! " + str(self.placement_algorithm))
+			print("ERROR IN: place_shapes! " + str(self.placement_algorithm)); quit()
 
 	def shuffle(self):
 		"""Shuffles the order and orientation of the shapes, and then minimizes
@@ -91,6 +97,7 @@ class Board:
 		for shape in self.shapes:
 			shape.update_orientation(randrange(4))
 
+	########################## Placement Algorithms ##########################
 	def minimize(self, non_optimal_change=0):
 		"""Compress board into smallest form given the current shapes
 		The way minimize works is by finding the first place in 
@@ -160,16 +167,8 @@ class Board:
 				occupied_squares.add((point[0] + x, point[1] + y))
 		#####################################
 
-		# Add remaining offset to current length
-		# Find current length
-		self.current_length = 0
-		for shape in self.shapes:
-			x_value = shape.max_x_value()
-			if self.current_length < x_value:
-				self.current_length = x_value
-
-		# Fitness Function
-		self.fitness = -self.current_length
+		# Update fitness value
+		self.update_fitness_value()
 
 	def random_placement(self):
 		"""Randomly place shapes on the board
@@ -234,27 +233,26 @@ class Board:
 				occupied_squares.add((point[0] + x, point[1] + y))
 		#####################################
 
-		# Add remaining offset to current length
-		# Find current length
-		self.current_length = 0
-		for shape in self.shapes:
-			x_value = shape.max_x_value()
-			if self.current_length < x_value:
-				self.current_length = x_value
-
-		# Fitness Function
-		self.fitness = -self.current_length
+		# Update fitness value
+		self.update_fitness_value()
 
 	def random_placement_with_repair(self, repair_tries=2, x_move=-1, y_move=-1):
-		"""Randomly place shapes on the board
+		"""Randomly place shapes on the board while using a repair function
 
 		Randomly places shapes on the board between (0,0) and 
-		(max_width, max_height).
+		(max_width, max_height). If overlap occurs, try to move shape by
+		(x + x_move, y + y_move) places repair_tries times
 
 		After this is performed, current_length is updated and the fitness
 		function is evaluated.
 
 		The fitness function is -current_length.
+
+		Args:
+			repair_tries (int): Number of times shape is moved before
+				giving up
+			x_move (int): X offset to move by if shape placement fails
+			y_move (int): Y offset to move by if shape placement fails
 		"""
 		# Initialize x offset to 0
 		x_offset = 0
@@ -316,16 +314,12 @@ class Board:
 				occupied_squares.add((point[0] + x, point[1] + y))
 		#####################################
 
-		# Add remaining offset to current length
-		# Find current length
-		self.current_length = 0
-		for shape in self.shapes:
-			x_value = shape.max_x_value()
-			if self.current_length < x_value:
-				self.current_length = x_value
+		# Update fitness value
+		self.update_fitness_value()
 
-		# Fitness Function
-		self.fitness = -self.current_length
+	def random_placement_with_penalty():
+		pass
+	##########################################################################
 
 	def random_replacement(self, shape_index):
 		"""Randomly re-place a shape on the board
@@ -463,16 +457,8 @@ class Board:
 				occupied_squares.add((point[0] + x, point[1] + y))
 		#####################################
 
-		# Add remaining offset to current length
-		# Find current length
-		self.current_length = 0
-		for shape in self.shapes:
-			x_value = shape.max_x_value()
-			if self.current_length < x_value:
-				self.current_length = x_value
-
-		# Fitness Function
-		self.fitness = -self.current_length
+		# Update fitness value
+		self.update_fitness_value()
 
 	def print_info(self):
 		"""Print original point with offset and active rotation of each shape

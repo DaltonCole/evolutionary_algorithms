@@ -81,6 +81,7 @@ The configuation file used to feed into the program. There are the following opt
 * Parent Selection Algorithm
 	* **k-Tournament Selection with replacement**
 	* Fitness Proportional Selection
+	* Uniform Random
 * Recombination Algorithm
 	* **Partially Mapped Crossover**
 	* Order Crossover
@@ -96,10 +97,11 @@ The configuation file used to feed into the program. There are the following opt
 	* Move
 		* Randomly re-places a shape
 		* Note useful with Placement Algorithm "Minimize"
-
 * Survivor Algorithm
 	* **Truncation**
 	* k-Tournament Selection without replacement
+	* Uniform Random
+	* Fitness Proportional Selection
 * Placement Algorithm
 	* **Minimize**
 	* Random
@@ -111,7 +113,8 @@ The configuation file used to feed into the program. There are the following opt
 				* n = 2
 				* x_move = -1
 				* y_move = -1
-* Survivor Strategy
+	* Random with Penalty
+* Survival Strategy
 	* **Plus**
 		* Combines parent and child generations before survival selection
 	* Comma 

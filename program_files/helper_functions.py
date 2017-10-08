@@ -82,6 +82,7 @@ def config_parser(config_file_name):
 				"Both" This means both "Flip" and "Switch"
 			survivor_algorithm: "Truncation"
 			placement_algorithm: "Minimize"
+			survival_strategy: "Plus"
 
 	Args:
 		config_file_name (str): File name of configuration JSON file
@@ -160,6 +161,9 @@ def config_parser(config_file_name):
 
 	# Placement Algorithm
 	config_parser_helper(config_dict, 'placement_algorithm', 'Placement Algorithm', json_config_file, 'Minimize')
+
+	# Survival Strategy
+	config_parser_helper(config_dict, 'survival_strategy', 'Survival Strategy', json_config_file, 'Plus')
 
 	return config_dict
 
@@ -478,6 +482,8 @@ def find_parents(population, config_dict):
 		return k_tournament_selection_with_replacement(population, config_dict['t_size_parent'], config_dict['offspring_count'])
 	elif config_dict['parent_selection_algorithm'] == 'Fitness Proportional Selection':
 		return fitness_proportional_selection(population, config_dict['offspring_count'])
+	elif config_dict['parent_selection_algorithm'] == 'Uniform Random':
+		return uniform_random_parent_selection(population, config_dict['offspring_count'])
 
 	print("ERROR IN: find_parents"); quit()
 
@@ -626,6 +632,26 @@ def fitness_proportional_selection(population, offspring_count):
 	return chosen_parents
 	"""
 
+def uniform_random_parent_selection(population, offspring_count):
+	"""Create a population randomly
+
+	Args:
+		population (list of Board): A population of Boards
+		offspring_count (int): The size of the returned population
+
+	Returns:
+		(list of Board): A new population of size return_population_size 
+			that was selected randomly
+	"""
+	# Create an empty chosen parents list
+	chosen_parents = []
+
+	# While more parents are needed
+	while len(chosen_parents) < offspring_count:
+		# Randomly select a parent
+		chosen_parents.append(random.choice(population))
+
+	return chosen_parents
 
 ############################# Children ########################################
 def make_children(parents, config_dict):
@@ -659,11 +685,12 @@ def make_children(parents, config_dict):
 			children_list.append(order_crossover(parents[i], parents[i + 1], config_dict))
 			children_list.append(order_crossover(parents[i + 1], parents[i], config_dict))
 
+	"""
 	# If any shapes overlap with another shape, randomly place second overlapping shape
 	if config_dict['placement_algorithm'] != 'Minimize':
 		for board in children_list:
 			board.check_for_overlap()
-
+	"""
 
 	return children_list
 	"""
@@ -866,6 +893,11 @@ def mutate_population(population, config_dict):
 	elif config_dict['mutation_algorithm'] == 'Move':
 		mutate_move(population, config_dict)
 
+	# If employing minimize strategy, minimize board
+	if config_dict['placement_algorithm'] == 'Minimize':
+		for board in population:
+			board.place_shapes()
+
 	return
 
 def mutate_flip(population, config_dict):
@@ -974,12 +1006,18 @@ def select_survivors(population, config_dict):
 	"""
 	if config_dict['survivor_algorithm'] == 'Truncation':
 		survivor_selection_truncation(population, config_dict)
-	if config_dict['survivor_algorithm'] == 'k-Tournament Selection without replacement':
+	elif config_dict['survivor_algorithm'] == 'k-Tournament Selection without replacement':
 		new_pop = survivor_selection_k_tournament_without_replacement(population, config_dict)
 		del population[:]
-		for person in new_pop:
-			population.append(person)
-
+		for board in new_pop:
+			population.append(board)
+	elif config_dict['survivor_algorithm'] == 'Uniform Random':
+		survivor_selection_uniform_random(population, config_dict)
+	elif config_dict['survivor_algorithm'] == 'Fitness Proportional Selection':
+		new_pop = fitness_proportional_selection(population, config_dict['population_size'])
+		del population[:]
+		for board in new_pop:
+			population.append(board)
 
 def survivor_selection_truncation(population, config_dict):
 	"""Select the best n survivors from the population
@@ -1017,9 +1055,28 @@ def survivor_selection_k_tournament_without_replacement(population, config_dict)
 	return new_pop
 
 
+def survivor_selection_uniform_random(population, config_dict):
+	"""Select random survivors
+
+	Args:
+		population (list of Board): Population to kill
+		config_dict (dict {str: val}): Configuration parameters
+			'population_size': End population size
+
+	Returns:
+		Nothing, alters the population
+	"""
+	# Shuffle population
+	random.shuffle(population)
+
+	# While there are too many boards
+	while len(population) > config_dict['population_size']:
+		# remove last board
+		del population[-1]
+
 ################################### EA ########################################
 def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
-	"""
+	"""Perform EA search
 
 	Args:
 		config_dict (dict: {str: val}): A dictionary of configuration values
@@ -1113,22 +1170,24 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		# Mutate children
 		mutate_population(children, config_dict)
 
-		# Minimize Children
-		for board in children:
-			board.place_shapes()
+		# Set population
+		if config_dict['survival_strategy'] == "Plus":
+			# Add children
+			population += children
+		elif config_dict['survival_strategy'] == 'Comma':
+			# Make population only children
+			population = children
 
-		# Add children
-		population += children
 		# Survival Selection
 		select_survivors(population, config_dict)
 
-		### If we somehow have duplicates, repopulate ###
+		### If not population size, make random new ###
 		population = list(set(population))
 		while len(population) != population_size:
 			temp = Board(shape_list)
 			temp.place_shapes(randomize=True)
 			population.append(temp)
-		#################################################
+		###############################################
 		
 		# Find best and average fitness
 		best_fitness = get_best_fitness_value(population)
