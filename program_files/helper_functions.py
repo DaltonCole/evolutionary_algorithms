@@ -83,6 +83,9 @@ def config_parser(config_file_name):
 			survivor_algorithm: "Truncation"
 			placement_algorithm: "Minimize"
 			survival_strategy: "Plus"
+			self_adaptive: False
+				If any self_adaptive* is True, this is true
+			self_adaptive_mutation_rate: False
 
 	Args:
 		config_file_name (str): File name of configuration JSON file
@@ -164,6 +167,17 @@ def config_parser(config_file_name):
 
 	# Survival Strategy
 	config_parser_helper(config_dict, 'survival_strategy', 'Survival Strategy', json_config_file, 'Plus')
+
+	# Self Adaptive Mutation Rate
+	config_parser_helper(config_dict, 'self_adaptive_mutation_rate', 'Self Adaptive Mutation Rate', json_config_file, False)
+
+	# Penalty Coefficient
+	config_parser_helper(config_dict, 'penalty_coefficent', 'Penalty Coefficient', json_config_file, 1)
+
+	# Self Adaptive Bool: If any self_adaptive quantities true, set this to true
+	config_dict['self_adaptive'] = False
+	if config_dict['self_adaptive_mutation_rate'] == True:
+		config_dict['self_adaptive'] = True
 
 	return config_dict
 
@@ -385,7 +399,7 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 			# Update best_fitness
 			best_fitness = population[0].fitness
 			# Add new best fitness to algorithm_log
-			return_string += (str(current_eval + 1) + ' \t' + str(best_fitness) + '\n')
+			return_string += add_to_algorithm_log_string(config_dict, (current_eval + 1), best_fitness=best_fitness)
 
 		##### DEBUG ####
 		"""
@@ -463,6 +477,34 @@ def get_average_fitness_value(population):
 		average_fitness += board.fitness
 
 	return average_fitness // len(population)
+
+def add_to_algorithm_log_string(config_dict, current_eval, average_fitness=None, best_fitness=None):
+	"""Generates a string to add to the algorithm log
+
+	Args:
+		config_dict (dict {string, value}): Configuration parameters
+			If self_adaptive_mutation_rate in dict == True,
+				add mutation_rate
+		current_eval (int): The current evaluation
+		average_fitness (int): Average fitness value in population
+		best_fitness (int): Best fitness value in population
+	"""
+	# Add evaluation number
+	algorithm_log_string = str(current_eval)
+	# Add self-adaptive value
+	if config_dict['self_adaptive'] == True:
+		if config_dict['self_adaptive_mutation_rate'] == True:
+			algorithm_log_string += '\t' + str(config_dict['mutation_rate'])
+	# Add average fitness
+	if average_fitness != None:
+		algorithm_log_string += '\t' + str(average_fitness)
+	if best_fitness != None:
+		algorithm_log_string += '\t' + str(best_fitness)
+
+	# Add new line at end
+	algorithm_log_string += '\n'
+
+	return algorithm_log_string
 
 ############################# Parents #########################################
 def find_parents(population, config_dict):
@@ -990,7 +1032,7 @@ def mutate_move(population, config_dict):
 
 
 
-###########################Survivor Selection #################################
+########################### Survivor Selection ################################
 def select_survivors(population, config_dict):
 	"""Select survivors form the population according to config_dict parameters
 
@@ -1074,6 +1116,30 @@ def survivor_selection_uniform_random(population, config_dict):
 		# remove last board
 		del population[-1]
 
+################################ Self Adaptive ################################
+def self_adaptive(population, config_dict, best_fitness, average_fitness, \
+	previous_fitness, previous_average_fitness):
+	"""Updates the self adaptive parameters
+
+	Args:
+		population (list of Board): The current population
+		config_dict (dict {string: value}): Dictionary of configuration values
+		best_fitness (int): The current best fitness value
+		average_fitness (int): The current average fitness
+		previous_fitness (int): The previous fitness value
+		previous_average_fitness (int): The previous average fitness
+	"""
+	if config_dict['self_adaptive_mutation_rate'] == True:
+		if 'original_mutation_rate' not in config_dict:
+			config_dict['original_mutation_rate'] = config_dict['mutation_rate']
+
+		# If average or best fitness decreases, increase mutation rate
+		if average_fitness > previous_average_fitness or best_fitness > previous_fitness:
+			config_dict['mutation_rate'] = min(config_dict['mutation_rate'] * 2, 1)
+		else:
+			# Reset mutation rate if improvement happens
+			config_dict['mutation_rate'] = config_dict['original_mutation_rate']
+
 ################################### EA ########################################
 def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
 	"""Perform EA search
@@ -1111,6 +1177,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	Board.max_height = max_height
 	# Set Placement Algorithm
 	Board.set_placement_algorithm(config_dict['placement_algorithm'])
+	# Set Penalty Coefficient
+	Board.penalty_weight = config_dict['penalty_coefficent']
 
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
@@ -1150,7 +1218,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	previous_average_fitness = get_average_fitness_value(population)
 
 	# Row 0 of algorithm log 
-	algorithm_log_string += str(len(population)) + '\t' + 	str(previous_average_fitness) + '\t' + str(previous_fitness) + '\n'
+	algorithm_log_string += add_to_algorithm_log_string(config_dict, len(population), \
+			average_fitness=previous_average_fitness, best_fitness=previous_fitness)
 
 	# While not at stoping creteria, continue
 	while current_eval < config_dict['fitness_evaluations'] and same_fitness < config_dict['convergence'] and same_average_fitness < config_dict['convergence']:
@@ -1193,6 +1262,10 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		best_fitness = get_best_fitness_value(population)
 		average_fitness = get_average_fitness_value(population)
 
+		# If using self adaptive-ness, call self adaptive functions
+		if config_dict['self_adaptive'] == True:
+			self_adaptive(population, config_dict, best_fitness, average_fitness, previous_fitness, previous_average_fitness)
+
 		# Update stopping criteria
 		if best_fitness == previous_fitness:
 			same_fitness += config_dict['offspring_count']
@@ -1207,8 +1280,10 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 			same_average_fitness = 0
 
 		### Algorithm Log ###
-		algorithm_log_string += str(current_eval) + '\t' + 	str(average_fitness) + '\t' + str(best_fitness) + '\n'	
+		algorithm_log_string += add_to_algorithm_log_string(config_dict, current_eval, \
+			average_fitness=average_fitness, best_fitness=best_fitness)
 		#####################
+
 
 	# If printing progress bar, add new line when completed and print 100% completed
 	if print_progress_bar:
@@ -1218,7 +1293,6 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	population.sort(reverse=True)
 	# Put (algorithm log, best board) in return dictionary
 	return_dict[run_number] = (algorithm_log_string, population[0])
-
 
 	"""
 	##### DEBUG ####

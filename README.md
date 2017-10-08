@@ -114,12 +114,20 @@ The configuation file used to feed into the program. There are the following opt
 				* x_move = -1
 				* y_move = -1
 	* Random with Penalty
+		* Randomly place weights. Use a penalty function for invalid states where the penalty function is the number of overlapping points multiplied by the penalty coefficient.
 * Survival Strategy
 	* **Plus**
 		* Combines parent and child generations before survival selection
 	* Comma 
 		* Survivor selection is only done on the children
 		* Note: "Offspring Count" should be larger than "Population Size"
+* Self Adaptive Mutation Rate
+	* **False**
+	* True
+		* If best or average fitness deceases, double mutation rate, else reset mutation rate to original value
+* Penalty Coefficient
+	* Any Int
+	* ** 1 **
 
 
 If any of the above are null, then default values are used. The default "Random Seed" is time. Log and solution files generated have the same name as "Random Seed".

@@ -28,16 +28,19 @@ class Board:
 			"Minimize": Minimize by placing in most bottom left corner
 			"Random": Randomly place shapes
 			"Random with Repair": Randomly place shapes with repair
-		penalty_value (int): What each constraint penalty costs
 		penalty_weight (int): The weight to scale each penalty_value
+		total_points (int): Total number of points that goes on the board
+			This is the sum of all the points in all of the shapes
+			This is used to find the penalty needed
+		penalty (int): The current penalty
 	"""
 	max_height = 0
 	max_width = 0
 	placement_algorithm = "Minimize"
 	divide_max_width = 0
 	fail_max = 20
-	penalty_value = 1
 	penalty_weight = 1
+	total_points = 0
 
 	def __init__(self, shape_list):
 		"""Initializes a board with shapes in a random order
@@ -55,8 +58,8 @@ class Board:
 		for shape in shape_list:
 			self.shapes.append(Shape(shape))
 
-		# Minimize the space shapes take on the board
-		self.minimize()
+		# Initialize penalty
+		self.penalty = 0
 
 	@classmethod
 	def set_placement_algorithm(self, algorithm):
@@ -120,7 +123,6 @@ class Board:
 		x_offset = 0
 		# No squares are currently occupied
 		occupied_squares = set()
-		self.current_length = 0
 		# X value of where first point of shape is placed
 		first_x = -999
 
@@ -185,7 +187,6 @@ class Board:
 		x_offset = 0
 		# No squares are currently occupied
 		occupied_squares = set()
-		self.current_length = 0
 
 		# x, y shape offset
 		x, y = 0, 0
@@ -258,7 +259,6 @@ class Board:
 		x_offset = 0
 		# No squares are currently occupied
 		occupied_squares = set()
-		self.current_length = 0
 
 		# x, y shape offset
 		x, y = 0, 0
@@ -317,8 +317,47 @@ class Board:
 		# Update fitness value
 		self.update_fitness_value()
 
-	def random_placement_with_penalty():
-		pass
+	def random_placement_with_penalty(self):
+		"""Randomly place shapes on the board while using a penalty function
+
+		Randomly places shapes on the board between (0,0) and 
+		(max_width, max_height). If overlap occurs, add penalty for each
+		overlap.
+
+		After this is performed, current_length is updated and the fitness
+		function is evaluated.
+
+		The fitness function is -current_length.
+		"""
+		# Initialize x offset to 0
+		x_offset = 0
+		# No squares are currently occupied
+		occupied_squares = set()
+
+		# x, y shape offset
+		x, y = 0, 0
+
+		### Find valid placement of shape ###
+		for shape in self.shapes:
+			# Get current points of the shape
+			shape_coordinates = shape.get_current_coordinates()
+
+			# Chose a random x and y within range
+			# NOTE: This is a major change from other random placement
+			# 	functions due to x
+			x = randrange(0, self.max_width) 
+			y = randrange(0, self.max_height)
+
+			# Update shape's offsets
+			shape.update_offset(x, y)
+
+			# Add points to occupied squares
+			for point in shape_coordinates:
+				occupied_squares.add((point[0] + x, point[1] + y))
+		#####################################
+
+		# Update fitness value
+		self.update_fitness_value()
 	##########################################################################
 
 	def random_replacement(self, shape_index):
@@ -331,7 +370,6 @@ class Board:
 		x_offset = 0
 		# No squares are currently occupied
 		occupied_squares = set()
-		self.current_length = 0
 
 		# x, y shape offset
 		x, y = 0, 0
@@ -395,8 +433,25 @@ class Board:
 			if self.current_length < x_value:
 				self.current_length = x_value
 
+		# Find penalty if using penalty function
+		if self.placement_algorithm == "Random with Penalty":
+			# If total points has not been found yet, find total points
+			if self.total_points == 0:
+				for shape in self.shapes:
+					for point in shape.get_current_coordinates():
+						self.total_points += 1
+			# Find number of occupied squares
+			occupied_squares = set()
+			for shape in self.shapes:
+				for point in shape.get_current_coordinates():
+					occupied_squares.add((point[0] + shape.x_offset, point[1] + shape.y_offset))
+			# Find penalty value (number of overlapping squares)
+			self.penalty = self.total_points - len(occupied_squares)
+			# Multiply penalty value by penalty weight
+			self.penalty *= self.penalty_weight
+
 		# Fitness Function
-		self.fitness = -self.current_length
+		self.fitness = -self.current_length - self.penalty
 
 	def check_for_overlap(self):
 		"""Checks for shape overlap
@@ -407,7 +462,6 @@ class Board:
 		x_offset = 0
 		# No squares are currently occupied
 		occupied_squares = set()
-		self.current_length = 0
 
 		# x, y shape offset
 		x, y = 0, 0
