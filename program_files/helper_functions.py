@@ -559,11 +559,37 @@ def fitness_proportional_selection(population, offspring_count):
 	Args:
 		population (list of Board): A population of Boards
 		offspring_count (int): The size of the returned population
-			Should be less than the size of the population
 
 	Returns:
 		(list of Board): A new population of size return_population_size 
 			that was selected using fitness proportional selection
+	"""
+	# Create an empty chosen parents list
+	chosen_parents = []
+
+	# While more parents are needed
+	while len(chosen_parents) < offspring_count:
+		# Initialize total fitness
+		total_fitness = 0
+		# Find total fitness
+		for board in population:
+			# Board fitness is negative, so negate it
+			total_fitness -= board.fitness
+
+		# Randomly chose a value
+		chosen_fitness = random.randrange(0, total_fitness)
+
+		# Find chosen value in possible parents
+		tracked_fitness = 0
+		for board in population:
+			tracked_fitness -= board.fitness
+			# If chosen value is found, add it to chosen parents, and
+			# remove it from possible parents 
+			if chosen_fitness <= tracked_fitness:
+				chosen_parents.append(board)
+				break
+
+	return chosen_parents
 	"""
 	# If population is smaller than needed parents, raise error
 	if len(population) < offspring_count:
@@ -598,6 +624,7 @@ def fitness_proportional_selection(population, offspring_count):
 				break
 
 	return chosen_parents
+	"""
 
 
 ############################# Children ########################################

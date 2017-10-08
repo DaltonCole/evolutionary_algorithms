@@ -15,5 +15,6 @@
 	"Placement Algorithm": "Random with Repair",
 	"Recombination Algorithm": "Partially Mapped Crossover",
 	"Mutation Algorithm": "Move",
-	"Survivor Algorithm": "Truncation"
+	"Survivor Algorithm": "Truncation",
+	"Survivor Strategy": "Plus"
 }
