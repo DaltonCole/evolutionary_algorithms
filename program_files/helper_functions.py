@@ -17,6 +17,7 @@ import multiprocessing		# Used to multiprocess each run
 #from functools import partial	# Used for ctrl-c handling
 from time import time		# Used to seed random number generator
 from copy import deepcopy	# Used to make children
+from math import ceil
 
 def signal_handler(signal, frame):
 	"""Used to gracefully exit when ctrl-c is pressed
@@ -80,6 +81,7 @@ def config_parser(config_file_name):
 			mutation_algorithm:
 				"Both" This means both "Flip" and "Switch"
 			survivor_algorithm: "Truncation"
+			placement_algorithm: "Minimize"
 
 	Args:
 		config_file_name (str): File name of configuration JSON file
@@ -156,6 +158,9 @@ def config_parser(config_file_name):
 	# Survivor Algorithm
 	config_parser_helper(config_dict, 'survivor_algorithm', 'Survivor Algorithm', json_config_file, 'Truncation')
 
+	# Placement Algorithm
+	config_parser_helper(config_dict, 'placement_algorithm', 'Placement Algorithm', json_config_file, 'Minimize')
+
 	return config_dict
 
 def config_parser_helper(config_dict, key_string, json_string, json_config_file, default_value):
@@ -216,6 +221,8 @@ def write_algorithm_log(file, runs, return_dict):
 		f.write("\n\nResult Log\n")
 		for i in range(runs):
 			f.write(return_dict[i][0])
+		# Add extra new line for parsing means
+		f.write('\n')
 
 def create_log_file(config_dict):
 	"""Create log file
@@ -319,12 +326,20 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 
 	# Set Board's max height
 	Board.max_height = max_height
+	# Set placement algorithm
+	Board.set_placement_algorithm(config_dict['placement_algorithm'])
 
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
 		new_board = Board(shape_list)
-		new_board.shuffle_minimize()
+
+		# If first board, set max width of board
+		if(i == 0):
+			Board.max_width = new_board.find_max_width()
+			Board.divide_max_width = Board.max_width // 2
+
+		new_board.place_shapes(randomize=True)
 		population.append(new_board)
 
 	# Sort from best fit to worst fit
@@ -350,7 +365,7 @@ def random_search(config_dict, max_height, shape_string_list, population_size, r
 		# Add population_size members to population
 		for i in range(population_size):
 			new_board = Board(shape_list)
-			new_board.shuffle_minimize()
+			new_board.place_shapes(randomize=True)
 			population.append(new_board)
 
 		# Sort
@@ -445,6 +460,7 @@ def get_average_fitness_value(population):
 
 	return average_fitness // len(population)
 
+############################# Parents #########################################
 def find_parents(population, config_dict):
 	"""Finds the parents to reproduce using an algorithm specified in configs
 
@@ -460,6 +476,8 @@ def find_parents(population, config_dict):
 	if config_dict['parent_selection_algorithm'] == 'k-Tournament Selection with replacement':
 		# Use t_size_parent as the k, 2 * offspring for number of parents
 		return k_tournament_selection_with_replacement(population, config_dict['t_size_parent'], config_dict['offspring_count'])
+	elif config_dict['parent_selection_algorithm'] == 'Fitness Proportional Selection':
+		return fitness_proportional_selection(population, config_dict['offspring_count'])
 
 	print("ERROR IN: find_parents"); quit()
 
@@ -535,6 +553,54 @@ def k_tournament_selection_without_replacement(population, t_size, return_popula
 
 	return new_population
 
+def fitness_proportional_selection(population, offspring_count):
+	"""Create a population using fitness proportional selection
+
+	Args:
+		population (list of Board): A population of Boards
+		offspring_count (int): The size of the returned population
+			Should be less than the size of the population
+
+	Returns:
+		(list of Board): A new population of size return_population_size 
+			that was selected using fitness proportional selection
+	"""
+	# If population is smaller than needed parents, raise error
+	if len(population) < offspring_count:
+		print("ERROR in: fitness_proportional_selection")
+
+	# Create a copy list of the population
+	possible_parents = list(population)
+	# Create an empty chosen parents list
+	chosen_parents = []
+
+	# While more parents are needed
+	while len(chosen_parents) < offspring_count:
+		# Initialize total fitness
+		total_fitness = 0
+		# Find total fitness
+		for board in possible_parents:
+			# Board fitness is negative, so negate it
+			total_fitness -= board.fitness
+
+		# Randomly chose a value
+		chosen_fitness = random.randrange(0, total_fitness)
+
+		# Find chosen value in possible parents
+		tracked_fitness = 0
+		for board in possible_parents:
+			tracked_fitness -= board.fitness
+			# If chosen value is found, add it to chosen parents, and
+			# remove it from possible parents 
+			if chosen_fitness <= tracked_fitness:
+				chosen_parents.append(board)
+				possible_parents.remove(board)
+				break
+
+	return chosen_parents
+
+
+############################# Children ########################################
 def make_children(parents, config_dict):
 	"""Makes the number of children specified in the config_dict
 	This is done using the algorithm specified in config_dict.
@@ -559,9 +625,30 @@ def make_children(parents, config_dict):
 			children_list.append(partially_mapped_crossover(parents[i], parents[i + 1], config_dict))
 			children_list.append(partially_mapped_crossover(parents[i + 1], parents[i], config_dict))
 
-		return children_list
+	elif config_dict['recombination_algorithm'] == 'Order Crossover':
+		# For each pair of parents
+		for i in range(0, len(parents), 2):
+			# Make a baby! :D
+			children_list.append(order_crossover(parents[i], parents[i + 1], config_dict))
+			children_list.append(order_crossover(parents[i + 1], parents[i], config_dict))
 
-	print('ERROR IN: make_children'); quit()
+	# If any shapes overlap with another shape, randomly place second overlapping shape
+	if config_dict['placement_algorithm'] != 'Minimize':
+		for board in children_list:
+			board.check_for_overlap()
+
+
+	return children_list
+	"""
+	elif config_dict['recombination_algorithm'] == 'Cycle Crossover':
+		# For each pair of parents
+		for i in range(0, len(parents), 2):
+			# Make a baby! :D
+			children_list.append(cycle_crossover(parents[i], parents[i + 1], config_dict))
+			children_list.append(cycle_crossover(parents[i + 1], parents[i], config_dict))
+
+		return children_list
+	"""
 
 def partially_mapped_crossover(parent1, parent2, config_dict):
 	"""Partially mapped crossover algorithm to make children
@@ -605,44 +692,128 @@ def partially_mapped_crossover(parent1, parent2, config_dict):
 
 	return child
 
-"""
 def order_crossover(parent1, parent2, config_dict):
+	"""Ordered crossover algorithm to make children
+	Apply Ordered Crossover by using two randomly 
+	chosen crossover points.
 
+	If there are only 3 or fewer shapes on the board, return parent1
+
+	Args:
+		parent1 (Board): Parent 1
+		parent2 (Board): Parent 2
+
+	Returns:
+		(Board): Child
+	"""
 	if len(parent1) <= 3:
+		print("ERROR IN: order_crossover")
 		return parent1
 
+	# Randomly pick two points
 	point1 = random.randrange(1, len(parent1) - 3)
-	point2 = random.randrange(point1 + 1, len(parent1))
+	point2 = random.randrange(point1 + 1, len(parent1) - 1)
 
+	# Initialize child
 	child = Board(config_dict['shape_list'])
+	# Initialize included set
 	included_set = set()
 
+	# Copy shapes in between points 1 and 2 from parent 1
 	for i in range(point1, point2):
 		child[i] = parent1[i]
 		included_set.add(child[i].get_original_order())
 
-	for i in range(len(parent1)):
-		##########################
+	# Where to start copying from in parent 2
+	current_child_index = point2
+	current_parent2_index = point2
 
-	for i in range(point1, point2):
-		if parent2[i].get_original_order() not in included_set:
-			other_spot = parent2.find_original_order(parent1[i].get_original_order())
-			child[other_spot] = parent2[i]
-			included_set.add(parent2[i].get_original_order())
-
-	for i in range(len(parent1)):
-		if parent2[i] not in included_set:
-			child[i] = parent2[i]
-			included_set.add(parent2[i].get_original_order())
+	# While there are more shapes to add
+	while len(included_set) < len(parent1):
+		# If shape not already in child
+		if parent2[current_parent2_index].get_original_order() not in included_set:
+			# Add shape to child at given index
+			child[current_child_index] = parent2[current_parent2_index]
+			# Add it to included set
+			included_set.add(child[current_child_index].get_original_order())
+			# Increment counters
+			current_child_index = (current_child_index + 1) % len(parent2)
+			current_parent2_index = (current_parent2_index + 1) % len(parent2)
+		else:
+			# Increment parent 2 index
+			current_parent2_index = (current_parent2_index + 1) % len(parent2)
 
 	if len(included_set) != len(parent1):
 		print("ERROR IN: partially_mapped_crossover")
 
 	return child
+
+"""
+def cycle_crossover(parent1, parent2, config_dict):
+	###Ordered crossover algorithm to make children
+	Apply Ordered Crossover by using two randomly 
+	chosen crossover points.
+
+	If there are only 3 or fewer shapes on the board, return parent1
+
+	Args:
+		parent1 (Board): Parent 1
+		parent2 (Board): Parent 2
+
+	Returns:
+		(Board): Child
+	###
+	if len(parent1) <= 3:
+		print("ERROR IN: order_crossover")
+		return parent1
+
+	included_set = set()
+	current_index = 0
+	current_cycle = 1
+
+	relative_parent = None
+	other_parent = None
+
+	while len(included_set) < len(parent1):
+		# If current parent's value is in child, continue
+		if current_cycle % 2 == 1:
+			if parent1[current_index].get_original_order() in included_set:
+				current_index += 1
+				continue
+			relative_parent = parent1
+			other_parent = parent2
+		else:
+			if parent2[current_index].get_original_order() in included_set:
+				current_index += 1
+				continue
+			relative_parent = parent2
+			other_parent = parent1
+		# Find cycle
+		parents_index = set()
+		parents_index.add(current_index)
+		current_parent_index = current_index
+		set_size = len(parents_index)
+		while True:
+			current_parent_index = find_order_index(other_parent, )
 """
 
+def find_order_index(population, order_number):
+	"""Find index of order_number in population
+	Args:
+		parents (list of Board): The population to look through
+		order_number (int): The shape number to look for
 
+	Returns:
+		(int): The requested index
+	"""
+	for i in range(len(population)):
+		if population[i].get_original_order() == order_number:
+			return i
 
+	print("ERROR IN: find_order_index")
+	return
+
+############################# Mutation ########################################
 def mutate_population(population, config_dict):
 	"""Mutates the population with the given algorithm and rate in config_dict
 	Mutates the population variable given the values in config_dict
@@ -663,6 +834,10 @@ def mutate_population(population, config_dict):
 	elif config_dict['mutation_algorithm'] == 'Both':
 		mutate_flip(population, config_dict)
 		mutate_switch(population, config_dict)
+	elif config_dict['mutation_algorithm'] == 'Shuffle':
+		mutate_shuffle(population, config_dict)
+	elif config_dict['mutation_algorithm'] == 'Move':
+		mutate_move(population, config_dict)
 
 	return
 
@@ -703,7 +878,60 @@ def mutate_switch(population, config_dict):
 				switch_with = random.randrange(0, num_shapes_in_board)
 				board[i], board[switch_with] = board[switch_with], board[i]
 
+def mutate_shuffle(population, config_dict):
+	"""Shuffles shapes between two random points
 
+	The two points are chosen by random, and the size in-between those two
+	points is mutation_rate * number of shapes
+
+	Args:
+		population (list of Board): Population to mutate
+		config_dict (dict {str: val}): Configuration parameters
+			'mutation_rate' is the rate of mutation
+
+	Returns:
+		Nothing, alters the population
+	"""
+	point = random.randrange(0, len(population))
+
+	pop_length = len(population[0])
+	upper_bound = int(ceil(pop_length * config_dict['mutation_rate']))
+
+	for board in population:
+		point = random.randrange(0, pop_length - upper_bound)
+		shuffled = board[point:point+upper_bound]
+		random.shuffle(shuffled)
+
+		shuffled_index = 0
+		for i in range(point, point + upper_bound):
+			#print(str(i) + '\t' + str(shuffled_index))
+			board[i] = shuffled[shuffled_index]
+			shuffled_index += 1
+
+def mutate_move(population, config_dict):
+	"""Randomly re-places shapes
+
+	Re-place a shape. Each shape has a 'mutation_rate' chance of being
+	re-placed.
+
+	Args:
+		population (list of Board): Population to mutate
+		config_dict (dict {str: val}): Configuration parameters
+			'mutation_rate' is the rate of mutation
+
+	Returns:
+		Nothing, alters the population
+	"""
+	num_shapes_in_board = len(population[0])
+	for board in population:
+		for i in range(num_shapes_in_board):
+			if random.uniform(0,1) < config_dict['mutation_rate']:
+				board.random_replacement(i)
+		board.update_fitness_value()
+
+
+
+###########################Survivor Selection #################################
 def select_survivors(population, config_dict):
 	"""Select survivors form the population according to config_dict parameters
 
@@ -762,6 +990,7 @@ def survivor_selection_k_tournament_without_replacement(population, config_dict)
 	return new_pop
 
 
+################################### EA ########################################
 def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
 	"""
 
@@ -796,12 +1025,20 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 
 	# Set Board's max height
 	Board.max_height = max_height
+	# Set Placement Algorithm
+	Board.set_placement_algorithm(config_dict['placement_algorithm'])
 
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
 	for i in range(population_size):
 		new_board = Board(shape_list)
-		new_board.shuffle_minimize()
+
+		# If first board, set max width of board
+		if(i == 0):
+			Board.max_width = new_board.find_max_width()
+			Board.divide_max_width = Board.max_width // 2
+
+		new_board.place_shapes(randomize=True)
 		population.append(new_board)
 
 	# If last run, print progress bar
@@ -851,21 +1088,21 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 
 		# Minimize Children
 		for board in children:
-			board.minimize()
+			board.place_shapes()
 
 		# Add children
 		population += children
-
 		# Survival Selection
 		select_survivors(population, config_dict)
 
+		### If we somehow have duplicates, repopulate ###
 		population = list(set(population))
 		while len(population) != population_size:
 			temp = Board(shape_list)
-			temp.shuffle_minimize()
+			temp.place_shapes(randomize=True)
 			population.append(temp)
+		#################################################
 		
-
 		# Find best and average fitness
 		best_fitness = get_best_fitness_value(population)
 		average_fitness = get_average_fitness_value(population)

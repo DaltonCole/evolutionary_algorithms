@@ -80,15 +80,43 @@ The configuation file used to feed into the program. There are the following opt
 	* **100**
 * Parent Selection Algorithm
 	* **k-Tournament Selection with replacement**
+	* Fitness Proportional Selection
 * Recombination Algorithm
 	* **Partially Mapped Crossover**
+	* Order Crossover
 * Mutation Algorithm
 	* Flip
+		* Rotate shape
 	* Switch
+		* Swap placement of two shapes (Only useful if using Placement Algorithm "Minimize")
 	* **Both** flip and switch
+	* Shuffle
+	  * Shuffles the shapes in-between two points of size (Mutation Rate * # of Shapes)
+	  * Only useful if using Placement Algorithm "Minimize"
+	* Move
+		* Randomly re-places a shape
+		* Note useful with Placement Algorithm "Minimize"
+
 * Survivor Algorithm
 	* **Truncation**
 	* k-Tournament Selection without replacement
+* Placement Algorithm
+	* **Minimize**
+	* Random
+		* This randomly places shapes on the board. Must be selected if using repair function.
+	* Random with Repair
+		* Randomly place shapes. Uses a repair function if a shape is invalidly placed instead of randomly choosing a new point right away. 
+		* Repair works by trying to place the shape (x + x_move, y + y_move) moves over. It attempts this n times.
+			* Internal Defaults:
+				* n = 2
+				* x_move = -1
+				* y_move = -1
+* Survivor Strategy
+	* **Plus**
+		* Combines parent and child generations before survival selection
+	* Comma 
+		* Survivor selection is only done on the children
+		* Note: "Offspring Count" should be larger than "Population Size"
 
 
 If any of the above are null, then default values are used. The default "Random Seed" is time. Log and solution files generated have the same name as "Random Seed".

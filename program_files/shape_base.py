@@ -413,7 +413,12 @@ class Shape_base:
 		Returns:
 			(int) Highest x value of base shape
 		"""
-		return self.four_shapes[0][-1][0]
+		max_width = 0
+		for shape in self.four_shapes:
+			for x in shape:
+				for y in x:
+					max_width = max(max_width, y)
+		return max_width
 
 	def max_x_value(self):
 		"""Find the max x value of the shape

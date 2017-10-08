@@ -16,10 +16,25 @@ class Board:
 		shapes (list of Shape): All of the shapes are created (so 
 			shape.original_order is maintained) and then randomly shuffled.
 		max_height (int): Max height of the board (grid)
+		max_width (int): Max width of board (grid)
+		divide_max_width (int): Used for "Random*" placement
+			Randomly select x = rand(max_width // divide_max_width
+			Gets updated when random fails to place fail_max number of times
+		fail_max (int): Number of tries to place a shape before 
+			divide_max_width decrements
 		current_length (int): The current length (max x) of the board
 		fitness (int): Fitness eval = -current_length
+		placement_algorithm (string): Algorithm to place with
+			"Minimize": Minimize by placing in most bottom left corner
+			"Random": Randomly place shapes
+			"Random with Repair": Randomly place shapes with repair
 	"""
 	max_height = 0
+	max_width = 0
+	placement_algorithm = "Minimize"
+	divide_max_width = 0
+	fail_max = 20
+
 	def __init__(self, shape_list):
 		"""Initializes a board with shapes in a random order
 		Populates the shapes list with shapes taken from shape_strings_list
@@ -39,7 +54,34 @@ class Board:
 		# Minimize the space shapes take on the board
 		self.minimize()
 
-	def shuffle_minimize(self):
+	@classmethod
+	def set_placement_algorithm(self, algorithm):
+		"""Set placement algorithm
+
+		Args:
+			(string): Placement algorithm
+		"""
+		self.placement_algorithm = algorithm
+
+	def place_shapes(self, randomize=False):
+		"""Places shapes on the grid with the specified algorithm
+
+		Args:
+			randomize (bool): Randomize placement of shapes
+		"""
+		if randomize == True:
+			self.shuffle()
+
+		if self.placement_algorithm == "Minimize":
+			self.minimize()
+		elif self.placement_algorithm == "Random":
+			self.random_placement()
+		elif self.placement_algorithm == "Random with Repair":
+			self.random_placement_with_repair()
+		else:
+			print("ERROR IN: place_shapes! " + str(self.placement_algorithm))
+
+	def shuffle(self):
 		"""Shuffles the order and orientation of the shapes, and then minimizes
 		"""
 		# Shuffle shape list
@@ -48,9 +90,6 @@ class Board:
 		# For each shape, randomly rotate it
 		for shape in self.shapes:
 			shape.update_orientation(randrange(4))
-
-		# Minimize board space
-		self.minimize()
 
 	def minimize(self, non_optimal_change=0):
 		"""Compress board into smallest form given the current shapes
@@ -96,7 +135,7 @@ class Board:
 					# If point is already occupied or above board or if we
 					# don't want to select the first possible point
 					if (point[0] + x, point[1] + y) in occupied_squares or (point[1] + y) >= self.max_height \
-						or (randrange(100) >= 100 - non_optimal_change and first_x != 999):
+						or (randrange(100) >= 100 - non_optimal_change and first_x != -999):
 						# Increment y
 						y += 1
 						# If y is at max height, reset y, move right 1
@@ -112,6 +151,309 @@ class Board:
 					if first_x == -999:
 						first_x = point[0] + x
 
+
+			# Update shape's offsets
+			shape.update_offset(x, y)
+
+			# Add points to occupied squares
+			for point in shape_coordinates:
+				occupied_squares.add((point[0] + x, point[1] + y))
+		#####################################
+
+		# Add remaining offset to current length
+		# Find current length
+		self.current_length = 0
+		for shape in self.shapes:
+			x_value = shape.max_x_value()
+			if self.current_length < x_value:
+				self.current_length = x_value
+
+		# Fitness Function
+		self.fitness = -self.current_length
+
+	def random_placement(self):
+		"""Randomly place shapes on the board
+
+		Randomly places shapes on the board between (0,0) and 
+		(max_width, max_height).
+
+		After this is performed, current_length is updated and the fitness
+		function is evaluated.
+
+		The fitness function is -current_length.
+		"""
+		# Initialize x offset to 0
+		x_offset = 0
+		# No squares are currently occupied
+		occupied_squares = set()
+		self.current_length = 0
+
+		# x, y shape offset
+		x, y = 0, 0
+
+		### Find valid placement of shape ###
+		for shape in self.shapes:
+			# Get current points of the shape
+			shape_coordinates = shape.get_current_coordinates()
+
+			# See if we are in a valid state
+			valid_state = False
+
+			# Number of failed placements for shape
+			fails = 0
+			
+			# While not in valid state, look for a valid placement
+			while valid_state == False:
+				valid_state = True
+
+				if fails >= self.fail_max:
+					self.divide_max_width -= 1
+					fails = 0
+					if self.divide_max_width == 0:
+						self.divide_max_width = 1
+
+				# Chose a random x and y within range
+				x = randrange(0, self.max_width // self.divide_max_width)
+				y = randrange(0, self.max_height)
+
+				for point in shape_coordinates:
+					# If point is already occupied or above board or if we
+					# don't want to select the first possible point
+					if (point[0] + x, point[1] + y) in occupied_squares or (point[1] + y) >= self.max_height \
+						or (point[0] + x) >= self.max_width:
+						# No longer in valid state, try next offset
+						valid_state = False
+						fails += 1
+						break
+
+			# Update shape's offsets
+			shape.update_offset(x, y)
+
+			# Add points to occupied squares
+			for point in shape_coordinates:
+				occupied_squares.add((point[0] + x, point[1] + y))
+		#####################################
+
+		# Add remaining offset to current length
+		# Find current length
+		self.current_length = 0
+		for shape in self.shapes:
+			x_value = shape.max_x_value()
+			if self.current_length < x_value:
+				self.current_length = x_value
+
+		# Fitness Function
+		self.fitness = -self.current_length
+
+	def random_placement_with_repair(self, repair_tries=2, x_move=-1, y_move=-1):
+		"""Randomly place shapes on the board
+
+		Randomly places shapes on the board between (0,0) and 
+		(max_width, max_height).
+
+		After this is performed, current_length is updated and the fitness
+		function is evaluated.
+
+		The fitness function is -current_length.
+		"""
+		# Initialize x offset to 0
+		x_offset = 0
+		# No squares are currently occupied
+		occupied_squares = set()
+		self.current_length = 0
+
+		# x, y shape offset
+		x, y = 0, 0
+
+		### Find valid placement of shape ###
+		for shape in self.shapes:
+			# Get current points of the shape
+			shape_coordinates = shape.get_current_coordinates()
+
+			# See if we are in a valid state
+			valid_state = False
+
+			# Current number of repair attempts
+			repair_attempts = 0
+
+			# Number of failed placements for shape
+			fails = 0
+			
+			# While not in valid state, look for a valid placement
+			while valid_state == False:
+				valid_state = True
+				
+				if fails >= self.fail_max:
+					self.divide_max_width -= 1
+					fails = 0
+					if self.divide_max_width == 0:
+						self.divide_max_width = 1
+
+				if repair_attempts == 0 or repair_attempts > repair_tries:
+					# Chose a random x and y within range
+					x = randrange(0, self.max_width // self.divide_max_width)
+					y = randrange(0, self.max_height)
+					repair_attempts = 0
+
+				for point in shape_coordinates:
+					# If point is already occupied or above board or if we
+					# don't want to select the first possible point
+					if (point[0] + x, point[1] + y) in occupied_squares or (point[1] + y) >= self.max_height \
+						or (point[0] + x) >= self.max_width or (point[0] + x) < 0 or (point[1] + y) < 0:
+						# No longer in valid state, try next offset
+						repair_attempts += 1
+						fails += 1
+						x += x_move
+						y += y_move
+						valid_state = False
+						break
+
+			# Update shape's offsets
+			shape.update_offset(x, y)
+
+			# Add points to occupied squares
+			for point in shape_coordinates:
+				occupied_squares.add((point[0] + x, point[1] + y))
+		#####################################
+
+		# Add remaining offset to current length
+		# Find current length
+		self.current_length = 0
+		for shape in self.shapes:
+			x_value = shape.max_x_value()
+			if self.current_length < x_value:
+				self.current_length = x_value
+
+		# Fitness Function
+		self.fitness = -self.current_length
+
+	def random_replacement(self, shape_index):
+		"""Randomly re-place a shape on the board
+
+		Randomly places shapes on the board between (0,0) and 
+		(max_width, max_height).
+		"""
+		# Initialize x offset to 0
+		x_offset = 0
+		# No squares are currently occupied
+		occupied_squares = set()
+		self.current_length = 0
+
+		# x, y shape offset
+		x, y = 0, 0
+
+		# Populate occupied squares
+		for i in range(0, len(self.shapes)):
+			if i == shape_index:
+				continue
+			# Add points to occupied squares
+			shape = self.shapes[i]
+			shape_coordinates = shape.get_current_coordinates()
+			x = shape.x_offset
+			y = shape.y_offset
+			for point in shape_coordinates:
+				occupied_squares.add((point[0] + x, point[1] + y))
+
+		# Set valid state to False
+		valid_state = False
+
+		# Set shape coordinates
+		shape_coordinates = self.shapes[shape_index].get_current_coordinates()
+
+		# Set fail count
+		fails = 0
+
+		# While not in valid state, look for a valid placement
+		while valid_state == False:
+			valid_state = True
+
+			if fails >= self.fail_max:
+				self.divide_max_width -= 1
+				fails = 0
+				if self.divide_max_width == 0:
+					self.divide_max_width = 1
+
+			# Chose a random x and y within range
+			x = randrange(0, self.max_width // self.divide_max_width)
+			y = randrange(0, self.max_height)
+
+			for point in shape_coordinates:
+				# If point is already occupied or above board or if we
+				# don't want to select the first possible point
+				if (point[0] + x, point[1] + y) in occupied_squares or (point[1] + y) >= self.max_height \
+					or (point[0] + x) >= self.max_width:
+					# No longer in valid state, try next offset
+					valid_state = False
+					fails += 1
+					break
+
+		# Update shape's offsets
+		self.shapes[shape_index].update_offset(x, y)
+
+	def update_fitness_value(self):
+		"""Update fitness
+		"""
+		# Add remaining offset to current length
+		# Find current length
+		self.current_length = 0
+		for shape in self.shapes:
+			x_value = shape.max_x_value()
+			if self.current_length < x_value:
+				self.current_length = x_value
+
+		# Fitness Function
+		self.fitness = -self.current_length
+
+	def check_for_overlap(self):
+		"""Checks for shape overlap
+
+		If shape overlap is found, randomly place second shape
+		"""
+		# Initialize x offset to 0
+		x_offset = 0
+		# No squares are currently occupied
+		occupied_squares = set()
+		self.current_length = 0
+
+		# x, y shape offset
+		x, y = 0, 0
+
+		# Shapes to move
+		moving_shapes = []
+
+		### Find valid placement of shape ###
+		for shape in self.shapes:
+			# Get current points of the shape
+			shape_coordinates = shape.get_current_coordinates()
+
+			for point in shape_coordinates:
+				if (point[0] + shape.x_offset, point[1] + shape.y_offset) not in occupied_squares:
+					occupied_squares.add((point[0] + shape.x_offset, point[1] + shape.y_offset))
+				else:
+					# Add shape to move shape list
+					print("bing\n")
+					moving_shapes.append(shape)
+
+		for shape in moving_shapes:
+			# See if we are in a valid state
+			valid_state = False
+			
+			# While not in valid state, look for a valid placement
+			while valid_state == False:
+				valid_state = True
+
+				# Chose a random x and y within range
+				x = randrange(0, self.max_width)
+				y = randrange(0, self.max_height)
+
+				for point in shape_coordinates:
+					# If point is already occupied or above board or if we
+					# don't want to select the first possible point
+					if (point[0] + x, point[1] + y) in occupied_squares or (point[1] + y) >= self.max_height \
+						or (point[0] + x) >= self.max_width:
+						# No longer in valid state, try next offset
+						valid_state = False
+						break
 
 			# Update shape's offsets
 			shape.update_offset(x, y)
@@ -211,11 +553,23 @@ class Board:
 		return total_area != num_points
 
 	def find_original_order(self, original_order_to_find):
-		"""
+		"""Find the index of original order value in shapes list
+
+		Returns:
+			(int): Index
 		"""
 		for i, shape in enumerate(self.shapes):
 			if shape.get_original_order() == original_order_to_find:
 				return i
+
+	def find_max_width(self):
+		"""Finds the max width by summing all of shape's width
+		"""
+		max_width = 0
+		for shape in self.shapes:
+			max_width += shape.width
+
+		return max_width
 
 	def __lt__(self, other):
 		"""Defines less than to be the lower fitness value
