@@ -70,7 +70,7 @@ def main():
 	create_log_file(config_dict)
 
 	# Write to algorithm log file
-	write_algorithm_log(config_dict['log_file_path'], config_dict['runs'], return_dict)
+	write_algorithm_log(config_dict['log_file_path'], config_dict['runs'], return_dict, config_dict)
 
 	# Find best solution
 	best_solution = return_dict[0][1]

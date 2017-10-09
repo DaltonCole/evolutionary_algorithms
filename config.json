@@ -18,5 +18,7 @@
 	"Survivor Algorithm": "Truncation",
 	"Survival Strategy": "Plus",
 	"Self Adaptive Mutation Rate": true,
+	"Self Adaptive Penalty Coefficient": true,
+	"Self Adaptive Offspring Count": true,
 	"Penalty Coefficient": 1
 }

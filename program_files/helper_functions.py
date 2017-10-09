@@ -171,12 +171,18 @@ def config_parser(config_file_name):
 	# Self Adaptive Mutation Rate
 	config_parser_helper(config_dict, 'self_adaptive_mutation_rate', 'Self Adaptive Mutation Rate', json_config_file, False)
 
+	# Self Adaptive Penalty Coefficient
+	config_parser_helper(config_dict, 'self_adaptive_penalty_coefficient', 'Self Adaptive Penalty Coefficient', json_config_file, False)
+
+	# Self Adaptive Offspring Count
+	config_parser_helper(config_dict, 'self_adaptive_offspring_count', 'Self Adaptive Offspring Count', json_config_file, False)
+
 	# Penalty Coefficient
 	config_parser_helper(config_dict, 'penalty_coefficent', 'Penalty Coefficient', json_config_file, 1)
 
 	# Self Adaptive Bool: If any self_adaptive quantities true, set this to true
 	config_dict['self_adaptive'] = False
-	if config_dict['self_adaptive_mutation_rate'] == True:
+	if config_dict['self_adaptive_mutation_rate'] == True or config_dict['self_adaptive_penalty_coefficient'] == True:
 		config_dict['self_adaptive'] = True
 
 	return config_dict
@@ -221,7 +227,7 @@ def open_file(file):
 	# Return opened file
 	return open(file, 'w')
 
-def write_algorithm_log(file, runs, return_dict):
+def write_algorithm_log(file, runs, return_dict, config_dict):
 	"""Write evals to algorithm log file, creating sub-directory if needed
 	Writes algorithm log's \nin the following format:
 		<run number><tab><fitness function value>
@@ -231,12 +237,14 @@ def write_algorithm_log(file, runs, return_dict):
 		file (str): File to open, including directories
 		runs (int): The number of runs completed
 		returning_dict (dict {int: str}): Dict to write file to
+		config_dict (dict {str: value}): Configuration dictionary
 	"""
 	if not os.path.exists(os.path.dirname(file)):
 		os.makedirs(os.path.dirname(file))
 
 	with open(file, 'a') as f:
-		f.write("\n\nResult Log\n")
+		f.write('\n\n' + add_to_algorithm_log_string(config_dict, header=True))
+		f.write("\nResult Log\n")
 		for i in range(runs):
 			f.write(return_dict[i][0])
 		# Add extra new line for parsing means
@@ -478,7 +486,7 @@ def get_average_fitness_value(population):
 
 	return average_fitness // len(population)
 
-def add_to_algorithm_log_string(config_dict, current_eval, average_fitness=None, best_fitness=None):
+def add_to_algorithm_log_string(config_dict, current_eval=None, average_fitness=None, best_fitness=None, header=False):
 	"""Generates a string to add to the algorithm log
 
 	Args:
@@ -488,13 +496,36 @@ def add_to_algorithm_log_string(config_dict, current_eval, average_fitness=None,
 		current_eval (int): The current evaluation
 		average_fitness (int): Average fitness value in population
 		best_fitness (int): Best fitness value in population
+		header (bool): If this is the legend for which row does what, return that
+
+	Returns:
+		(str): Algorithm log line 
 	"""
+	if header == True:
+		algorithm_log_string = 'Eval'
+		# Add self-adaptive value
+		if config_dict['self_adaptive'] == True:
+			if config_dict['self_adaptive_mutation_rate'] == True:
+				algorithm_log_string += '\t' + 'Mut_Rat'
+			if config_dict['self_adaptive_penalty_coefficient'] == True:
+				algorithm_log_string += '\t' + 'Penalty'
+			if config_dict['self_adaptive_offspring_count'] == True:
+				algorithm_log_string += '\t' + 'Lambda'
+		if config_dict['search_algorithm'] != "Random Search":
+			algorithm_log_string += '\t' + 'Avg'
+		algorithm_log_string += '\t' + 'Best'
+		return algorithm_log_string
+
 	# Add evaluation number
 	algorithm_log_string = str(current_eval)
 	# Add self-adaptive value
 	if config_dict['self_adaptive'] == True:
 		if config_dict['self_adaptive_mutation_rate'] == True:
 			algorithm_log_string += '\t' + str(config_dict['mutation_rate'])
+		if config_dict['self_adaptive_penalty_coefficient'] == True:
+			algorithm_log_string += '\t %.4f' % Board.penalty_weight
+		if config_dict['self_adaptive_offspring_count'] == True:
+			algorithm_log_string += '\t' + str(config_dict['offspring_count'])
 	# Add average fitness
 	if average_fitness != None:
 		algorithm_log_string += '\t' + str(average_fitness)
@@ -625,7 +656,7 @@ def fitness_proportional_selection(population, offspring_count):
 			total_fitness -= board.fitness
 
 		# Randomly chose a value
-		chosen_fitness = random.randrange(0, total_fitness)
+		chosen_fitness = random.randrange(0, int(total_fitness))
 
 		# Find chosen value in possible parents
 		tracked_fitness = 0
@@ -1129,6 +1160,7 @@ def self_adaptive(population, config_dict, best_fitness, average_fitness, \
 		previous_fitness (int): The previous fitness value
 		previous_average_fitness (int): The previous average fitness
 	"""
+	### Mutation Rate ###
 	if config_dict['self_adaptive_mutation_rate'] == True:
 		if 'original_mutation_rate' not in config_dict:
 			config_dict['original_mutation_rate'] = config_dict['mutation_rate']
@@ -1139,6 +1171,37 @@ def self_adaptive(population, config_dict, best_fitness, average_fitness, \
 		else:
 			# Reset mutation rate if improvement happens
 			config_dict['mutation_rate'] = config_dict['original_mutation_rate']
+
+	### Penalty Function ###
+	if config_dict['self_adaptive_penalty_coefficient'] == True:
+		# Sort the population
+		population.sort(reverse=True)
+		# If best board in population does not have a penalty,
+		# 	reduce penalty by 25%, otherwise reset penalty
+		if population[0].penalty == 0:
+			Board.penalty_weight *= 0.75
+		else:
+			Board.penalty_weight = config_dict['penalty_coefficent']
+
+		for board in population:
+			board.update_fitness_value()
+
+	### Offspring Count ###
+	if config_dict['self_adaptive_offspring_count'] == True:
+		if 'original_offspring_count' not in config_dict:
+			config_dict['original_offspring_count'] = config_dict['offspring_count']
+
+		# If average or best fitness decreases, increase children count
+		if average_fitness > previous_average_fitness or best_fitness > previous_fitness:
+			#print()
+			#print(config_dict['offspring_count'])
+			config_dict['offspring_count'] = int(config_dict['offspring_count'] * 1.5)
+			
+			#print(config_dict['offspring_count'])
+		else:
+			# Reset Offspring count if improvement happens
+			config_dict['offspring_count'] = config_dict['original_offspring_count']
+
 
 ################################### EA ########################################
 def ea_search(config_dict, max_height, shape_string_list, population_size, run_number, return_dict):
@@ -1233,11 +1296,15 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		# Find the parents
 		parents = find_parents(population, config_dict)
 
-		# Make children
-		children = make_children(parents, config_dict)
-
-		# Mutate children
-		mutate_population(children, config_dict)
+		# Initialize Children
+		children = []
+		try:
+			# Make children
+			children = make_children(parents, config_dict)
+			# Mutate children
+			mutate_population(children, config_dict)
+		except:
+			pass
 
 		# Set population
 		if config_dict['survival_strategy'] == "Plus":
@@ -1250,21 +1317,22 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		# Survival Selection
 		select_survivors(population, config_dict)
 
-		### If not population size, make random new ###
+		### If not population size, or have duplicates, make random new ###
 		population = list(set(population))
 		while len(population) != population_size:
 			temp = Board(shape_list)
 			temp.place_shapes(randomize=True)
 			population.append(temp)
-		###############################################
+		###################################################################
 		
 		# Find best and average fitness
 		best_fitness = get_best_fitness_value(population)
 		average_fitness = get_average_fitness_value(population)
 
-		# If using self adaptive-ness, call self adaptive functions
+		### Self Adaptive ###
 		if config_dict['self_adaptive'] == True:
 			self_adaptive(population, config_dict, best_fitness, average_fitness, previous_fitness, previous_average_fitness)
+		#####################
 
 		# Update stopping criteria
 		if best_fitness == previous_fitness:

@@ -51,7 +51,7 @@ The configuation file used to feed into the program. There are the following opt
 * Runs
 	* Any Int
 	* **30**
-* Fitness Evaulations
+* Fitness Evaluations
 	* Any Int
 	* **1000**
 * Population Size
@@ -125,12 +125,22 @@ The configuation file used to feed into the program. There are the following opt
 	* **False**
 	* True
 		* If best or average fitness deceases, double mutation rate, else reset mutation rate to original value
+* Self Adaptive Penalty Coefficient
+	* **False**
+	* True
+		* If best Board in population is in an invalid state (has a penalty), reset Penalty Coefficient to original value, otherwise multiply current Penalty Coefficient by 0.75
+* Self Adaptive Offspring Count
+	* **False**
+	* True
+		* If best or average fitness deceases, multiply Offspring Count by 1.5, reset otherwise to original value
 * Penalty Coefficient
 	* Any Int
 	* ** 1 **
 
 
 If any of the above are null, then default values are used. The default "Random Seed" is time. Log and solution files generated have the same name as "Random Seed".
+
+NOTE: If there are duplicates in the population, the duplicate is removed and a new random Board in added to the population. This is to increase exploration in population. This is why average fitness value may decrease when using an algorithm where it should not.
 
 ### logs/
 
