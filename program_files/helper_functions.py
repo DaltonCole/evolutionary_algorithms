@@ -39,16 +39,6 @@ def signal_handler(signal, frame):
 
 	"""
 	print('You pressed Ctrl+C!')
-	"""
-	print('return dict')
-	print(return_dict)
-
-	print("length: " + str(len(return_dict)))
-
-	# Write to algorithm log file
-	write_algorithm_log(config_dict['algorithm_solution_file_path'], \
-		config_dict['runs'], return_dict)
-	"""
 	sys.exit(0)
 
 def config_parser(config_file_name):
@@ -113,6 +103,9 @@ def config_parser(config_file_name):
 			config_dict['input_file'] = json_config_file['Input File']
 	except:
 		pass
+
+	# Save Configuration file inside config_dict
+	config_dict['Config File'] = json_config_file
 
 	# Random Seed
 	config_parser_helper(config_dict, 'random_seed', 'Random Seed', json_config_file, int(time()))
@@ -273,7 +266,7 @@ def create_log_file(config_dict):
 	log_dict = {}
 	log_dict['Problem Instance Files'] = config_dict['solution_file_path']
 	log_dict['Random Seed'] = config_dict['random_seed']
-	log_dict['Config File'] = config_dict
+	log_dict['Config File'] = config_dict['Config File']
 	log_dict['Run Time'] = config_dict['run_time']
 	log_dict['Input File'] = config_dict['input_file']
 
@@ -758,12 +751,12 @@ def make_children(parents, config_dict):
 			children_list.append(order_crossover(parents[i], parents[i + 1], config_dict))
 			children_list.append(order_crossover(parents[i + 1], parents[i], config_dict))
 
-	"""
+	
 	# If any shapes overlap with another shape, randomly place second overlapping shape
 	if config_dict['placement_algorithm'] != 'Minimize':
 		for board in children_list:
 			board.check_for_overlap()
-	"""
+	
 
 	return children_list
 	"""
@@ -874,55 +867,6 @@ def order_crossover(parent1, parent2, config_dict):
 		print("ERROR IN: partially_mapped_crossover")
 
 	return child
-
-"""
-def cycle_crossover(parent1, parent2, config_dict):
-	###Ordered crossover algorithm to make children
-	Apply Ordered Crossover by using two randomly 
-	chosen crossover points.
-
-	If there are only 3 or fewer shapes on the board, return parent1
-
-	Args:
-		parent1 (Board): Parent 1
-		parent2 (Board): Parent 2
-
-	Returns:
-		(Board): Child
-	###
-	if len(parent1) <= 3:
-		print("ERROR IN: order_crossover")
-		return parent1
-
-	included_set = set()
-	current_index = 0
-	current_cycle = 1
-
-	relative_parent = None
-	other_parent = None
-
-	while len(included_set) < len(parent1):
-		# If current parent's value is in child, continue
-		if current_cycle % 2 == 1:
-			if parent1[current_index].get_original_order() in included_set:
-				current_index += 1
-				continue
-			relative_parent = parent1
-			other_parent = parent2
-		else:
-			if parent2[current_index].get_original_order() in included_set:
-				current_index += 1
-				continue
-			relative_parent = parent2
-			other_parent = parent1
-		# Find cycle
-		parents_index = set()
-		parents_index.add(current_index)
-		current_parent_index = current_index
-		set_size = len(parents_index)
-		while True:
-			current_parent_index = find_order_index(other_parent, )
-"""
 
 def find_order_index(population, order_number):
 	"""Find index of order_number in population
@@ -1174,6 +1118,8 @@ def self_adaptive(population, config_dict, best_fitness, average_fitness, \
 
 	### Penalty Function ###
 	if config_dict['self_adaptive_penalty_coefficient'] == True:
+		if 'original_penalty_coefficient' not in config_dict:
+			config_dict['original_penalty_coefficient'] = config_dict['penalty_coefficent']
 		# Sort the population
 		population.sort(reverse=True)
 		# If best board in population does not have a penalty,
@@ -1181,7 +1127,8 @@ def self_adaptive(population, config_dict, best_fitness, average_fitness, \
 		if population[0].penalty == 0:
 			Board.penalty_weight *= 0.75
 		else:
-			Board.penalty_weight = config_dict['penalty_coefficent']
+
+			Board.penalty_weight = config_dict['original_penalty_coefficient']
 
 		for board in population:
 			board.update_fitness_value()
@@ -1314,8 +1261,11 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 			# Make population only children
 			population = children
 
-		# Survival Selection
-		select_survivors(population, config_dict)
+		try:
+			# Survival Selection
+			select_survivors(population, config_dict)
+		except:
+			pass
 
 		### If not population size, or have duplicates, make random new ###
 		population = list(set(population))
@@ -1361,6 +1311,16 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	population.sort(reverse=True)
 	# Put (algorithm log, best board) in return dictionary
 	return_dict[run_number] = (algorithm_log_string, population[0])
+
+	"""
+	print(population[0].penalty)
+	print(population[0].total_points)
+	print(len(population[0].occupied_squares()))
+	print(population[0].total_points_needed())
+	print(population[0].fitness)
+	print(population[0].current_length)
+	"""
+
 
 	"""
 	##### DEBUG ####

@@ -453,6 +453,23 @@ class Board:
 		# Fitness Function
 		self.fitness = -self.current_length - self.penalty
 
+	def occupied_squares(self):
+		# Find number of occupied squares
+		occupied_squares = set()
+		for shape in self.shapes:
+			for point in shape.get_current_coordinates():
+				occupied_squares.add((point[0] + shape.x_offset, point[1] + shape.y_offset))
+		return occupied_squares
+
+	def total_points_needed(self):
+		# If total points has not been found yet, find total points
+		total_points = 0
+		for shape in self.shapes:
+			for point in shape.get_current_coordinates():
+				total_points += 1
+		return total_points
+
+
 	def check_for_overlap(self):
 		"""Checks for shape overlap
 
@@ -479,7 +496,6 @@ class Board:
 					occupied_squares.add((point[0] + shape.x_offset, point[1] + shape.y_offset))
 				else:
 					# Add shape to move shape list
-					print("bing\n")
 					moving_shapes.append(shape)
 
 		for shape in moving_shapes:

@@ -96,7 +96,7 @@ The configuation file used to feed into the program. There are the following opt
 	  * Only useful if using Placement Algorithm "Minimize"
 	* Move
 		* Randomly re-places a shape
-		* Note useful with Placement Algorithm "Minimize"
+		* Note: not useful with Placement Algorithm "Minimize"
 * Survivor Algorithm
 	* **Truncation**
 	* k-Tournament Selection without replacement

@@ -1,0 +1,33 @@
+{
+    "Config File": {
+        "Fitness Evaluations": 10000,
+        "Log File Path": null,
+        "Mutation Algorithm": "Move",
+        "Mutation Rate": 0.1,
+        "Offspring Count": 50,
+        "Parent Selection Algorithm": "k-Tournament Selection with replacement",
+        "Penalty Coefficient": 1,
+        "Placement Algorithm": "Random with Penalty",
+        "Population Size": 100,
+        "Random Seed": 76,
+        "Recombination Algorithm": "Order Crossover",
+        "Runs": 1,
+        "Search Algorithm": "EA",
+        "Self Adaptive Mutation Rate": false,
+        "Self Adaptive Offspring Count": true,
+        "Self Adaptive Penalty Coefficient": true,
+        "Solution File Path": null,
+        "Survival Strategy": "Plus",
+        "Survivor Algorithm": "Truncation",
+        "Termination Convergence Criterion": 10000,
+        "Tournament Size For Parent Selection": 5,
+        "Tournament Size For Survival Selection": 5
+    },
+    "Input File": "inputs/1.txt",
+    "Problem Instance Files": "./solutions/76",
+    "Random Seed": 76,
+    "Run Time": 62
+}
+
+Eval	Penalty	Lambda	Avg	Best
+Result Log

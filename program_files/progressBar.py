@@ -45,22 +45,25 @@ class ProgressBar():
 			iteration (int): The current iteration. Should be less than or 
 				equal to self.total
 		"""
-		self.percent = 100 * (iteration / float(self.total))
-		filledLength = int(self.length * iteration // self.total)
-
-		if float(self.percent) != 0.0:
-			remaining_time = str(self.time_remaining())
-		else:
-			remaining_time = '999'
-
-		self.percent = ("{0:." + str(self.decimals) + "f}").format(100 * (iteration / float(self.total)))
-
 		try:
-			bar = self.fill * filledLength + '-' * (self.length - filledLength)
-			print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+			self.percent = 100 * (iteration / float(self.total))
+			filledLength = int(self.length * iteration // self.total)
+
+			if float(self.percent) != 0.0:
+				remaining_time = str(self.time_remaining())
+			else:
+				remaining_time = '999'
+
+			self.percent = ("{0:." + str(self.decimals) + "f}").format(100 * (iteration / float(self.total)))
+
+			try:
+				bar = self.fill * filledLength + '-' * (self.length - filledLength)
+				print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+			except:
+				bar = self.non_unicode_fill * filledLength + '-' * (self.length - filledLength)
+				print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
 		except:
-			bar = self.non_unicode_fill * filledLength + '-' * (self.length - filledLength)
-			print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+			pass
 
 	def time_remaining(self):
 		"""Calculates the estimated time remaining in seconds
