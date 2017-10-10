@@ -4,11 +4,11 @@ with open('all_graphs.tex', 'w') as file:
 	file.write('\\documentclass{standalone}\n')
 	file.write('\\begin{document}\n')
 
-	for i in range(1001, 1025):#1081):
+	for i in range(1001, 1081):#1081):
 		with open('../logs/' + str(i), 'r') as f:
 			data = ''
 			while True:
-				temp_data= f.readline()
+				temp_data = f.readline()
 				if '}\n' == temp_data:
 					data += temp_data
 					break
@@ -40,5 +40,8 @@ with open('all_graphs.tex', 'w') as file:
 			s += '\\end{figure}\n\n\n'
 
 			file.write(s)
+
+			if i % 10 == 0:
+				file.write('\\clearpage\n')
 
 	file.write('\\end{document}\n')

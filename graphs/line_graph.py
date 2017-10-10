@@ -22,7 +22,7 @@ instance_number = sys.argv[4]
 eval_list = [0] * (number_of_evals + 1)
 average_list = [0] * (number_of_evals + 1)
 best_list = [0] * (number_of_evals + 1)
-
+counter_list = [0] * (number_of_evals + 1)
 
 with open(file_path, 'r') as f:
 	while(True):
@@ -44,23 +44,36 @@ with open(file_path, 'r') as f:
 			eval_list[counter] += ev
 			average_list[counter] += ave
 			best_list[counter] += best
+			counter_list[counter] += 1
 			counter += 1
 
 while(eval_list[-1] == 0):
 	eval_list.pop(-1)
 	average_list.pop(-1)
 	best_list.pop(-1)
+	counter_list.pop(-1)
 
 for i in range(len(eval_list)):
-	eval_list[i] /= number_of_runs
-	average_list[i] /= number_of_runs
-	best_list[i] /= number_of_runs
+	eval_list[i] /= counter_list[i]
+	average_list[i] /= counter_list[i]
+	best_list[i] /= counter_list[i]
 
 
+start = eval_list[0]
+next_one = eval_list[1]
 
-#print(eval_list)
-#print(average_list)
-#print(best_list)
+for i in range(2, len(eval_list)):
+	eval_list[i] = start + (i * (next_one - start))
+
+"""
+print(eval_list)
+print()
+print(average_list)
+print()
+print(best_list)
+print()
+"""
+
 
 plt.plot(eval_list, average_list, label="Local Average")
 plt.plot(eval_list, best_list, label="Local Best")

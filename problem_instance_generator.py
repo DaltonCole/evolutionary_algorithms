@@ -1,14 +1,14 @@
 import json
 import subprocess
 
-random_seed = 2000
+random_seed = 3000
 search_algorithms = ['EA']
 runs = [30]
 fitness_evaulations = [10000]
-population_size = [100]
-offspring_count = [50]
-tournament_parent = [5]
-tournament_survival = [5]
+population_size = [10]
+offspring_count = [5]
+tournament_parent = [2]
+tournament_survival = [2]
 mutation_rate = [0.1]
 termination_convergence = [10000] 
 parent_selection_algorithm = ['k-Tournament Selection with replacement']#, 'Fitness Proportional Selection']#, 'Uniform Random']
@@ -28,6 +28,9 @@ config_dict = {}
 config_dict["Log File Path"] = None
 config_dict["Solution File Path"] = None
 config_dict["Random Seed"] = random_seed 
+
+import os
+directory = set(os.listdir("./logs/"))
 
 for a in search_algorithms:
 	config_dict["Search Algorithm"] = a
@@ -72,11 +75,13 @@ for a in search_algorithms:
 																				continue
 
 																			config_dict["Random Seed"] += 1 
-																			with open('temp_config.json', 'w') as f:
-																				json.dump(config_dict, f)
-																			command = './run.sh temp_config.json inputs/2.txt'
-																			process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-																			process.wait()
+
+																			if str(config_dict['Random Seed']) not in directory:
+																				with open('temp_config.json', 'w') as f:
+																					json.dump(config_dict, f)
+																				command = './run.sh temp_config.json inputs/3.txt'
+																				process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+																				process.wait()
 																			#print(process.returncode)
 																			print(config_dict["Random Seed"])
 """	
