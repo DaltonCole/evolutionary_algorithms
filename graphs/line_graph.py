@@ -39,7 +39,7 @@ with open(file_path, 'r') as f:
 			continue
 		else:
 			line = line.split()
-			ev, ave, best = int(line[0]), int(line[-2]), int(line[-1])
+			ev, ave, best = float(line[0]), float(line[-2]), float(line[-1])
 
 			eval_list[counter] += ev
 			average_list[counter] += ave
@@ -66,12 +66,12 @@ plt.plot(eval_list, average_list, label="Local Average")
 plt.plot(eval_list, best_list, label="Local Best")
 plt.xlabel('Eval')
 plt.ylabel('Fitness')
-plt.yticks(np.arange(min(average_list + best_list), max(average_list + best_list)+1, 1.0))
+#plt.yticks(np.arange(min(average_list + best_list), max(average_list + best_list)+1, 1.0))
 plt.legend(loc='lower right')
-plt.savefig('./graphs/' + instance_number)
-plt.show()
+plt.savefig('../graphs/graphs/' + str(instance_number) + '.pdf')
+#plt.show()
 
-with open('./graphs/points/' + str(instance_number), 'w') as f:
+with open('../graphs/points/' + str(instance_number), 'w') as f:
 	for i in average_list:
 		f.write(str(i))
 		f.write('\n')
