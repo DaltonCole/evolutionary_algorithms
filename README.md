@@ -1,10 +1,10 @@
-# EC Assignment 1b
+# EC Assignment 1c
 
 ## General Info
 
 * Name: Dalton Cole
 * Email: drcgy5@mst.edu
-* Assignment: COMP SCI 5401 FS2017 Assignment 1b
+* Assignment: COMP SCI 5401 FS2017 Assignment 1c
 
 ## Description
 
