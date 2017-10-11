@@ -12,16 +12,18 @@
 \usepackage{standalone}
 \maxdeadcycles=100000
 \begin{document}
-	\title{COMP SCI 5401 FS2017 Assignment 1b}
+	\title{COMP SCI 5401 FS2017 Assignment 1c}
 	\author{Dalton Cole \\ drcgy5@mst.edu}
 	\date{\formatdate{9}{10}{2017}}
 	\maketitle
 
 	\section{Self-Adaptive EA Strategy Parameter}
-	In this experiment, mutation rate was used as the self-adaptive EA strategy parameter. If the average or best fitness for the current population decreased compared to the previous population, then the mutation rate doubled, with 1 being the max possible value. If the average or best fitness increases or stays the same, then the mutation rate goes back to its original value from the configuration file. The purpose of the change in mutation rate is to increase exploration. 
+	In this experiment, mutation rate was used as the self-adaptive EA strategy parameter. If the average or best fitness for the current population decreased compared to the previous population, then the mutation rate doubles, with 1 being the max possible value. If the average or best fitness increases or stays the same, then the mutation rate goes back to its original value from the configuration file. The purpose of the change in mutation rate is to increase exploration. 
 
 	\section{Self-Adaptive Performance}
-	As can be seen from Figure \ref{fig:saMutation1} and Figure \ref{fig:saMutation2}, although having self-adaptive mutation rate, increases the mean fitness value, there is no statistical difference between using the self-adaptive mutation rate strategy employed vs not using it. This is likely due to the fact that mutation resets anytime a non decrease in fitness happens. Another appropriate strategy would be to involve the current evaluation number in the equation, such that the higher the evaluation number, the lower the mutation rate. This would increase exploration in the beginning, but decrease it as the EA narrows down on a solution.
+	As can be seen from Figure \ref{fig:saMutation1}, Figure \ref{fig:saMutation2}, and Figure \ref{fig:saMutation2}, although having self-adaptive mutation rate, increases the mean fitness value, there is no statistical difference between using the self-adaptive mutation rate strategy employed vs not using it. This is likely due to the fact that mutation resets anytime a non-decrease in fitness happens. Another appropriate strategy would be to involve the current evaluation number in the equation, such that the higher the evaluation number, the lower the mutation rate. This would increase exploration in the beginning, but decrease it as the EA narrows down on a solution.
+
+	Figures \ref{fig:mutFalse} and \ref{fig:mutTrue} show graphs for using self-adaptive mutation rate and not. Figures \ref{fig:mutFalsePicture} and \ref{fig:mutTruePicture} show the corresponding pictures.
 
 	\begin{figure}
 		\caption{Self Adaptive Mutation Rate F and t tests for Input 1}
@@ -35,9 +37,41 @@
 		\includegraphics[width=\textwidth]{./t_test/S-AMutationRate2}
 	\end{figure}
 
+	\begin{figure}
+		\caption{Self Adaptive Mutation Rate F and t tests for Input 3}
+		\label{fig:saMutation3}
+		\includegraphics[width=\textwidth]{./t_test/sa_mutation_rate3}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Mutation Rate False}
+		\label{fig:mutFalse}
+		\includegraphics[width=\textwidth]{../graphs/graphs/1059}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Mutation Rate True}
+		\label{fig:mutTrue}
+		\includegraphics[width=\textwidth]{../graphs/graphs/1061}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Mutation Rate False Picture}
+		\label{fig:mutFalsePicture}
+		\includegraphics[width=\textwidth]{../graphs/picture/1059}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Mutation Rate True Picture}
+		\label{fig:mutTruePicture}
+		\includegraphics[width=\textwidth]{../graphs/picture/1061}
+	\end{figure}
+
 
 	\section{Penalty Coefficient}
-	The penalty algorithm used was, for every overlap that occurred, 1 would be subtracted from the fitness value. Figures \ref{fig:coeff1} and \ref{fig:coeff2} show that using a constant 1 as the penalty coefficient is better than having other values as the penalty. Highlighting dataset 2, a very high difference between the mean values is seen. By using a lower penalty coefficient, there is over a 90 point difference in mean fitness value, almost double that of dataset 1.
+	The penalty algorithm used was, for every overlap that occurred, 1 would be subtracted from the fitness value. Figures \ref{fig:coeff1}, \ref{fig:coeff2}, \ref{fig:coeff3} show that using a constant 1 as the penalty coefficient is better than having other values as the penalty. Highlighting dataset 2, a very high difference between the mean values is seen. By using a lower penalty coefficient, there is over a 90 point difference in mean fitness value, almost double that of dataset 1.
+
+	Figures \ref{fig:coeff1False} and \ref{fig:coeff1True} show the related plots for input 1. Figures \ref{fig:coeff1FalsePicture} and \ref{fig:coeff1TruePicture} show the related pictures for input 1
 
 
 	\begin{figure}
@@ -52,10 +86,42 @@
 		\includegraphics[width=\textwidth]{./t_test/S-APenaltyCoeff2}
 	\end{figure}
 
+	\begin{figure}
+		\caption{F and t tests for using Different Penalty Coefficients for Input 3}
+		\label{fig:coeff3}
+		\includegraphics[width=\textwidth]{./t_test/S-APenaltyCoeff3}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Penalty Coefficient False}
+		\label{fig:coeff1False}
+		\includegraphics[width=\textwidth]{../graphs/graphs/1068}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Penalty Coefficient True}
+		\label{fig:coeff1True}
+		\includegraphics[width=\textwidth]{../graphs/graphs/1070}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Penalty Coefficient False Picture}
+		\label{fig:coeff1FalsePicture}
+		\includegraphics[width=\textwidth]{../graphs/picture/1068}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Input 1 Self-Adaptive Penalty Coefficient True Picture}
+		\label{fig:coeff1TruePicture}
+		\includegraphics[width=\textwidth]{../graphs/picture/1070}
+	\end{figure}
+
+	% 1068, 1069
+
 	\section{NOTE}
 	Appendix A contains a graph and the corresponding configuration file for every combination of inputs for Inputs 1,2, and 3.
 
-	Additional F and t tests not shown in this report can be found in \textit{./report/t_test}.
+	Additional F and t tests not shown in this report can be found in \textit{./report/t\_test}.
 
 
 	\section{Bonus 1}
@@ -86,6 +152,8 @@
 
 	A slightly modified self-adaptive offspring count might see better results, where the number of evaluations currently conducted to included in the equation. This is planned for future research.
 
+	Figures \ref{fig:saMutOffspring1} and Figure \ref{fig:saMutOffspring2} show that there is no significant difference between using the combination of these two self-adaptive methods and not using them.
+
 	\begin{figure}
 		\caption{Self Adaptive Offspring Count F and t tests for Input 1}
 		\label{fig:saOffspring1}
@@ -96,6 +164,18 @@
 		\caption{Self Adaptive Offspring Count F and t tests for Input 2}
 		\label{fig:saOffspring2}
 		\includegraphics[width=\textwidth]{./t_test/S-AOffspringCount2}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Self Adaptive Mutation Rate and Offspring Count,  F and t tests for Input 1}
+		\label{fig:saMutOffspring1}
+		\includegraphics[width=\textwidth]{./t_test/S-A1Bonus2}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Self Adaptive Mutation Rate and Offspring Count,  F and t tests for Input 2}
+		\label{fig:saMutOffspring2}
+		\includegraphics[width=\textwidth]{./t_test/S-A2Bonus2}
 	\end{figure}
 
 	\section{Bonus 3}
@@ -259,6 +339,7 @@
 %	\end{figure}
 
 
+	\section{Appendix}
 	\input{all_graphs.tex}
 		
 \end{document}
