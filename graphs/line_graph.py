@@ -19,10 +19,10 @@ number_of_evals = int(sys.argv[3])
 instance_number = sys.argv[4]
 
 # List of the number of evals for average and best
-eval_list = [0] * (number_of_evals + 1)
-average_list = [0] * (number_of_evals + 1)
-best_list = [0] * (number_of_evals + 1)
-counter_list = [0] * (number_of_evals + 1)
+eval_list = [0]
+average_list = [0]
+best_list = [0]
+counter_list = [0]
 
 with open(file_path, 'r') as f:
 	while(True):
@@ -40,6 +40,12 @@ with open(file_path, 'r') as f:
 		else:
 			line = line.split()
 			ev, ave, best = float(line[0]), float(line[-2]), float(line[-1])
+
+			if counter > len(eval_list) - 1:
+				eval_list.append(0)
+				average_list.append(0)
+				best_list.append(0)
+				counter_list.append(0)
 
 			eval_list[counter] += ev
 			average_list[counter] += ave

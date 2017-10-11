@@ -1,14 +1,14 @@
 import json
 import subprocess
 
-random_seed = 3000
+random_seed = 1000
 search_algorithms = ['EA']
 runs = [30]
 fitness_evaulations = [10000]
-population_size = [10]
-offspring_count = [5]
-tournament_parent = [2]
-tournament_survival = [2]
+population_size = [100]
+offspring_count = [50]
+tournament_parent = [5]
+tournament_survival = [5]
 mutation_rate = [0.1]
 termination_convergence = [10000] 
 parent_selection_algorithm = ['k-Tournament Selection with replacement']#, 'Fitness Proportional Selection']#, 'Uniform Random']
@@ -76,6 +76,8 @@ for a in search_algorithms:
 
 																			config_dict["Random Seed"] += 1 
 
+																			print("Begin " + str(config_dict["Random Seed"]), end='\r')
+
 																			if str(config_dict['Random Seed']) not in directory:
 																				with open('temp_config.json', 'w') as f:
 																					json.dump(config_dict, f)
@@ -83,7 +85,7 @@ for a in search_algorithms:
 																				process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 																				process.wait()
 																			#print(process.returncode)
-																			print(config_dict["Random Seed"])
+																			print('\r' + str(config_dict["Random Seed"]) + '         ')
 """	
 config_dict["Mutation Rate"] = 
 config_dict["Termination Convergence Criterion"] =  

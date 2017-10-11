@@ -14,6 +14,8 @@ In detail, this is done by creating a list of boards that represents the populat
 
 The above process is done for each run. Currently runs are done in parallel. 
 
+**Note**: Due to error handling, you may have to kill all python3 processes to truely kill the program if using ctrl-c
+
 ## How to run
 ```
 ./run.sh <config.json> <problem file>

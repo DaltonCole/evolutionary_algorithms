@@ -58,10 +58,10 @@ class ProgressBar():
 
 			try:
 				bar = self.fill * filledLength + '-' * (self.length - filledLength)
-				print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+				print('\r%s |%s| %s%% %s [ %sremaining ]                         ' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
 			except:
 				bar = self.non_unicode_fill * filledLength + '-' * (self.length - filledLength)
-				print('\r%s |%s| %s%% %s [ %sremaining ] \t\t\t' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
+				print('\r%s |%s| %s%% %s [ %sremaining ]                         ' % (self.prefix, bar, self.percent, self.suffix, remaining_time), end = '\r')
 		except:
 			pass
 

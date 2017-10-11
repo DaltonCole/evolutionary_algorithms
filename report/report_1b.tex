@@ -17,10 +17,240 @@
 	\date{\formatdate{9}{10}{2017}}
 	\maketitle
 
-	\section{Average vs Best Fitness}
-	As can be seen from Figure %\ref{fig:graph_1001}
+	\section{Self-Adaptive EA Strategy Parameter}
+	In this experiment, mutation rate was used as the self-adaptive EA strategy parameter. If the average or best fitness for the current population decreased compared to the previous population, then the mutation rate doubled, with 1 being the max possible value. If the average or best fitness increases or stays the same, then the mutation rate goes back to its original value from the configuration file. The purpose of the change in mutation rate is to increase exploration. 
+
+	\section{Self-Adaptive Performance}
+	As can be seen from Figure \ref{fig:saMutation1} and Figure \ref{fig:saMutation2}, although having self-adaptive mutation rate, increases the mean fitness value, there is no statistical difference between using the self-adaptive mutation rate strategy employed vs not using it. This is likely due to the fact that mutation resets anytime a non decrease in fitness happens. Another appropriate strategy would be to involve the current evaluation number in the equation, such that the higher the evaluation number, the lower the mutation rate. This would increase exploration in the beginning, but decrease it as the EA narrows down on a solution.
+
+	\begin{figure}
+		\caption{Self Adaptive Mutation Rate F and t tests for Input 1}
+		\label{fig:saMutation1}
+		\includegraphics[width=\textwidth]{./t_test/S-AMutationRate1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Self Adaptive Mutation Rate F and t tests for Input 2}
+		\label{fig:saMutation2}
+		\includegraphics[width=\textwidth]{./t_test/S-AMutationRate2}
+	\end{figure}
 
 
+	\section{Penalty Coefficient}
+	The penalty algorithm used was, for every overlap that occurred, 1 would be subtracted from the fitness value. Figures \ref{fig:coeff1} and \ref{fig:coeff2} show that using a constant 1 as the penalty coefficient is better than having other values as the penalty. Highlighting dataset 2, a very high difference between the mean values is seen. By using a lower penalty coefficient, there is over a 90 point difference in mean fitness value, almost double that of dataset 1.
+
+
+	\begin{figure}
+		\caption{F and t tests for using Different Penalty Coefficients for Input 1}
+		\label{fig:coeff1}
+		\includegraphics[width=\textwidth]{./t_test/S-APenaltyCoeff1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{F and t tests for using Different Penalty Coefficients for Input 2}
+		\label{fig:coeff2}
+		\includegraphics[width=\textwidth]{./t_test/S-APenaltyCoeff2}
+	\end{figure}
+
+	\section{NOTE}
+	Appendix A contains a graph and the corresponding configuration file for every combination of inputs for Inputs 1,2, and 3.
+
+	Additional F and t tests not shown in this report can be found in \textit{./report/t_test}.
+
+
+	\section{Bonus 1}
+	The code for bonus 1 can be found in the \textit{helper\_function.py} file in the \textit{program\_files/} directory, line 1120.
+
+	The self-adaptive strategy employed was to decrease the penalty coefficient by 25\% as long as the best board in the population had a 0 penalty value. If the best board in the population was an invalid board, i.e., had a penalty value, then the penalty coefficient would be reset to the original value specified in the configuration file. In the given test cases, the initial value was kept at 1 since this was the best value found for a starting value.
+
+	Figures \ref{fig:saPenalty1} and \ref{fig:saPenalty2} shows that it is better to \textit{not} employ a self-adaptive penalty coefficient.
+
+	\begin{figure}
+		\caption{Self Adaptive Penalty Coefficient F and t tests for Input 1}
+		\label{fig:saPenalty1}
+		\includegraphics[width=\textwidth]{./t_test/S-APenaltyCoeff1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Self Adaptive Penalty Coefficient F and t tests for Input 2}
+		\label{fig:saPenalty2}
+		\includegraphics[width=\textwidth]{./t_test/S-APenaltyCoeff2}
+	\end{figure}
+
+	\section{Bonus 2}
+	The second self-adaptive parameter is offspring count. The code for bonus 2 can be found in the \textit{helper\_function.py} file in the \textit{program\_files/} directory, line 1137.
+
+	The self-adaptive strategy employed is similar to the aforementioned self-adaptive mutation rate. When average or best fitness decreases, the offspring count is multiplied by 1.5 to increase the number of children. This is done to increase exploration by having more children. When the fitness value remains constant or increases, the offspring count resets to the original value.
+
+	Figures \ref{fig:saOffspring1} and \ref{fig:saOffspring2} shows that there is no significant difference between using this self-adaptive parameter and not using it. 
+
+	A slightly modified self-adaptive offspring count might see better results, where the number of evaluations currently conducted to included in the equation. This is planned for future research.
+
+	\begin{figure}
+		\caption{Self Adaptive Offspring Count F and t tests for Input 1}
+		\label{fig:saOffspring1}
+		\includegraphics[width=\textwidth]{./t_test/S-AOffspringCount1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Self Adaptive Offspring Count F and t tests for Input 2}
+		\label{fig:saOffspring2}
+		\includegraphics[width=\textwidth]{./t_test/S-AOffspringCount2}
+	\end{figure}
+
+	\section{Bonus 3}
+	The two chosen multi-ary variation parameters are PMX and order crossover. The code for this can be found in the \textit{helper\_function.py} file in the \textit{program\_files/} directory, line 773 and 815, respectively.
+
+	The two chosen unary variation operators are move and flip. Move moves a shape to a random location and flip rotates a shape. The code for this can be found in the \textit{helper\_function.py} file in the \textit{program\_files/} directory, line 987 and 920, respectively.
+
+	According to Figures \ref{fig:recombination1} and \ref{fig:recombination2}, there is no significant difference between PMX and order crossover. This matched the original hypothesis that both would produce similar results. Both of these algorithms combine the two parents in similar manners.
+
+	As can be seen from \ref{fig:mutation1} and \ref{fig:mutation2}, there is no significant difference between using move and flip unary variation operations. This was a surprising result. It was believed that move would outperform flip because it would change the location on the shape, which would have a greater overall impact than merely rotating the shape. 
+
+
+	\begin{figure}
+		\caption{Order Crossover/PMX F and t tests for Input 1}
+		\label{fig:recombination1}
+		\includegraphics[width=\textwidth]{./t_test/Recombination1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Order Crossover/PMX F and t tests for Input 2}
+		\label{fig:recombination2}
+		\includegraphics[width=\textwidth]{./t_test/Recombination2}
+	\end{figure}
+
+
+	\begin{figure}
+		\caption{Flip/Move F and t tests for Input 1}
+		\label{fig:mutation1}
+		\includegraphics[width=\textwidth]{./t_test/Mutation1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Flip/Move F and t tests for Input 2}
+		\label{fig:mutation2}
+		\includegraphics[width=\textwidth]{./t_test/Mutation1}
+	\end{figure}
+
+
+	Figure \ref{fig:order_pmx_penalty1} and \ref{fig:order_pmx_penalty2} indicate that there is no significant difference between using order crossover or with using PMX while using penalty functions.
+
+	Figure \ref{fig:order_sa_penalty1}, \ref{fig:order_sa_penalty2}, \ref{fig:pmx_sa_penalty1}, and \ref{fig:pmx_sa_penalty2} indicate that there is no significant difference between using a self-adaptive penalty function and not using one with neither order crossover nor PMX.
+
+	\begin{figure}
+		\caption{Order Crossover/PMX with Penalty Function F and t tests for Input 1}
+		\label{fig:order_pmx_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/order_pmx_penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Order Crossover/PMX with Penalty Function F and t tests for Input 2}
+		\label{fig:order_pmx_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/order_pmx_penalty2}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Order Crossover with Self-Adaptive Penalty Function F and t tests for Input 1}
+		\label{fig:order_sa_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/order_crossover_sa_penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Order Crossover with Self-Adaptive Function F and t tests for Input 2}
+		\label{fig:order_sa_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/order_crossover_sa_penalty2}
+	\end{figure}
+
+	\begin{figure}
+		\caption{PMX with Self-Adaptive Penalty Function F and t tests for Input 1}
+		\label{fig:pmx_sa_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/pmx_sa_penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{PMX with Self-Adaptive Function F and t tests for Input 2}
+		\label{fig:pmx_sa_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/pmx_sa_penalty2}
+	\end{figure}
+
+	Figures \ref{fig:flip_move_penalty1} and \ref{fig:flip_move_penalty2} show that there is no significant difference between Flip and Move unary operations in the context of penalty functions
+
+	Figures \ref{fig:flip_move_sa_penalty1} and \ref{fig:flip_move_sa_penalty2} show that there is no significant difference between Flip and Move unary operations in the context of penalty functions
+
+
+	\begin{figure}
+		\caption{Flip/Move with Penalty Function F and t tests for Input 1}
+		\label{fig:flip_move_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/mutation_penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Flip/Move with Penalty Function F and t tests for Input 2}
+		\label{fig:flip_move_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/mutation_penalty2}
+	\end{figure}
+
+
+	\begin{figure}
+		\caption{Flip/Move with Self-Adaptive Penalty Function F and t tests for Input 1}
+		\label{fig:flip_move_sa_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/mutation_sa_penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Flip/Move with Self-Adaptive Penalty Function F and t tests for Input 2}
+		\label{fig:flip_move_sa_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/mutation_sa_penalty2}
+	\end{figure}
+
+
+
+	\section{Bonus 4}
+	The code for bonus 4 can be found in the \textit{board.py} file in the \textit{program\_files/} directory, line 240.
+
+	Figure \ref{fig:random_repair1} and \ref{fig:random_repair1} shows that the random algorithm outperforms the repair algorithm. This is odd considering the repair approach tries to place the shape up to n times going from the original placement to a left-down diagonal, which should be optimal. One possible explanation for this is because the random algorithm is quite good. It initially only looks at as much space as it believes it needs, and gradually increases as it finds it impossible to place given the alloted space. The repair function seems to place it in a slightly worse off position (even though, logically, they both should seem random).
+
+	Figure \ref{fig:repair_penalty1} and \ref{fig:repair_penalty2} shows that repair the is significantly better then the penalty function. This is possibly due to the EA wasting time on impossible board states. By giving more time to possible board states, the EA is able to find a more sutible answer. Penalty functions are used to increase the amount of exploring done, however, the explored space is invalid, and in this case, it costs the EA time and resources that could be better allocated by searching through valid space.
+
+	Figure \ref{fig:random_penalty1} and \ref{fig:random_penalty2} shows that random is significantly better than the penalty method. This can also be shown since random is superior to repair and repair is superior to penalty.
+
+
+	\begin{figure}
+		\caption{Random and Repair Algorithms F and t tests for Input 1}
+		\label{fig:random_repair1}
+		\includegraphics[width=\textwidth]{./t_test/Random_Repair1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Random and Repair Algorithms F and t tests for Input 2}
+		\label{fig:random_repair2}
+		\includegraphics[width=\textwidth]{./t_test/Random_Repair2}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Repair and Penalty Algorithms F and t tests for Input 1}
+		\label{fig:repair_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/Repair_Penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Repair and Penalty Algorithms F and t tests for Input 2}
+		\label{fig:repair_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/Repair_Penalty2}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Random and Penalty Algorithms F and t tests for Input 1}
+		\label{fig:random_penalty1}
+		\includegraphics[width=\textwidth]{./t_test/Random_Penalty1}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Random and Penalty Algorithms F and t tests for Input 2}
+		\label{fig:random_penalty2}
+		\includegraphics[width=\textwidth]{./t_test/Random_Penalty2}
+	\end{figure}
 %	
 %	\begin{figure}
 %		\caption{F Test for Input 1 Assignment 1B vs 1A}

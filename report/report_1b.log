@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.21)  9 OCT 2017 23:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.21)  10 OCT 2017 22:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,633 +409,1913 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(./all_graphs.tex <../graphs/graphs/1001.pdf, id=1, 462.52798pt x 346.89601pt>
+
+pdfTeX warning: pdflatex (file ./t_test/S-AMutationRate1.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/S-AMutationRate1.pdf, id=1, 614.295pt x 794.97pt>
+File: ./t_test/S-AMutationRate1.pdf Graphic file (type pdf)
+
+<use ./t_test/S-AMutationRate1.pdf>
+Package pdftex.def Info: ./t_test/S-AMutationRate1.pdf used on input line 29.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/S-AMutationRate2.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/S-AMutationRate2.pdf, id=2, 614.295pt x 794.97pt>
+File: ./t_test/S-AMutationRate2.pdf Graphic file (type pdf)
+
+<use ./t_test/S-AMutationRate2.pdf>
+Package pdftex.def Info: ./t_test/S-AMutationRate2.pdf used on input line 35.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/S-APenaltyCoeff1.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/S-APenaltyCoeff1.pdf, id=3, 614.295pt x 794.97pt>
+File: ./t_test/S-APenaltyCoeff1.pdf Graphic file (type pdf)
+
+<use ./t_test/S-APenaltyCoeff1.pdf>
+Package pdftex.def Info: ./t_test/S-APenaltyCoeff1.pdf used on input line 46.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/S-APenaltyCoeff2.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/S-APenaltyCoeff2.pdf, id=4, 614.295pt x 794.97pt>
+File: ./t_test/S-APenaltyCoeff2.pdf Graphic file (type pdf)
+
+<use ./t_test/S-APenaltyCoeff2.pdf>
+Package pdftex.def Info: ./t_test/S-APenaltyCoeff2.pdf used on input line 52.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+File: ./t_test/S-APenaltyCoeff1.pdf Graphic file (type pdf)
+ <use ./t_test/S-APenaltyCoeff1.pdf>
+Package pdftex.def Info: ./t_test/S-APenaltyCoeff1.pdf used on input line 69.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+File: ./t_test/S-APenaltyCoeff2.pdf Graphic file (type pdf)
+
+<use ./t_test/S-APenaltyCoeff2.pdf>
+Package pdftex.def Info: ./t_test/S-APenaltyCoeff2.pdf used on input line 75.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+Overfull \hbox (16.49365pt too wide) in paragraph at lines 79--80
+\OT1/cmr/m/n/10 The sec-ond self-adaptive pa-ram-e-ter is off-spring count. The
+ code for bonus 2 can be found in the \OT1/cmr/m/it/10 helper[]-func-tion.py
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./t_test/S-AMutationRa
+te1.pdf>] [3 <./t_test/S-AMutationRate2.pdf>] [4 <./t_test/S-APenaltyCoeff1.pdf
+>] [5 <./t_test/S-APenaltyCoeff2.pdf>] [6] [7]
+
+pdfTeX warning: pdflatex (file ./t_test/S-AOffspringCount1.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/S-AOffspringCount1.pdf, id=102, 614.295pt x 794.97pt>
+File: ./t_test/S-AOffspringCount1.pdf Graphic file (type pdf)
+
+<use ./t_test/S-AOffspringCount1.pdf>
+Package pdftex.def Info: ./t_test/S-AOffspringCount1.pdf used on input line 90.
+
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/S-AOffspringCount2.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/S-AOffspringCount2.pdf, id=103, 614.295pt x 794.97pt>
+File: ./t_test/S-AOffspringCount2.pdf Graphic file (type pdf)
+
+<use ./t_test/S-AOffspringCount2.pdf>
+Package pdftex.def Info: ./t_test/S-AOffspringCount2.pdf used on input line 96.
+
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Recombination1.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Recombination1.pdf, id=104, 614.295pt x 794.97pt>
+File: ./t_test/Recombination1.pdf Graphic file (type pdf)
+
+<use ./t_test/Recombination1.pdf>
+Package pdftex.def Info: ./t_test/Recombination1.pdf used on input line 112.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Recombination2.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Recombination2.pdf, id=105, 614.295pt x 794.97pt>
+File: ./t_test/Recombination2.pdf Graphic file (type pdf)
+
+<use ./t_test/Recombination2.pdf>
+Package pdftex.def Info: ./t_test/Recombination2.pdf used on input line 118.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Mutation1.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/Mutation1.pdf, id=106, 614.295pt x 794.97pt>
+File: ./t_test/Mutation1.pdf Graphic file (type pdf)
+
+<use ./t_test/Mutation1.pdf>
+Package pdftex.def Info: ./t_test/Mutation1.pdf used on input line 125.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+File: ./t_test/Mutation1.pdf Graphic file (type pdf)
+ <use ./t_test/Mutation1.pdf>
+Package pdftex.def Info: ./t_test/Mutation1.pdf used on input line 131.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/order_pmx_penalty1.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/order_pmx_penalty1.pdf, id=107, 614.295pt x 794.97pt>
+File: ./t_test/order_pmx_penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/order_pmx_penalty1.pdf>
+Package pdftex.def Info: ./t_test/order_pmx_penalty1.pdf used on input line 142
+.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/order_pmx_penalty2.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/order_pmx_penalty2.pdf, id=108, 614.295pt x 794.97pt>
+File: ./t_test/order_pmx_penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/order_pmx_penalty2.pdf>
+Package pdftex.def Info: ./t_test/order_pmx_penalty2.pdf used on input line 148
+.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/order_crossover_sa_penalty1.pdf): PDF i
+nclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/order_crossover_sa_penalty1.pdf, id=109, 614.295pt x 794.97pt>
+File: ./t_test/order_crossover_sa_penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/order_crossover_sa_penalty1.pdf>
+Package pdftex.def Info: ./t_test/order_crossover_sa_penalty1.pdf used on input
+ line 154.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/order_crossover_sa_penalty2.pdf): PDF i
+nclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/order_crossover_sa_penalty2.pdf, id=110, 614.295pt x 794.97pt>
+File: ./t_test/order_crossover_sa_penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/order_crossover_sa_penalty2.pdf>
+Package pdftex.def Info: ./t_test/order_crossover_sa_penalty2.pdf used on input
+ line 160.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/pmx_sa_penalty1.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/pmx_sa_penalty1.pdf, id=111, 614.295pt x 794.97pt>
+File: ./t_test/pmx_sa_penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/pmx_sa_penalty1.pdf>
+Package pdftex.def Info: ./t_test/pmx_sa_penalty1.pdf used on input line 166.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/pmx_sa_penalty2.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/pmx_sa_penalty2.pdf, id=112, 614.295pt x 794.97pt>
+File: ./t_test/pmx_sa_penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/pmx_sa_penalty2.pdf>
+Package pdftex.def Info: ./t_test/pmx_sa_penalty2.pdf used on input line 172.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/mutation_penalty1.pdf): PDF inclusion: 
+found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/mutation_penalty1.pdf, id=113, 614.295pt x 794.97pt>
+File: ./t_test/mutation_penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/mutation_penalty1.pdf>
+Package pdftex.def Info: ./t_test/mutation_penalty1.pdf used on input line 183.
+
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/mutation_penalty2.pdf): PDF inclusion: 
+found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/mutation_penalty2.pdf, id=114, 614.295pt x 794.97pt>
+File: ./t_test/mutation_penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/mutation_penalty2.pdf>
+Package pdftex.def Info: ./t_test/mutation_penalty2.pdf used on input line 189.
+
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/mutation_sa_penalty1.pdf): PDF inclusio
+n: found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/mutation_sa_penalty1.pdf, id=115, 614.295pt x 794.97pt>
+File: ./t_test/mutation_sa_penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/mutation_sa_penalty1.pdf>
+Package pdftex.def Info: ./t_test/mutation_sa_penalty1.pdf used on input line 1
+96.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/mutation_sa_penalty2.pdf): PDF inclusio
+n: found PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/mutation_sa_penalty2.pdf, id=116, 614.295pt x 794.97pt>
+File: ./t_test/mutation_sa_penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/mutation_sa_penalty2.pdf>
+Package pdftex.def Info: ./t_test/mutation_sa_penalty2.pdf used on input line 2
+02.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Random_Repair1.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Random_Repair1.pdf, id=117, 614.295pt x 794.97pt>
+File: ./t_test/Random_Repair1.pdf Graphic file (type pdf)
+
+<use ./t_test/Random_Repair1.pdf>
+Package pdftex.def Info: ./t_test/Random_Repair1.pdf used on input line 220.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Random_Repair2.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Random_Repair2.pdf, id=118, 614.295pt x 794.97pt>
+File: ./t_test/Random_Repair2.pdf Graphic file (type pdf)
+
+<use ./t_test/Random_Repair2.pdf>
+Package pdftex.def Info: ./t_test/Random_Repair2.pdf used on input line 226.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Repair_Penalty1.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Repair_Penalty1.pdf, id=119, 614.295pt x 794.97pt>
+File: ./t_test/Repair_Penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/Repair_Penalty1.pdf>
+Package pdftex.def Info: ./t_test/Repair_Penalty1.pdf used on input line 232.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Repair_Penalty2.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Repair_Penalty2.pdf, id=120, 614.295pt x 794.97pt>
+File: ./t_test/Repair_Penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/Repair_Penalty2.pdf>
+Package pdftex.def Info: ./t_test/Repair_Penalty2.pdf used on input line 238.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Random_Penalty1.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Random_Penalty1.pdf, id=121, 614.295pt x 794.97pt>
+File: ./t_test/Random_Penalty1.pdf Graphic file (type pdf)
+
+<use ./t_test/Random_Penalty1.pdf>
+Package pdftex.def Info: ./t_test/Random_Penalty1.pdf used on input line 244.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/Random_Penalty2.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/Random_Penalty2.pdf, id=122, 614.295pt x 794.97pt>
+File: ./t_test/Random_Penalty2.pdf Graphic file (type pdf)
+
+<use ./t_test/Random_Penalty2.pdf>
+Package pdftex.def Info: ./t_test/Random_Penalty2.pdf used on input line 250.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+ (./all_graphs.tex
+<../graphs/graphs/1001.pdf, id=123, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1001.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1001.pdf>
 Package pdftex.def Info: ../graphs/graphs/1001.pdf used on input line 58.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1002.pdf, id=2, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1002.pdf, id=124, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1002.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1002.pdf>
 Package pdftex.def Info: ../graphs/graphs/1002.pdf used on input line 117.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1003.pdf, id=3, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1003.pdf, id=125, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1003.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1003.pdf>
 Package pdftex.def Info: ../graphs/graphs/1003.pdf used on input line 176.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1004.pdf, id=4, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1004.pdf, id=126, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1004.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1004.pdf>
 Package pdftex.def Info: ../graphs/graphs/1004.pdf used on input line 235.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1005.pdf, id=5, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1005.pdf, id=127, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1005.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1005.pdf>
 Package pdftex.def Info: ../graphs/graphs/1005.pdf used on input line 294.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1006.pdf, id=6, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1006.pdf, id=128, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1006.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1006.pdf>
 Package pdftex.def Info: ../graphs/graphs/1006.pdf used on input line 353.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1007.pdf, id=7, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1007.pdf, id=129, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1007.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1007.pdf>
 Package pdftex.def Info: ../graphs/graphs/1007.pdf used on input line 412.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1008.pdf, id=8, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1008.pdf, id=130, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1008.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1008.pdf>
 Package pdftex.def Info: ../graphs/graphs/1008.pdf used on input line 471.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1009.pdf, id=9, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1009.pdf, id=131, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1009.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1009.pdf>
 Package pdftex.def Info: ../graphs/graphs/1009.pdf used on input line 530.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1010.pdf, id=10, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1010.pdf, id=132, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1010.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1010.pdf>
 Package pdftex.def Info: ../graphs/graphs/1010.pdf used on input line 589.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <../graphs/graphs/1001.
-pdf>] [3] [4 <../graphs/graphs/1002.pdf>]
-[5 <../graphs/graphs/1003.pdf>] [6] [7 <../graphs/graphs/1004.pdf>] [8 <../grap
-hs/graphs/1005.pdf>] [9] [10 <../graphs/graphs/1006.pdf>] [11 <../graphs/graphs
-/1007.pdf>] [12] [13 <../graphs/graphs/1008.pdf>] [14 <../graphs/graphs/1009.pd
-f>] [15] [16 <../graphs/graphs/1010.pdf>]
-<../graphs/graphs/1011.pdf, id=377, 462.52798pt x 346.89601pt>
+ [8] [9 <./t_test/S-AOffspringCount1.pdf>]
+[10 <./t_test/S-AOffspringCount2.pdf>] [11 <./t_test/Recombination1.pdf>]
+[12 <./t_test/Recombination2.pdf>] [13 <./t_test/Mutation1.pdf>] [14] [15 <./t_
+test/order_pmx_penalty1.pdf>] [16 <./t_test/order_pmx_penalty2.pdf>] [17 <./t_t
+est/order_crossover_sa_penalty1.pdf>] [18 <./t_test/order_crossover_sa_penalty2
+.pdf>] [19 <./t_test/pmx_sa_penalty1.pdf>] [20 <./t_test/pmx_sa_penalty2.pdf>]
+[21 <./t_test/mutation_penalty1.pdf>] [22 <./t_test/mutation_penalty2.pdf>]
+[23 <./t_test/mutation_sa_penalty1.pdf>] [24 <./t_test/mutation_sa_penalty2.pdf
+>] [25 <./t_test/Random_Repair1.pdf>] [26 <./t_test/Random_Repair2.pdf>]
+[27 <./t_test/Repair_Penalty1.pdf>] [28 <./t_test/Repair_Penalty2.pdf>]
+[29 <./t_test/Random_Penalty1.pdf>] [30 <./t_test/Random_Penalty2.pdf>]
+[31] [32 <../graphs/graphs/1001.pdf>] [33 <../graphs/graphs/1002.pdf>] [34]
+[35 <../graphs/graphs/1003.pdf>] [36 <../graphs/graphs/1004.pdf>] [37] [38 <../
+graphs/graphs/1005.pdf>] [39 <../graphs/graphs/1006.pdf>] [40] [41 <../graphs/g
+raphs/1007.pdf>] [42 <../graphs/graphs/1008.pdf>] [43] [44 <../graphs/graphs/10
+09.pdf>] [45 <../graphs/graphs/1010.pdf>]
+<../graphs/graphs/1011.pdf, id=924, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1011.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1011.pdf>
 Package pdftex.def Info: ../graphs/graphs/1011.pdf used on input line 649.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1012.pdf, id=378, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1012.pdf, id=925, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1012.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1012.pdf>
 Package pdftex.def Info: ../graphs/graphs/1012.pdf used on input line 708.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1013.pdf, id=379, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1013.pdf, id=926, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1013.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1013.pdf>
 Package pdftex.def Info: ../graphs/graphs/1013.pdf used on input line 767.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1014.pdf, id=380, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1014.pdf, id=927, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1014.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1014.pdf>
 Package pdftex.def Info: ../graphs/graphs/1014.pdf used on input line 826.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1015.pdf, id=381, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1015.pdf, id=928, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1015.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1015.pdf>
 Package pdftex.def Info: ../graphs/graphs/1015.pdf used on input line 885.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1016.pdf, id=382, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1016.pdf, id=929, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1016.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1016.pdf>
 Package pdftex.def Info: ../graphs/graphs/1016.pdf used on input line 944.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1017.pdf, id=383, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1017.pdf, id=930, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1017.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1017.pdf>
 Package pdftex.def Info: ../graphs/graphs/1017.pdf used on input line 1003.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1018.pdf, id=384, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1018.pdf, id=931, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1018.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1018.pdf>
 Package pdftex.def Info: ../graphs/graphs/1018.pdf used on input line 1062.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1019.pdf, id=385, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1019.pdf, id=932, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1019.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1019.pdf>
 Package pdftex.def Info: ../graphs/graphs/1019.pdf used on input line 1121.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1020.pdf, id=386, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1020.pdf, id=933, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1020.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1020.pdf>
 Package pdftex.def Info: ../graphs/graphs/1020.pdf used on input line 1180.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [17
+ [46
 
-] [18 <../graphs/graphs/1011.pdf>] [19 <../graphs/graphs/1012.pdf>] [20] [21 <.
-./graphs/graphs/1013.pdf>] [22 <../graphs/graphs/1014.pdf>] [23] [24 <../graphs
-/graphs/1015.pdf>] [25 <../graphs/graphs/1016.pdf>] [26] [27 <../graphs/graphs/
-1017.pdf>] [28 <../graphs/graphs/1018.pdf>]
-[29] [30 <../graphs/graphs/1019.pdf>] [31 <../graphs/graphs/1020.pdf>]
-<../graphs/graphs/1021.pdf, id=746, 462.52798pt x 346.89601pt>
+] [47 <../graphs/graphs/1011.pdf>] [48 <../graphs/graphs/1012.pdf>] [49] [50 <.
+./graphs/graphs/1013.pdf>] [51 <../graphs/graphs/1014.pdf>] [52] [53 <../graphs
+/graphs/1015.pdf>] [54 <../graphs/graphs/1016.pdf>] [55] [56 <../graphs/graphs/
+1017.pdf>] [57 <../graphs/graphs/1018.pdf>]
+[58] [59 <../graphs/graphs/1019.pdf>] [60 <../graphs/graphs/1020.pdf>]
+<../graphs/graphs/1021.pdf, id=1292, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1021.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1021.pdf>
 Package pdftex.def Info: ../graphs/graphs/1021.pdf used on input line 1240.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1022.pdf, id=747, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1022.pdf, id=1293, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1022.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1022.pdf>
 Package pdftex.def Info: ../graphs/graphs/1022.pdf used on input line 1299.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1023.pdf, id=748, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1023.pdf, id=1294, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1023.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1023.pdf>
 Package pdftex.def Info: ../graphs/graphs/1023.pdf used on input line 1358.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1024.pdf, id=749, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1024.pdf, id=1295, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1024.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1024.pdf>
 Package pdftex.def Info: ../graphs/graphs/1024.pdf used on input line 1417.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1025.pdf, id=750, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1025.pdf, id=1296, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1025.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1025.pdf>
 Package pdftex.def Info: ../graphs/graphs/1025.pdf used on input line 1476.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1026.pdf, id=751, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1026.pdf, id=1297, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1026.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1026.pdf>
 Package pdftex.def Info: ../graphs/graphs/1026.pdf used on input line 1535.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1027.pdf, id=752, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1027.pdf, id=1298, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1027.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1027.pdf>
 Package pdftex.def Info: ../graphs/graphs/1027.pdf used on input line 1594.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1028.pdf, id=753, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1028.pdf, id=1299, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1028.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1028.pdf>
 Package pdftex.def Info: ../graphs/graphs/1028.pdf used on input line 1653.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1029.pdf, id=754, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1029.pdf, id=1300, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1029.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1029.pdf>
 Package pdftex.def Info: ../graphs/graphs/1029.pdf used on input line 1712.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1030.pdf, id=755, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1030.pdf, id=1301, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1030.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1030.pdf>
 Package pdftex.def Info: ../graphs/graphs/1030.pdf used on input line 1771.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [32
+ [61
 
-] [33 <../graphs/graphs/1021.pdf>] [34 <../graphs/graphs/1022.pdf>] [35] [36 <.
-./graphs/graphs/1023.pdf>] [37 <../graphs/graphs/1024.pdf>] [38] [39 <../graphs
-/graphs/1025.pdf>] [40 <../graphs/graphs/1026.pdf>] [41] [42 <../graphs/graphs/
-1027.pdf>] [43 <../graphs/graphs/1028.pdf>]
-[44] [45 <../graphs/graphs/1029.pdf>] [46 <../graphs/graphs/1030.pdf>]
-<../graphs/graphs/1031.pdf, id=1132, 462.52798pt x 346.89601pt>
+] [62 <../graphs/graphs/1021.pdf>] [63 <../graphs/graphs/1022.pdf>] [64] [65 <.
+./graphs/graphs/1023.pdf>] [66 <../graphs/graphs/1024.pdf>] [67] [68 <../graphs
+/graphs/1025.pdf>] [69 <../graphs/graphs/1026.pdf>] [70] [71 <../graphs/graphs/
+1027.pdf>] [72 <../graphs/graphs/1028.pdf>]
+[73] [74 <../graphs/graphs/1029.pdf>] [75 <../graphs/graphs/1030.pdf>]
+<../graphs/graphs/1031.pdf, id=1679, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1031.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1031.pdf>
 Package pdftex.def Info: ../graphs/graphs/1031.pdf used on input line 1831.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1032.pdf, id=1133, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1032.pdf, id=1680, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1032.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1032.pdf>
 Package pdftex.def Info: ../graphs/graphs/1032.pdf used on input line 1890.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1033.pdf, id=1134, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1033.pdf, id=1681, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1033.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1033.pdf>
 Package pdftex.def Info: ../graphs/graphs/1033.pdf used on input line 1949.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1034.pdf, id=1135, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1034.pdf, id=1682, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1034.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1034.pdf>
 Package pdftex.def Info: ../graphs/graphs/1034.pdf used on input line 2008.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1035.pdf, id=1136, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1035.pdf, id=1683, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1035.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1035.pdf>
 Package pdftex.def Info: ../graphs/graphs/1035.pdf used on input line 2067.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1036.pdf, id=1137, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1036.pdf, id=1684, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1036.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1036.pdf>
 Package pdftex.def Info: ../graphs/graphs/1036.pdf used on input line 2126.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1037.pdf, id=1138, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1037.pdf, id=1685, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1037.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1037.pdf>
 Package pdftex.def Info: ../graphs/graphs/1037.pdf used on input line 2185.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1038.pdf, id=1139, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1038.pdf, id=1686, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1038.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1038.pdf>
 Package pdftex.def Info: ../graphs/graphs/1038.pdf used on input line 2244.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1039.pdf, id=1140, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1039.pdf, id=1687, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1039.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1039.pdf>
 Package pdftex.def Info: ../graphs/graphs/1039.pdf used on input line 2303.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1040.pdf, id=1141, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1040.pdf, id=1688, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1040.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1040.pdf>
 Package pdftex.def Info: ../graphs/graphs/1040.pdf used on input line 2362.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [47
+ [76
 
-] [48 <../graphs/graphs/1031.pdf>] [49 <../graphs/graphs/1032.pdf>] [50] [51 <.
-./graphs/graphs/1033.pdf>] [52 <../graphs/graphs/1034.pdf>] [53] [54 <../graphs
-/graphs/1035.pdf>] [55 <../graphs/graphs/1036.pdf>] [56] [57 <../graphs/graphs/
-1037.pdf>] [58 <../graphs/graphs/1038.pdf>]
-[59] [60 <../graphs/graphs/1039.pdf>] [61 <../graphs/graphs/1040.pdf>]
-<../graphs/graphs/1041.pdf, id=1525, 462.52798pt x 346.89601pt>
+] [77 <../graphs/graphs/1031.pdf>] [78 <../graphs/graphs/1032.pdf>] [79] [80 <.
+./graphs/graphs/1033.pdf>] [81 <../graphs/graphs/1034.pdf>] [82] [83 <../graphs
+/graphs/1035.pdf>] [84 <../graphs/graphs/1036.pdf>] [85] [86 <../graphs/graphs/
+1037.pdf>] [87 <../graphs/graphs/1038.pdf>]
+[88] [89 <../graphs/graphs/1039.pdf>] [90 <../graphs/graphs/1040.pdf>]
+<../graphs/graphs/1041.pdf, id=2071, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1041.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1041.pdf>
 Package pdftex.def Info: ../graphs/graphs/1041.pdf used on input line 2422.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1042.pdf, id=1526, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1042.pdf, id=2072, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1042.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1042.pdf>
 Package pdftex.def Info: ../graphs/graphs/1042.pdf used on input line 2481.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1043.pdf, id=1527, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1043.pdf, id=2073, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1043.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1043.pdf>
 Package pdftex.def Info: ../graphs/graphs/1043.pdf used on input line 2540.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1044.pdf, id=1528, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1044.pdf, id=2074, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1044.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1044.pdf>
 Package pdftex.def Info: ../graphs/graphs/1044.pdf used on input line 2599.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1045.pdf, id=1529, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1045.pdf, id=2075, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1045.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1045.pdf>
 Package pdftex.def Info: ../graphs/graphs/1045.pdf used on input line 2658.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1046.pdf, id=1530, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1046.pdf, id=2076, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1046.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1046.pdf>
 Package pdftex.def Info: ../graphs/graphs/1046.pdf used on input line 2717.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1047.pdf, id=1531, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1047.pdf, id=2077, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1047.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1047.pdf>
 Package pdftex.def Info: ../graphs/graphs/1047.pdf used on input line 2776.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1048.pdf, id=1532, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1048.pdf, id=2078, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1048.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1048.pdf>
 Package pdftex.def Info: ../graphs/graphs/1048.pdf used on input line 2835.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1049.pdf, id=1533, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1049.pdf, id=2079, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1049.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1049.pdf>
 Package pdftex.def Info: ../graphs/graphs/1049.pdf used on input line 2894.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1050.pdf, id=1534, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1050.pdf, id=2080, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1050.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1050.pdf>
 Package pdftex.def Info: ../graphs/graphs/1050.pdf used on input line 2953.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [62
+ [91
 
-] [63 <../graphs/graphs/1041.pdf>] [64 <../graphs/graphs/1042.pdf>] [65] [66 <.
-./graphs/graphs/1043.pdf>] [67 <../graphs/graphs/1044.pdf>] [68] [69 <../graphs
-/graphs/1045.pdf>] [70 <../graphs/graphs/1046.pdf>] [71] [72 <../graphs/graphs/
-1047.pdf>] [73 <../graphs/graphs/1048.pdf>]
-[74] [75 <../graphs/graphs/1049.pdf>] [76 <../graphs/graphs/1050.pdf>]
-<../graphs/graphs/1051.pdf, id=1904, 462.52798pt x 346.89601pt>
+] [92 <../graphs/graphs/1041.pdf>] [93 <../graphs/graphs/1042.pdf>] [94] [95 <.
+./graphs/graphs/1043.pdf>] [96 <../graphs/graphs/1044.pdf>] [97] [98 <../graphs
+/graphs/1045.pdf>] [99 <../graphs/graphs/1046.pdf>] [100] [101 <../graphs/graph
+s/1047.pdf>] [102 <../graphs/graphs/1048.pdf>] [103] [104 <../graphs/graphs/104
+9.pdf>] [105 <../graphs/graphs/1050.pdf>]
+<../graphs/graphs/1051.pdf, id=2451, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1051.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1051.pdf>
 Package pdftex.def Info: ../graphs/graphs/1051.pdf used on input line 3013.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1052.pdf, id=1905, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1052.pdf, id=2452, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1052.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1052.pdf>
 Package pdftex.def Info: ../graphs/graphs/1052.pdf used on input line 3072.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1053.pdf, id=1906, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1053.pdf, id=2453, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1053.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1053.pdf>
 Package pdftex.def Info: ../graphs/graphs/1053.pdf used on input line 3131.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1054.pdf, id=1907, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1054.pdf, id=2454, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1054.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1054.pdf>
 Package pdftex.def Info: ../graphs/graphs/1054.pdf used on input line 3190.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1055.pdf, id=1908, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1055.pdf, id=2455, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1055.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1055.pdf>
 Package pdftex.def Info: ../graphs/graphs/1055.pdf used on input line 3249.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1056.pdf, id=1909, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1056.pdf, id=2456, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1056.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1056.pdf>
 Package pdftex.def Info: ../graphs/graphs/1056.pdf used on input line 3308.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1057.pdf, id=1910, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1057.pdf, id=2457, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1057.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1057.pdf>
 Package pdftex.def Info: ../graphs/graphs/1057.pdf used on input line 3367.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1058.pdf, id=1911, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1058.pdf, id=2458, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1058.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1058.pdf>
 Package pdftex.def Info: ../graphs/graphs/1058.pdf used on input line 3426.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1059.pdf, id=1912, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1059.pdf, id=2459, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1059.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1059.pdf>
 Package pdftex.def Info: ../graphs/graphs/1059.pdf used on input line 3485.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1060.pdf, id=1913, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1060.pdf, id=2460, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1060.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1060.pdf>
 Package pdftex.def Info: ../graphs/graphs/1060.pdf used on input line 3544.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [77
+ [106
 
-] [78 <../graphs/graphs/1051.pdf>] [79 <../graphs/graphs/1052.pdf>] [80] [81 <.
-./graphs/graphs/1053.pdf>] [82 <../graphs/graphs/1054.pdf>] [83] [84 <../graphs
-/graphs/1055.pdf>] [85 <../graphs/graphs/1056.pdf>] [86] [87 <../graphs/graphs/
-1057.pdf>] [88 <../graphs/graphs/1058.pdf>]
-[89] [90 <../graphs/graphs/1059.pdf>] [91 <../graphs/graphs/1060.pdf>]
-<../graphs/graphs/1061.pdf, id=2288, 462.52798pt x 346.89601pt>
+] [107 <../graphs/graphs/1051.pdf>]
+[108 <../graphs/graphs/1052.pdf>] [109] [110 <../graphs/graphs/1053.pdf>]
+[111 <../graphs/graphs/1054.pdf>] [112] [113 <../graphs/graphs/1055.pdf>]
+[114 <../graphs/graphs/1056.pdf>] [115] [116 <../graphs/graphs/1057.pdf>]
+[117 <../graphs/graphs/1058.pdf>] [118] [119 <../graphs/graphs/1059.pdf>]
+[120 <../graphs/graphs/1060.pdf>]
+<../graphs/graphs/1061.pdf, id=2834, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1061.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1061.pdf>
 Package pdftex.def Info: ../graphs/graphs/1061.pdf used on input line 3604.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1062.pdf, id=2289, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1062.pdf, id=2835, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1062.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1062.pdf>
 Package pdftex.def Info: ../graphs/graphs/1062.pdf used on input line 3663.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1063.pdf, id=2290, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1063.pdf, id=2836, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1063.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1063.pdf>
 Package pdftex.def Info: ../graphs/graphs/1063.pdf used on input line 3722.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1064.pdf, id=2291, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1064.pdf, id=2837, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1064.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1064.pdf>
 Package pdftex.def Info: ../graphs/graphs/1064.pdf used on input line 3781.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1065.pdf, id=2292, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1065.pdf, id=2838, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1065.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1065.pdf>
 Package pdftex.def Info: ../graphs/graphs/1065.pdf used on input line 3840.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1066.pdf, id=2293, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1066.pdf, id=2839, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1066.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1066.pdf>
 Package pdftex.def Info: ../graphs/graphs/1066.pdf used on input line 3899.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1067.pdf, id=2294, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1067.pdf, id=2840, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1067.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1067.pdf>
 Package pdftex.def Info: ../graphs/graphs/1067.pdf used on input line 3958.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1068.pdf, id=2295, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1068.pdf, id=2841, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1068.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1068.pdf>
 Package pdftex.def Info: ../graphs/graphs/1068.pdf used on input line 4017.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1069.pdf, id=2296, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1069.pdf, id=2842, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1069.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1069.pdf>
 Package pdftex.def Info: ../graphs/graphs/1069.pdf used on input line 4076.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1070.pdf, id=2297, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1070.pdf, id=2843, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1070.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1070.pdf>
 Package pdftex.def Info: ../graphs/graphs/1070.pdf used on input line 4135.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [92
+ [121
 
-] [93 <../graphs/graphs/1061.pdf>] [94 <../graphs/graphs/1062.pdf>] [95] [96 <.
-./graphs/graphs/1063.pdf>] [97 <../graphs/graphs/1064.pdf>] [98] [99 <../graphs
-/graphs/1065.pdf>] [100 <../graphs/graphs/1066.pdf>] [101] [102 <../graphs/grap
-hs/1067.pdf>] [103 <../graphs/graphs/1068.pdf>] [104] [105 <../graphs/graphs/10
-69.pdf>] [106 <../graphs/graphs/1070.pdf>]
-<../graphs/graphs/1071.pdf, id=2668, 462.52798pt x 346.89601pt>
+] [122 <../graphs/graphs/1061.pdf>]
+[123 <../graphs/graphs/1062.pdf>] [124] [125 <../graphs/graphs/1063.pdf>]
+[126 <../graphs/graphs/1064.pdf>] [127] [128 <../graphs/graphs/1065.pdf>]
+[129 <../graphs/graphs/1066.pdf>] [130] [131 <../graphs/graphs/1067.pdf>]
+[132 <../graphs/graphs/1068.pdf>] [133] [134 <../graphs/graphs/1069.pdf>]
+[135 <../graphs/graphs/1070.pdf>]
+<../graphs/graphs/1071.pdf, id=3215, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1071.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1071.pdf>
 Package pdftex.def Info: ../graphs/graphs/1071.pdf used on input line 4195.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1072.pdf, id=2669, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1072.pdf, id=3216, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1072.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1072.pdf>
 Package pdftex.def Info: ../graphs/graphs/1072.pdf used on input line 4254.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1073.pdf, id=2670, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1073.pdf, id=3217, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1073.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1073.pdf>
 Package pdftex.def Info: ../graphs/graphs/1073.pdf used on input line 4313.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1074.pdf, id=2671, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1074.pdf, id=3218, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1074.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1074.pdf>
 Package pdftex.def Info: ../graphs/graphs/1074.pdf used on input line 4372.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1075.pdf, id=2672, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1075.pdf, id=3219, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1075.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1075.pdf>
 Package pdftex.def Info: ../graphs/graphs/1075.pdf used on input line 4431.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1076.pdf, id=2673, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1076.pdf, id=3220, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1076.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1076.pdf>
 Package pdftex.def Info: ../graphs/graphs/1076.pdf used on input line 4490.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1077.pdf, id=2674, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1077.pdf, id=3221, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1077.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1077.pdf>
 Package pdftex.def Info: ../graphs/graphs/1077.pdf used on input line 4549.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1078.pdf, id=2675, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1078.pdf, id=3222, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1078.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1078.pdf>
 Package pdftex.def Info: ../graphs/graphs/1078.pdf used on input line 4608.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1079.pdf, id=2676, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1079.pdf, id=3223, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1079.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1079.pdf>
 Package pdftex.def Info: ../graphs/graphs/1079.pdf used on input line 4667.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1080.pdf, id=2677, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1080.pdf, id=3224, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1080.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1080.pdf>
 Package pdftex.def Info: ../graphs/graphs/1080.pdf used on input line 4726.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [107
+ [136
 
-] [108 <../graphs/graphs/1071.pdf>]
-[109 <../graphs/graphs/1072.pdf>] [110] [111 <../graphs/graphs/1073.pdf>]
-[112 <../graphs/graphs/1074.pdf>] [113] [114 <../graphs/graphs/1075.pdf>]
-[115 <../graphs/graphs/1076.pdf>] [116] [117 <../graphs/graphs/1077.pdf>]
-[118 <../graphs/graphs/1078.pdf>] [119] [120 <../graphs/graphs/1079.pdf>]
-[121 <../graphs/graphs/1080.pdf>]) (./report_1b.aux) ) 
+] [137 <../graphs/graphs/1071.pdf>]
+[138 <../graphs/graphs/1072.pdf>] [139] [140 <../graphs/graphs/1073.pdf>]
+[141 <../graphs/graphs/1074.pdf>] [142] [143 <../graphs/graphs/1075.pdf>]
+[144 <../graphs/graphs/1076.pdf>] [145] [146 <../graphs/graphs/1077.pdf>]
+[147 <../graphs/graphs/1078.pdf>] [148] [149 <../graphs/graphs/1079.pdf>]
+[150 <../graphs/graphs/1080.pdf>]
+<../graphs/graphs/2001.pdf, id=3593, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2001.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2001.pdf>
+Package pdftex.def Info: ../graphs/graphs/2001.pdf used on input line 4786.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2002.pdf, id=3594, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2002.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2002.pdf>
+Package pdftex.def Info: ../graphs/graphs/2002.pdf used on input line 4845.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2003.pdf, id=3595, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2003.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2003.pdf>
+Package pdftex.def Info: ../graphs/graphs/2003.pdf used on input line 4904.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2004.pdf, id=3596, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2004.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2004.pdf>
+Package pdftex.def Info: ../graphs/graphs/2004.pdf used on input line 4963.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2005.pdf, id=3597, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2005.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2005.pdf>
+Package pdftex.def Info: ../graphs/graphs/2005.pdf used on input line 5022.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2006.pdf, id=3598, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2006.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2006.pdf>
+Package pdftex.def Info: ../graphs/graphs/2006.pdf used on input line 5081.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2007.pdf, id=3599, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2007.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2007.pdf>
+Package pdftex.def Info: ../graphs/graphs/2007.pdf used on input line 5140.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2008.pdf, id=3600, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2008.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2008.pdf>
+Package pdftex.def Info: ../graphs/graphs/2008.pdf used on input line 5199.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2009.pdf, id=3601, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2009.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2009.pdf>
+Package pdftex.def Info: ../graphs/graphs/2009.pdf used on input line 5258.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2010.pdf, id=3602, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2010.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2010.pdf>
+Package pdftex.def Info: ../graphs/graphs/2010.pdf used on input line 5317.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [151
+
+] [152 <../graphs/graphs/2001.pdf>]
+[153 <../graphs/graphs/2002.pdf>] [154] [155 <../graphs/graphs/2003.pdf>]
+[156 <../graphs/graphs/2004.pdf>] [157] [158 <../graphs/graphs/2005.pdf>]
+[159 <../graphs/graphs/2006.pdf>] [160] [161 <../graphs/graphs/2007.pdf>]
+[162 <../graphs/graphs/2008.pdf>] [163] [164 <../graphs/graphs/2009.pdf>]
+[165 <../graphs/graphs/2010.pdf>]
+<../graphs/graphs/2011.pdf, id=3986, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2011.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2011.pdf>
+Package pdftex.def Info: ../graphs/graphs/2011.pdf used on input line 5377.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2012.pdf, id=3987, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2012.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2012.pdf>
+Package pdftex.def Info: ../graphs/graphs/2012.pdf used on input line 5436.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2013.pdf, id=3988, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2013.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2013.pdf>
+Package pdftex.def Info: ../graphs/graphs/2013.pdf used on input line 5495.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2014.pdf, id=3989, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2014.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2014.pdf>
+Package pdftex.def Info: ../graphs/graphs/2014.pdf used on input line 5554.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2015.pdf, id=3990, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2015.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2015.pdf>
+Package pdftex.def Info: ../graphs/graphs/2015.pdf used on input line 5613.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2016.pdf, id=3991, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2016.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2016.pdf>
+Package pdftex.def Info: ../graphs/graphs/2016.pdf used on input line 5672.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2017.pdf, id=3992, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2017.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2017.pdf>
+Package pdftex.def Info: ../graphs/graphs/2017.pdf used on input line 5731.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2018.pdf, id=3993, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2018.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2018.pdf>
+Package pdftex.def Info: ../graphs/graphs/2018.pdf used on input line 5790.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2019.pdf, id=3994, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2019.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2019.pdf>
+Package pdftex.def Info: ../graphs/graphs/2019.pdf used on input line 5849.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2020.pdf, id=3995, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2020.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2020.pdf>
+Package pdftex.def Info: ../graphs/graphs/2020.pdf used on input line 5908.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [166
+
+] [167 <../graphs/graphs/2011.pdf>]
+[168 <../graphs/graphs/2012.pdf>] [169] [170 <../graphs/graphs/2013.pdf>]
+[171 <../graphs/graphs/2014.pdf>] [172] [173 <../graphs/graphs/2015.pdf>]
+[174 <../graphs/graphs/2016.pdf>] [175] [176 <../graphs/graphs/2017.pdf>]
+[177 <../graphs/graphs/2018.pdf>] [178] [179 <../graphs/graphs/2019.pdf>]
+[180 <../graphs/graphs/2020.pdf>]
+<../graphs/graphs/2021.pdf, id=4380, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2021.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2021.pdf>
+Package pdftex.def Info: ../graphs/graphs/2021.pdf used on input line 5968.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2022.pdf, id=4381, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2022.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2022.pdf>
+Package pdftex.def Info: ../graphs/graphs/2022.pdf used on input line 6027.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2023.pdf, id=4382, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2023.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2023.pdf>
+Package pdftex.def Info: ../graphs/graphs/2023.pdf used on input line 6086.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2024.pdf, id=4383, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2024.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2024.pdf>
+Package pdftex.def Info: ../graphs/graphs/2024.pdf used on input line 6145.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2025.pdf, id=4384, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2025.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2025.pdf>
+Package pdftex.def Info: ../graphs/graphs/2025.pdf used on input line 6204.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2026.pdf, id=4385, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2026.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2026.pdf>
+Package pdftex.def Info: ../graphs/graphs/2026.pdf used on input line 6263.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2027.pdf, id=4386, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2027.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2027.pdf>
+Package pdftex.def Info: ../graphs/graphs/2027.pdf used on input line 6322.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2028.pdf, id=4387, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2028.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2028.pdf>
+Package pdftex.def Info: ../graphs/graphs/2028.pdf used on input line 6381.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2029.pdf, id=4388, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2029.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2029.pdf>
+Package pdftex.def Info: ../graphs/graphs/2029.pdf used on input line 6440.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2030.pdf, id=4389, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2030.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2030.pdf>
+Package pdftex.def Info: ../graphs/graphs/2030.pdf used on input line 6499.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [181
+
+] [182 <../graphs/graphs/2021.pdf>]
+[183 <../graphs/graphs/2022.pdf>] [184] [185 <../graphs/graphs/2023.pdf>]
+[186 <../graphs/graphs/2024.pdf>] [187] [188 <../graphs/graphs/2025.pdf>]
+[189 <../graphs/graphs/2026.pdf>] [190] [191 <../graphs/graphs/2027.pdf>]
+[192 <../graphs/graphs/2028.pdf>] [193] [194 <../graphs/graphs/2029.pdf>]
+[195 <../graphs/graphs/2030.pdf>]
+<../graphs/graphs/2031.pdf, id=4779, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2031.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2031.pdf>
+Package pdftex.def Info: ../graphs/graphs/2031.pdf used on input line 6559.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2032.pdf, id=4780, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2032.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2032.pdf>
+Package pdftex.def Info: ../graphs/graphs/2032.pdf used on input line 6618.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2033.pdf, id=4781, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2033.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2033.pdf>
+Package pdftex.def Info: ../graphs/graphs/2033.pdf used on input line 6677.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2034.pdf, id=4782, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2034.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2034.pdf>
+Package pdftex.def Info: ../graphs/graphs/2034.pdf used on input line 6736.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2035.pdf, id=4783, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2035.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2035.pdf>
+Package pdftex.def Info: ../graphs/graphs/2035.pdf used on input line 6795.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2036.pdf, id=4784, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2036.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2036.pdf>
+Package pdftex.def Info: ../graphs/graphs/2036.pdf used on input line 6854.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2037.pdf, id=4785, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2037.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2037.pdf>
+Package pdftex.def Info: ../graphs/graphs/2037.pdf used on input line 6913.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2038.pdf, id=4786, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2038.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2038.pdf>
+Package pdftex.def Info: ../graphs/graphs/2038.pdf used on input line 6972.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2039.pdf, id=4787, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2039.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2039.pdf>
+Package pdftex.def Info: ../graphs/graphs/2039.pdf used on input line 7031.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2040.pdf, id=4788, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2040.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2040.pdf>
+Package pdftex.def Info: ../graphs/graphs/2040.pdf used on input line 7090.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [196
+
+] [197 <../graphs/graphs/2031.pdf>]
+[198 <../graphs/graphs/2032.pdf>] [199] [200 <../graphs/graphs/2033.pdf>]
+[201 <../graphs/graphs/2034.pdf>] [202] [203 <../graphs/graphs/2035.pdf>]
+[204 <../graphs/graphs/2036.pdf>] [205] [206 <../graphs/graphs/2037.pdf>]
+[207 <../graphs/graphs/2038.pdf>] [208] [209 <../graphs/graphs/2039.pdf>]
+[210 <../graphs/graphs/2040.pdf>]
+<../graphs/graphs/2041.pdf, id=5172, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2041.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2041.pdf>
+Package pdftex.def Info: ../graphs/graphs/2041.pdf used on input line 7150.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2042.pdf, id=5173, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2042.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2042.pdf>
+Package pdftex.def Info: ../graphs/graphs/2042.pdf used on input line 7209.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2043.pdf, id=5174, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2043.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2043.pdf>
+Package pdftex.def Info: ../graphs/graphs/2043.pdf used on input line 7268.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2044.pdf, id=5175, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2044.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2044.pdf>
+Package pdftex.def Info: ../graphs/graphs/2044.pdf used on input line 7327.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2045.pdf, id=5176, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2045.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2045.pdf>
+Package pdftex.def Info: ../graphs/graphs/2045.pdf used on input line 7386.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2046.pdf, id=5177, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2046.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2046.pdf>
+Package pdftex.def Info: ../graphs/graphs/2046.pdf used on input line 7445.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2047.pdf, id=5178, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2047.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2047.pdf>
+Package pdftex.def Info: ../graphs/graphs/2047.pdf used on input line 7504.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2048.pdf, id=5179, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2048.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2048.pdf>
+Package pdftex.def Info: ../graphs/graphs/2048.pdf used on input line 7563.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2049.pdf, id=5180, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2049.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2049.pdf>
+Package pdftex.def Info: ../graphs/graphs/2049.pdf used on input line 7622.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2050.pdf, id=5181, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2050.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2050.pdf>
+Package pdftex.def Info: ../graphs/graphs/2050.pdf used on input line 7681.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [211
+
+] [212 <../graphs/graphs/2041.pdf>]
+[213 <../graphs/graphs/2042.pdf>] [214] [215 <../graphs/graphs/2043.pdf>]
+[216 <../graphs/graphs/2044.pdf>] [217] [218 <../graphs/graphs/2045.pdf>]
+[219 <../graphs/graphs/2046.pdf>] [220] [221 <../graphs/graphs/2047.pdf>]
+[222 <../graphs/graphs/2048.pdf>] [223] [224 <../graphs/graphs/2049.pdf>]
+[225 <../graphs/graphs/2050.pdf>]
+<../graphs/graphs/2051.pdf, id=5566, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2051.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2051.pdf>
+Package pdftex.def Info: ../graphs/graphs/2051.pdf used on input line 7741.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2052.pdf, id=5567, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2052.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2052.pdf>
+Package pdftex.def Info: ../graphs/graphs/2052.pdf used on input line 7800.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2053.pdf, id=5568, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2053.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2053.pdf>
+Package pdftex.def Info: ../graphs/graphs/2053.pdf used on input line 7859.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2054.pdf, id=5569, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2054.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2054.pdf>
+Package pdftex.def Info: ../graphs/graphs/2054.pdf used on input line 7918.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2055.pdf, id=5570, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2055.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2055.pdf>
+Package pdftex.def Info: ../graphs/graphs/2055.pdf used on input line 7977.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2056.pdf, id=5571, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2056.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2056.pdf>
+Package pdftex.def Info: ../graphs/graphs/2056.pdf used on input line 8036.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2057.pdf, id=5572, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2057.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2057.pdf>
+Package pdftex.def Info: ../graphs/graphs/2057.pdf used on input line 8095.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2058.pdf, id=5573, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2058.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2058.pdf>
+Package pdftex.def Info: ../graphs/graphs/2058.pdf used on input line 8154.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2059.pdf, id=5574, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2059.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2059.pdf>
+Package pdftex.def Info: ../graphs/graphs/2059.pdf used on input line 8213.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2060.pdf, id=5575, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2060.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2060.pdf>
+Package pdftex.def Info: ../graphs/graphs/2060.pdf used on input line 8272.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [226
+
+] [227 <../graphs/graphs/2051.pdf>]
+[228 <../graphs/graphs/2052.pdf>] [229] [230 <../graphs/graphs/2053.pdf>]
+[231 <../graphs/graphs/2054.pdf>] [232] [233 <../graphs/graphs/2055.pdf>]
+[234 <../graphs/graphs/2056.pdf>] [235] [236 <../graphs/graphs/2057.pdf>]
+[237 <../graphs/graphs/2058.pdf>] [238] [239 <../graphs/graphs/2059.pdf>]
+[240 <../graphs/graphs/2060.pdf>]
+<../graphs/graphs/2061.pdf, id=5960, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2061.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2061.pdf>
+Package pdftex.def Info: ../graphs/graphs/2061.pdf used on input line 8332.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2062.pdf, id=5961, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2062.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2062.pdf>
+Package pdftex.def Info: ../graphs/graphs/2062.pdf used on input line 8391.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2063.pdf, id=5962, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2063.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2063.pdf>
+Package pdftex.def Info: ../graphs/graphs/2063.pdf used on input line 8450.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/2064.pdf, id=5963, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2064.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2064.pdf>
+Package pdftex.def Info: ../graphs/graphs/2064.pdf used on input line 8509.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3001.pdf, id=5964, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3001.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3001.pdf>
+Package pdftex.def Info: ../graphs/graphs/3001.pdf used on input line 8568.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3002.pdf, id=5965, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3002.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3002.pdf>
+Package pdftex.def Info: ../graphs/graphs/3002.pdf used on input line 8627.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3003.pdf, id=5966, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3003.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3003.pdf>
+Package pdftex.def Info: ../graphs/graphs/3003.pdf used on input line 8686.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3004.pdf, id=5967, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3004.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3004.pdf>
+Package pdftex.def Info: ../graphs/graphs/3004.pdf used on input line 8745.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3005.pdf, id=5968, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3005.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3005.pdf>
+Package pdftex.def Info: ../graphs/graphs/3005.pdf used on input line 8804.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3006.pdf, id=5969, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3006.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3006.pdf>
+Package pdftex.def Info: ../graphs/graphs/3006.pdf used on input line 8863.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3007.pdf, id=5970, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3007.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3007.pdf>
+Package pdftex.def Info: ../graphs/graphs/3007.pdf used on input line 8922.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3008.pdf, id=5971, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3008.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3008.pdf>
+Package pdftex.def Info: ../graphs/graphs/3008.pdf used on input line 8981.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3009.pdf, id=5972, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3009.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3009.pdf>
+Package pdftex.def Info: ../graphs/graphs/3009.pdf used on input line 9040.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3010.pdf, id=5973, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3010.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3010.pdf>
+Package pdftex.def Info: ../graphs/graphs/3010.pdf used on input line 9099.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [241
+
+] [242 <../graphs/graphs/2061.pdf>]
+[243 <../graphs/graphs/2062.pdf>] [244] [245 <../graphs/graphs/2063.pdf>]
+[246 <../graphs/graphs/2064.pdf>] [247] [248 <../graphs/graphs/3001.pdf>]
+[249 <../graphs/graphs/3002.pdf>] [250] [251 <../graphs/graphs/3003.pdf>]
+[252 <../graphs/graphs/3004.pdf>] [253] [254 <../graphs/graphs/3005.pdf>]
+[255 <../graphs/graphs/3006.pdf>] [256] [257 <../graphs/graphs/3007.pdf>]
+[258 <../graphs/graphs/3008.pdf>] [259] [260 <../graphs/graphs/3009.pdf>]
+[261 <../graphs/graphs/3010.pdf>]
+<../graphs/graphs/3011.pdf, id=6516, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3011.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3011.pdf>
+Package pdftex.def Info: ../graphs/graphs/3011.pdf used on input line 9159.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3012.pdf, id=6517, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3012.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3012.pdf>
+Package pdftex.def Info: ../graphs/graphs/3012.pdf used on input line 9218.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3013.pdf, id=6518, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3013.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3013.pdf>
+Package pdftex.def Info: ../graphs/graphs/3013.pdf used on input line 9277.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3014.pdf, id=6519, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3014.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3014.pdf>
+Package pdftex.def Info: ../graphs/graphs/3014.pdf used on input line 9336.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3015.pdf, id=6520, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3015.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3015.pdf>
+Package pdftex.def Info: ../graphs/graphs/3015.pdf used on input line 9395.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3016.pdf, id=6521, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3016.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3016.pdf>
+Package pdftex.def Info: ../graphs/graphs/3016.pdf used on input line 9454.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3017.pdf, id=6522, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3017.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3017.pdf>
+Package pdftex.def Info: ../graphs/graphs/3017.pdf used on input line 9513.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3018.pdf, id=6523, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3018.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3018.pdf>
+Package pdftex.def Info: ../graphs/graphs/3018.pdf used on input line 9572.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3019.pdf, id=6524, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3019.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3019.pdf>
+Package pdftex.def Info: ../graphs/graphs/3019.pdf used on input line 9631.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3020.pdf, id=6525, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3020.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3020.pdf>
+Package pdftex.def Info: ../graphs/graphs/3020.pdf used on input line 9690.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [262
+
+] [263 <../graphs/graphs/3011.pdf>]
+[264 <../graphs/graphs/3012.pdf>] [265] [266 <../graphs/graphs/3013.pdf>]
+[267 <../graphs/graphs/3014.pdf>] [268] [269 <../graphs/graphs/3015.pdf>]
+[270 <../graphs/graphs/3016.pdf>] [271] [272 <../graphs/graphs/3017.pdf>]
+[273 <../graphs/graphs/3018.pdf>] [274] [275 <../graphs/graphs/3019.pdf>]
+[276 <../graphs/graphs/3020.pdf>]
+<../graphs/graphs/3021.pdf, id=6910, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3021.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3021.pdf>
+Package pdftex.def Info: ../graphs/graphs/3021.pdf used on input line 9750.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3022.pdf, id=6911, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3022.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3022.pdf>
+Package pdftex.def Info: ../graphs/graphs/3022.pdf used on input line 9809.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3023.pdf, id=6912, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3023.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3023.pdf>
+Package pdftex.def Info: ../graphs/graphs/3023.pdf used on input line 9868.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3024.pdf, id=6913, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3024.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3024.pdf>
+Package pdftex.def Info: ../graphs/graphs/3024.pdf used on input line 9927.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3025.pdf, id=6914, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3025.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3025.pdf>
+Package pdftex.def Info: ../graphs/graphs/3025.pdf used on input line 9986.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3026.pdf, id=6915, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3026.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3026.pdf>
+Package pdftex.def Info: ../graphs/graphs/3026.pdf used on input line 10045.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3027.pdf, id=6916, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3027.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3027.pdf>
+Package pdftex.def Info: ../graphs/graphs/3027.pdf used on input line 10104.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3028.pdf, id=6917, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3028.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3028.pdf>
+Package pdftex.def Info: ../graphs/graphs/3028.pdf used on input line 10163.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3029.pdf, id=6918, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3029.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3029.pdf>
+Package pdftex.def Info: ../graphs/graphs/3029.pdf used on input line 10222.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3030.pdf, id=6919, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3030.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3030.pdf>
+Package pdftex.def Info: ../graphs/graphs/3030.pdf used on input line 10281.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [277
+
+] [278 <../graphs/graphs/3021.pdf>]
+[279 <../graphs/graphs/3022.pdf>] [280] [281 <../graphs/graphs/3023.pdf>]
+[282 <../graphs/graphs/3024.pdf>] [283] [284 <../graphs/graphs/3025.pdf>]
+[285 <../graphs/graphs/3026.pdf>] [286] [287 <../graphs/graphs/3027.pdf>]
+[288 <../graphs/graphs/3028.pdf>] [289] [290 <../graphs/graphs/3029.pdf>]
+[291 <../graphs/graphs/3030.pdf>]
+<../graphs/graphs/3031.pdf, id=7299, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3031.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3031.pdf>
+Package pdftex.def Info: ../graphs/graphs/3031.pdf used on input line 10341.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3032.pdf, id=7300, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3032.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3032.pdf>
+Package pdftex.def Info: ../graphs/graphs/3032.pdf used on input line 10400.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3033.pdf, id=7301, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3033.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3033.pdf>
+Package pdftex.def Info: ../graphs/graphs/3033.pdf used on input line 10459.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3034.pdf, id=7302, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3034.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3034.pdf>
+Package pdftex.def Info: ../graphs/graphs/3034.pdf used on input line 10518.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3035.pdf, id=7303, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3035.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3035.pdf>
+Package pdftex.def Info: ../graphs/graphs/3035.pdf used on input line 10577.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3036.pdf, id=7304, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3036.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3036.pdf>
+Package pdftex.def Info: ../graphs/graphs/3036.pdf used on input line 10636.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3037.pdf, id=7305, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3037.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3037.pdf>
+Package pdftex.def Info: ../graphs/graphs/3037.pdf used on input line 10695.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3038.pdf, id=7306, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3038.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3038.pdf>
+Package pdftex.def Info: ../graphs/graphs/3038.pdf used on input line 10754.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3039.pdf, id=7307, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3039.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3039.pdf>
+Package pdftex.def Info: ../graphs/graphs/3039.pdf used on input line 10813.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3040.pdf, id=7308, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3040.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3040.pdf>
+Package pdftex.def Info: ../graphs/graphs/3040.pdf used on input line 10872.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [292
+
+] [293 <../graphs/graphs/3031.pdf>]
+[294 <../graphs/graphs/3032.pdf>] [295] [296 <../graphs/graphs/3033.pdf>]
+[297 <../graphs/graphs/3034.pdf>] [298] [299 <../graphs/graphs/3035.pdf>]
+[300 <../graphs/graphs/3036.pdf>] [301] [302 <../graphs/graphs/3037.pdf>]
+[303 <../graphs/graphs/3038.pdf>] [304] [305 <../graphs/graphs/3039.pdf>]
+[306 <../graphs/graphs/3040.pdf>]
+<../graphs/graphs/3041.pdf, id=7689, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3041.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3041.pdf>
+Package pdftex.def Info: ../graphs/graphs/3041.pdf used on input line 10932.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3042.pdf, id=7690, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3042.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3042.pdf>
+Package pdftex.def Info: ../graphs/graphs/3042.pdf used on input line 10991.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3043.pdf, id=7691, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3043.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3043.pdf>
+Package pdftex.def Info: ../graphs/graphs/3043.pdf used on input line 11050.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3044.pdf, id=7692, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3044.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3044.pdf>
+Package pdftex.def Info: ../graphs/graphs/3044.pdf used on input line 11109.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3045.pdf, id=7693, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3045.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3045.pdf>
+Package pdftex.def Info: ../graphs/graphs/3045.pdf used on input line 11168.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3046.pdf, id=7694, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3046.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3046.pdf>
+Package pdftex.def Info: ../graphs/graphs/3046.pdf used on input line 11227.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3047.pdf, id=7695, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3047.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3047.pdf>
+Package pdftex.def Info: ../graphs/graphs/3047.pdf used on input line 11286.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3048.pdf, id=7696, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3048.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3048.pdf>
+Package pdftex.def Info: ../graphs/graphs/3048.pdf used on input line 11345.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3049.pdf, id=7697, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3049.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3049.pdf>
+Package pdftex.def Info: ../graphs/graphs/3049.pdf used on input line 11404.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3050.pdf, id=7698, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3050.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3050.pdf>
+Package pdftex.def Info: ../graphs/graphs/3050.pdf used on input line 11463.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [307
+
+] [308 <../graphs/graphs/3041.pdf>]
+[309 <../graphs/graphs/3042.pdf>] [310] [311 <../graphs/graphs/3043.pdf>]
+[312 <../graphs/graphs/3044.pdf>] [313] [314 <../graphs/graphs/3045.pdf>]
+[315 <../graphs/graphs/3046.pdf>] [316] [317 <../graphs/graphs/3047.pdf>]
+[318 <../graphs/graphs/3048.pdf>] [319] [320 <../graphs/graphs/3049.pdf>]
+[321 <../graphs/graphs/3050.pdf>]
+<../graphs/graphs/3051.pdf, id=8078, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3051.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3051.pdf>
+Package pdftex.def Info: ../graphs/graphs/3051.pdf used on input line 11523.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3052.pdf, id=8079, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3052.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3052.pdf>
+Package pdftex.def Info: ../graphs/graphs/3052.pdf used on input line 11582.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3053.pdf, id=8080, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3053.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3053.pdf>
+Package pdftex.def Info: ../graphs/graphs/3053.pdf used on input line 11641.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3054.pdf, id=8081, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3054.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3054.pdf>
+Package pdftex.def Info: ../graphs/graphs/3054.pdf used on input line 11700.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3055.pdf, id=8082, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3055.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3055.pdf>
+Package pdftex.def Info: ../graphs/graphs/3055.pdf used on input line 11759.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3056.pdf, id=8083, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3056.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3056.pdf>
+Package pdftex.def Info: ../graphs/graphs/3056.pdf used on input line 11818.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3057.pdf, id=8084, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3057.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3057.pdf>
+Package pdftex.def Info: ../graphs/graphs/3057.pdf used on input line 11877.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3058.pdf, id=8085, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3058.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3058.pdf>
+Package pdftex.def Info: ../graphs/graphs/3058.pdf used on input line 11936.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3059.pdf, id=8086, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3059.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3059.pdf>
+Package pdftex.def Info: ../graphs/graphs/3059.pdf used on input line 11995.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3060.pdf, id=8087, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3060.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3060.pdf>
+Package pdftex.def Info: ../graphs/graphs/3060.pdf used on input line 12054.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [322
+
+] [323 <../graphs/graphs/3051.pdf>]
+[324 <../graphs/graphs/3052.pdf>] [325] [326 <../graphs/graphs/3053.pdf>]
+[327 <../graphs/graphs/3054.pdf>] [328] [329 <../graphs/graphs/3055.pdf>]
+[330 <../graphs/graphs/3056.pdf>] [331] [332 <../graphs/graphs/3057.pdf>]
+[333 <../graphs/graphs/3058.pdf>] [334] [335 <../graphs/graphs/3059.pdf>]
+[336 <../graphs/graphs/3060.pdf>]
+<../graphs/graphs/3061.pdf, id=8466, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3061.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3061.pdf>
+Package pdftex.def Info: ../graphs/graphs/3061.pdf used on input line 12114.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3062.pdf, id=8467, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3062.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3062.pdf>
+Package pdftex.def Info: ../graphs/graphs/3062.pdf used on input line 12173.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3063.pdf, id=8468, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3063.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3063.pdf>
+Package pdftex.def Info: ../graphs/graphs/3063.pdf used on input line 12232.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3064.pdf, id=8469, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3064.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3064.pdf>
+Package pdftex.def Info: ../graphs/graphs/3064.pdf used on input line 12291.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+) [337
+
+] [338 <../graphs/graphs/3061.pdf>]
+[339 <../graphs/graphs/3062.pdf>] [340] [341 <../graphs/graphs/3063.pdf>]
+[342 <../graphs/graphs/3064.pdf>] (./report_1b.aux) ) 
 Here is how much of TeX's memory you used:
- 5688 strings out of 493029
- 86659 string characters out of 6136234
- 207722 words of memory out of 5000000
- 9022 multiletter control sequences out of 15000+600000
- 8408 words of font info for 31 fonts, out of 8000000 for 9000
+ 6742 strings out of 493029
+ 111591 string characters out of 6136234
+ 235421 words of memory out of 5000000
+ 9920 multiletter control sequences out of 15000+600000
+ 8754 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,7n,38p,1022b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr17.pfb>
-Output written on report_1b.pdf (121 pages, 930756 bytes).
+</usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmti10.pfb>
+Output written on report_1b.pdf (342 pages, 9687644 bytes).
 PDF statistics:
- 3066 PDF objects out of 3580 (max. 8388607)
- 761 compressed objects within 8 object streams
+ 8652 PDF objects out of 8907 (max. 8388607)
+ 2343 compressed objects within 24 object streams
  0 named destinations out of 1000 (max. 500000)
- 401 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
