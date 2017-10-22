@@ -23,7 +23,9 @@ class Board:
 		fail_max (int): Number of tries to place a shape before 
 			divide_max_width decrements
 		current_length (int): The current length (max x) of the board
-		fitness (int): Fitness eval = -current_length
+		current_width (int): The current width (max y) of the board
+		fitness (int): Fitness eval = -current_length - penalty
+		fitness_width (int): -Current width - penalty
 		placement_algorithm (string): Algorithm to place with
 			"Minimize": Minimize by placing in most bottom left corner
 			"Random": Randomly place shapes
@@ -33,6 +35,7 @@ class Board:
 			This is the sum of all the points in all of the shapes
 			This is used to find the penalty needed
 		penalty (int): The current penalty
+		moea_width (bool): If MOEA width matters or not
 	"""
 	max_height = 0
 	max_width = 0
@@ -41,6 +44,7 @@ class Board:
 	fail_max = 20
 	penalty_weight = 1
 	total_points = 0
+	moea_width = False
 
 	def __init__(self, shape_list):
 		"""Initializes a board with shapes in a random order
@@ -191,6 +195,8 @@ class Board:
 		# x, y shape offset
 		x, y = 0, 0
 
+		self.divide_max_height = randrange(1,3)
+
 		### Find valid placement of shape ###
 		for shape in self.shapes:
 			# Get current points of the shape
@@ -214,7 +220,7 @@ class Board:
 
 				# Chose a random x and y within range
 				x = randrange(0, self.max_width // self.divide_max_width)
-				y = randrange(0, self.max_height)
+				y = randrange(0, self.max_height // self.divide_max_height)
 
 				for point in shape_coordinates:
 					# If point is already occupied or above board or if we
@@ -407,7 +413,7 @@ class Board:
 
 			# Chose a random x and y within range
 			x = randrange(0, self.max_width // self.divide_max_width)
-			y = randrange(0, self.max_height)
+			y = randrange(0, self.max_height // self.divide_max_height)
 
 			for point in shape_coordinates:
 				# If point is already occupied or above board or if we
@@ -453,6 +459,23 @@ class Board:
 		# Fitness Function
 		self.fitness = -self.current_length - self.penalty
 
+		# Fitness length
+		self.length_fitness = self.fitness
+
+		# Fitness width if using MOEA width
+		if self.moea_width == True:
+			self.update_width_fitness()
+
+	def update_width_fitness(self):
+		"""Updates the width fitness if using a moea with width fitness
+		"""
+		self.current_width = 0
+		for shape in self.shapes:
+			y_value = shape.max_y_value()
+			self.current_width = max(y_value, self.current_width)
+
+		self.width_fitness = -self.current_width - self.penalty
+
 	def occupied_squares(self):
 		# Find number of occupied squares
 		occupied_squares = set()
@@ -470,11 +493,17 @@ class Board:
 		return total_points
 
 
-	def check_for_overlap(self):
-		"""Checks for shape overlap
+	def check_for_overlap_and_outofbounds(self):
+		"""Checks for shape overlap and if the shape is out of bounds
 
-		If shape overlap is found, randomly place second shape
+		If shape overlap is found or shape is out of bounds, randomly 
+		place second shape.
+
+		If using penalty function, return
 		"""
+		if self.placement_algorithm == 'Random with Penalty':
+			return
+
 		# Initialize x offset to 0
 		x_offset = 0
 		# No squares are currently occupied
@@ -492,7 +521,9 @@ class Board:
 			shape_coordinates = shape.get_current_coordinates()
 
 			for point in shape_coordinates:
-				if (point[0] + shape.x_offset, point[1] + shape.y_offset) not in occupied_squares:
+				if (point[0] + shape.x_offset, point[1] + shape.y_offset) not in occupied_squares \
+					and point[0] + shape.x_offset < self.max_width \
+					and point[1] + shape.y_offset < self.max_height:
 					occupied_squares.add((point[0] + shape.x_offset, point[1] + shape.y_offset))
 				else:
 					# Add shape to move shape list

@@ -1,7 +1,7 @@
 {
-	"Random Seed": null,
+	"Random Seed": 1,
 	"Search Algorithm": "EA",
-	"Runs": 30,
+	"Runs": 1,
 	"Fitness Evaluations": 10000,
 	"Population Size": 100,
 	"Log File Path": "",
@@ -12,13 +12,14 @@
 	"Mutation Rate": 0.1,
 	"Termination Convergence Criterion": 10000,
 	"Parent Selection Algorithm": "Fitness Proportional Selection",
-	"Placement Algorithm": "Random with Penalty",
+	"Placement Algorithm": "Minimize",
 	"Recombination Algorithm": "Partially Mapped Crossover",
 	"Mutation Algorithm": "Move",
 	"Survivor Algorithm": "Truncation",
 	"Survival Strategy": "Plus",
-	"Self Adaptive Mutation Rate": true,
-	"Self Adaptive Penalty Coefficient": true,
-	"Self Adaptive Offspring Count": true,
-	"Penalty Coefficient": 1
+	"Self Adaptive Mutation Rate": false,
+	"Self Adaptive Penalty Coefficient": false,
+	"Self Adaptive Offspring Count": false,
+	"Penalty Coefficient": 1,
+	"MOEA": true
 }

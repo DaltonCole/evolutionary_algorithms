@@ -18,6 +18,11 @@ import multiprocessing		# Used to multiprocess each run
 from time import time		# Used to seed random number generator
 from copy import deepcopy	# Used to make children
 from math import ceil
+import argparse
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+from collections import OrderedDict
 
 def signal_handler(signal, frame):
 	"""Used to gracefully exit when ctrl-c is pressed
@@ -76,6 +81,7 @@ def config_parser(config_file_name):
 			self_adaptive: False
 				If any self_adaptive* is True, this is true
 			self_adaptive_mutation_rate: False
+			moea_width: False
 
 	Args:
 		config_file_name (str): File name of configuration JSON file
@@ -178,6 +184,9 @@ def config_parser(config_file_name):
 	if config_dict['self_adaptive_mutation_rate'] == True or config_dict['self_adaptive_penalty_coefficient'] == True:
 		config_dict['self_adaptive'] = True
 
+	# Multi-Objective EA
+	config_parser_helper(config_dict, 'moea_width', 'MOEA', json_config_file, False)
+
 	return config_dict
 
 def config_parser_helper(config_dict, key_string, json_string, json_config_file, default_value):
@@ -236,7 +245,7 @@ def write_algorithm_log(file, runs, return_dict, config_dict):
 		os.makedirs(os.path.dirname(file))
 
 	with open(file, 'a') as f:
-		f.write('\n\n' + add_to_algorithm_log_string(config_dict, header=True))
+		f.write('\n\n' + add_to_algorithm_log_string([], config_dict, header=True))
 		f.write("\nResult Log\n")
 		for i in range(runs):
 			f.write(return_dict[i][0])
@@ -279,6 +288,300 @@ def create_log_file(config_dict):
 	json.dump(log_dict, opened_file, indent=4, sort_keys=True)
 	# Close opened file
 	opened_file.close()
+
+def make_picture(best_board, config_dict, show=False):
+	"""Creates a picture of the current board and saves
+
+	The picture is saved in ./graphs/picture/<random_seed>.pdf
+
+	If shapes are out of bounds or overlapping, a print statement warns
+	the user.
+
+	Args:
+		best_board (Board): The board to be pictured
+		config_dict (dict {str: val}): The configuration dictionary
+		show (bool): Show picture after creation
+	"""
+	# Create plot and sublot
+	fig = plt.figure()
+	axes = fig.add_subplot(111)
+
+	# Max height
+	height = config_dict['max_height']
+
+	# Find length
+	length = 0
+	for shape in best_board.shapes:
+		for point in shape.get_current_coordinates():
+			length = max(length, point[0] + shape.x_offset)
+	length += 1
+
+	# Fill in board with blank squares
+	arr = np.zeros(length * height).reshape((height, length))
+
+	# Set invalid bools
+	out_of_bounds = False
+	overlapping = False
+
+	# Fill in board with shapes
+	current_shape = 0
+	all_points = []
+	for shape in best_board.shapes:
+		for point in shape.get_current_coordinates():
+			try:
+				# Add (y, x) to the board
+				arr[point[1] + shape.y_offset][point[0] + shape.x_offset] = current_shape
+				# Append point to all_points list
+				all_points.append((point[0] + shape.x_offset, point[1] + shape.y_offset))
+			except:
+				# If error occurs, it is because the point is out of bounds
+				out_of_bounds = True
+		# Increment current shape (for color change)
+		current_shape += 1
+
+	arr = np.ma.masked_where(arr == 0, arr)
+	axes.imshow(arr, cmap='rainbow')
+	axes.invert_yaxis()
+
+	# If overlap occurs, print overlap to console
+	if len(all_points) != len(set(all_points)):
+		overlapping = True
+
+	# Add tick marks every 5 points
+	y_ticks = [y for y in range(0, height, 5)]
+	x_ticks = [x for x in range(0, length, 5)]
+	plt.yticks(y_ticks)
+	plt.xticks(x_ticks)
+	plt.minorticks_on()
+
+	# Save figure
+	file = './graphs/picture/' + str(config_dict['random_seed'])
+	if out_of_bounds == True:
+		file += '___OUTOFBOUNDS___'
+	if overlapping == True:
+		file += '___OVERLAPPING___'
+	file += '.pdf'
+	plt.savefig(file)
+
+	# Show if true
+	if show == True:
+		plt.show()
+
+	# Clear memory
+	plt.clf()
+
+def create_graph(config_dict, return_dict, show=False):
+	"""Creates a plot of averages and best points of eval vs fitness value
+
+	Average and best fitness values are ploted on the same plot. They are saved
+	to ./graphs/graphs/<random seed>.pdf
+	The average fitness values are saved to ./graphs/points/<random seed>
+
+	Args:
+		config_dict (dict {str, val}): Configuraiton dictionary
+		return_dict (dict {str, val}): Return dictionary from EA
+		show (bool): The the resulting plot
+	"""	
+	# Create dictionaries to store values
+	average_dict = {}
+	best_dict = {}
+
+	# For each eval in algorithm log
+	for i in range(config_dict['runs']):
+		# Split string by newline
+		line = return_dict[i][0].split('\n')
+		# For each line
+		for l in line:
+			# If line only had a new line, or if Run is in it, continue
+			if l == '' or 'Run' in l:
+				continue
+			# Split line into parts
+			sub_line = l.split()
+			# Grab eval, ..., ave, best from line
+			ev, ave, best = int(sub_line[0]), int(sub_line[-2]), int(sub_line[-1])
+
+			# If eval is not in dict, add it
+			if ev not in average_dict:
+				average_dict[ev] = []
+				best_dict[ev] = []
+
+			# Add value in dictionaries
+			average_dict[ev].append(ave)
+			best_dict[ev].append(best)
+
+	# Normalize and order average and best dictionaries
+	eval_ave = []
+	ave_list = []
+
+	eval_best = []
+	best_list = []
+
+	average_dict = OrderedDict(sorted(average_dict.items()))
+	best_dict = OrderedDict(sorted(best_dict.items()))
+
+	for key, value in average_dict.items():
+		eval_ave.append(key)
+		ave_list.append(sum(average_dict[key]) / len(average_dict[key]))
+
+	for key, value in best_dict.items():
+		eval_best.append(key)
+		best_list.append(sum(best_dict[key]) / len(best_dict[key]))
+
+	# Plot values
+	plt.plot(eval_ave, ave_list, label='Local Average')
+	plt.plot(eval_best, best_list, label='Local Best')
+
+	# Add information to graphs
+	plt.xlabel('Eval')
+	plt.ylabel('Fitness')
+	plt.legend(loc='lower right')
+
+	# Save figure
+	plt.savefig('./graphs/graphs/' + str(config_dict['random_seed']) + '.pdf')
+
+	# Show if true
+	if show == True:
+		plt.show()
+
+	# Clear graph memory
+	plt.clf()
+
+	# Save average fitness values
+	with open('./graphs/points/' + str(config_dict['random_seed']), 'w') as f:
+		for i in ave_list:
+			f.write(str(i))
+			f.write('\n')
+
+def crease_moea_graph(config_dict, return_dict, show=False):
+	"""Creates a plot of averages and best points of eval vs fitness value
+
+	Average and best fitness values are ploted on the same plot. They are saved
+	to ./graphs/graphs/<random seed>.pdf
+	The average fitness values are saved to ./graphs/points/<random seed>
+
+	Args:
+		config_dict (dict {str, val}): Configuraiton dictionary
+		return_dict (dict {str, val}): Return dictionary from EA
+		show (bool): The the resulting plot
+	"""	
+	# Create dictionaries to store values
+	average_dict = {}
+	best_dict = {}
+	moea_average_dict = {}
+	moea_best_dict = {}
+
+	# For each eval in algorithm log
+	for i in range(config_dict['runs']):
+		# Split string by newline
+		line = return_dict[i][0].split('\n')
+		# For each line
+		for l in line:
+			# If line only had a new line, or if Run is in it, continue
+			if l == '' or 'Run' in l:
+				continue
+			# Split line into parts
+			sub_line = l.split()
+			# Grab eval, ..., ave, best from line
+			ev, ave, best, moea_ave, moea_best = int(sub_line[0]), int(sub_line[-4]), int(sub_line[-3]), \
+													int(sub_line[-2]), int(sub_line[-1])
+
+			# If eval is not in dict, add it
+			if ev not in average_dict:
+				average_dict[ev] = []
+				best_dict[ev] = []
+				moea_average_dict[ev] = []
+				moea_best_dict[ev] = []
+
+			# Add value in dictionaries
+			average_dict[ev].append(ave)
+			best_dict[ev].append(best)
+			moea_average_dict[ev].append(moea_ave)
+			moea_best_dict[ev].append(moea_best)
+
+	# Normalize and order average and best dictionaries
+	eval_ave = []
+	ave_list = []
+
+	eval_best = []
+	best_list = []
+
+	moea_eval_ave = []
+	moea_ave_list = []
+
+	moea_eval_best = []
+	moea_best_list = []
+
+	average_dict = OrderedDict(sorted(average_dict.items()))
+	best_dict = OrderedDict(sorted(best_dict.items()))
+	moea_average_dict = OrderedDict(sorted(moea_average_dict.items()))
+	moea_best_dict = OrderedDict(sorted(moea_best_dict.items()))
+
+	for key, value in average_dict.items():
+		eval_ave.append(key)
+		ave_list.append(sum(average_dict[key]) / len(average_dict[key]))
+
+	for key, value in best_dict.items():
+		eval_best.append(key)
+		best_list.append(sum(best_dict[key]) / len(best_dict[key]))
+
+	for key, value in moea_average_dict.items():
+		moea_eval_ave.append(key)
+		moea_ave_list.append(sum(moea_average_dict[key]) / len(moea_average_dict[key]))
+
+	for key, value in moea_best_dict.items():
+		moea_eval_best.append(key)
+		moea_best_list.append(sum(moea_best_dict[key]) / len(moea_best_dict[key]))
+
+	# Plot values
+	plt.plot(eval_ave, ave_list, label='Local Average')
+	plt.plot(eval_best, best_list, label='Local Best')
+
+	# Add information to graphs
+	plt.xlabel('Eval')
+	plt.ylabel('Fitness')
+	plt.legend(loc='lower right')
+
+	# Save figure
+	plt.savefig('./graphs/graphs/' + str(config_dict['random_seed']) + '.pdf')
+
+	# Show if true
+	if show == True:
+		plt.show()
+
+	# Clear graph memory
+	plt.clf()
+
+	# Save average fitness values
+	with open('./graphs/points/' + str(config_dict['random_seed']), 'w') as f:
+		for i in ave_list:
+			f.write(str(i))
+			f.write('\n')
+
+
+	# Plot MOEA values
+	plt.plot(moea_eval_ave, moea_ave_list, label='MOEA Local Average')
+	plt.plot(moea_eval_best, moea_best_list, label='MOEA Local Best')
+
+	# Add information to graphs
+	plt.xlabel('Eval')
+	plt.ylabel('MOEA Fitness')
+	plt.legend(loc='lower right')
+
+	# Save figure
+	plt.savefig('./graphs/graphs/' + str(config_dict['random_seed']) + '_moea.pdf')
+
+	# Show if true
+	if show == True:
+		plt.show()
+
+	# Clear graph memory
+	plt.clf()
+
+	# Save average fitness values
+	with open('./graphs/points/' + str(config_dict['random_seed']) + '_moea', 'w') as f:
+		for i in moea_ave_list:
+			f.write(str(i))
+			f.write('\n')
 
 def create_solution_file(best_board, path, run_number):
 	"""Create solution file using the best board from the run
@@ -479,10 +782,41 @@ def get_average_fitness_value(population):
 
 	return average_fitness // len(population)
 
-def add_to_algorithm_log_string(config_dict, current_eval=None, average_fitness=None, best_fitness=None, header=False):
+def get_best_fitness_value_width(population):
+	"""Find the best width fitness value out of all the boards in the population
+
+	Args:
+		population (list of Board): The current population
+
+	Returns:
+		(int): The best width fitness eval
+	"""
+	best_fitness = population[0].width_fitness
+	for board in population:
+		best_fitness = max(best_fitness, board.width_fitness)
+	return best_fitness
+
+def get_average_fitness_value_width(population):
+	"""Find the average width fitness value of all the boards in the population
+
+	Args:
+		population (list of Board): The current population
+
+	Returns:
+		(int): The average fitness value, rounded down
+	"""
+	average_fitness = 0
+	for board in population:
+		average_fitness += board.width_fitness
+
+	return average_fitness // len(population)
+
+def add_to_algorithm_log_string(population, config_dict, current_eval=None, average_fitness=None, \
+ 	best_fitness=None, header=False, best_width=0, best_length=0):
 	"""Generates a string to add to the algorithm log
 
 	Args:
+		population (list of Board): The current population
 		config_dict (dict {string, value}): Configuration parameters
 			If self_adaptive_mutation_rate in dict == True,
 				add mutation_rate
@@ -507,6 +841,9 @@ def add_to_algorithm_log_string(config_dict, current_eval=None, average_fitness=
 		if config_dict['search_algorithm'] != "Random Search":
 			algorithm_log_string += '\t' + 'Avg'
 		algorithm_log_string += '\t' + 'Best'
+		if config_dict['moea_width']:
+			algorithm_log_string += '\tMOEA Avg'
+			algorithm_log_string += '\tMOEA Best'
 		return algorithm_log_string
 
 	# Add evaluation number
@@ -519,16 +856,59 @@ def add_to_algorithm_log_string(config_dict, current_eval=None, average_fitness=
 			algorithm_log_string += '\t %.4f' % Board.penalty_weight
 		if config_dict['self_adaptive_offspring_count'] == True:
 			algorithm_log_string += '\t' + str(config_dict['offspring_count'])
-	# Add average fitness
-	if average_fitness != None:
+
+	if config_dict['moea_width'] == False:
+		# Add average fitness
+		if average_fitness != None:
+			algorithm_log_string += '\t' + str(average_fitness)
+		# Add best fitness
+		if best_fitness != None:
+			algorithm_log_string += '\t' + str(best_fitness)
+
+	# If using MOEA width
+	if config_dict['moea_width'] == True:
+		# Add average fitness
 		algorithm_log_string += '\t' + str(average_fitness)
-	if best_fitness != None:
-		algorithm_log_string += '\t' + str(best_fitness)
+		# Add best fitness
+		algorithm_log_string += '\t' + str(best_length)
+		algorithm_log_string += '\t' + str(get_average_fitness_value_width(population))
+		algorithm_log_string += '\t' + str(best_width)
 
 	# Add new line at end
 	algorithm_log_string += '\n'
 
 	return algorithm_log_string
+
+def update_all_boards_fitness(population, config_dict, normal_fitness=False):
+	"""Update all board's fitness value
+	Update all board's fitness value. If using domination, set the fitness
+	value equal to the number of boards that a board dominates.
+	"""
+	if normal_fitness == True:
+		for shape in population:
+			shape.fitness = shape.length_fitness
+		return
+
+	for shape in population:
+		shape.update_fitness_value()
+
+	# n^2 implementation, would like log(n)*n
+
+	# If using domination, find domination value
+	if config_dict['moea_width'] == True:
+		for shape in population:
+			shape.fitness = 1
+
+		for shape in population:
+			for other_shape in population:
+				if shape == other_shape:
+					continue
+				if (shape.length_fitness >= other_shape.length_fitness and \
+					shape.width_fitness > other_shape.width_fitness) or \
+					(shape.length_fitness > other_shape.length_fitness and \
+					shape.width_fitness >= other_shape.width_fitness):
+					shape.fitness += 1
+
 
 ############################# Parents #########################################
 def find_parents(population, config_dict):
@@ -542,6 +922,8 @@ def find_parents(population, config_dict):
 	Returns:
 		(list of Board): The parents
 	"""
+	update_all_boards_fitness(population, config_dict)
+
 	# Call k tournament function if specified
 	if config_dict['parent_selection_algorithm'] == 'k-Tournament Selection with replacement':
 		# Use t_size_parent as the k, 2 * offspring for number of parents
@@ -646,7 +1028,7 @@ def fitness_proportional_selection(population, offspring_count):
 		# Find total fitness
 		for board in population:
 			# Board fitness is negative, so negate it
-			total_fitness -= board.fitness
+			total_fitness += abs(board.fitness)
 
 		# Randomly chose a value
 		chosen_fitness = random.randrange(0, int(total_fitness))
@@ -654,7 +1036,7 @@ def fitness_proportional_selection(population, offspring_count):
 		# Find chosen value in possible parents
 		tracked_fitness = 0
 		for board in population:
-			tracked_fitness -= board.fitness
+			tracked_fitness += abs(board.fitness)
 			# If chosen value is found, add it to chosen parents, and
 			# remove it from possible parents 
 			if chosen_fitness <= tracked_fitness:
@@ -662,41 +1044,6 @@ def fitness_proportional_selection(population, offspring_count):
 				break
 
 	return chosen_parents
-	"""
-	# If population is smaller than needed parents, raise error
-	if len(population) < offspring_count:
-		print("ERROR in: fitness_proportional_selection")
-
-	# Create a copy list of the population
-	possible_parents = list(population)
-	# Create an empty chosen parents list
-	chosen_parents = []
-
-	# While more parents are needed
-	while len(chosen_parents) < offspring_count:
-		# Initialize total fitness
-		total_fitness = 0
-		# Find total fitness
-		for board in possible_parents:
-			# Board fitness is negative, so negate it
-			total_fitness -= board.fitness
-
-		# Randomly chose a value
-		chosen_fitness = random.randrange(0, total_fitness)
-
-		# Find chosen value in possible parents
-		tracked_fitness = 0
-		for board in possible_parents:
-			tracked_fitness -= board.fitness
-			# If chosen value is found, add it to chosen parents, and
-			# remove it from possible parents 
-			if chosen_fitness <= tracked_fitness:
-				chosen_parents.append(board)
-				possible_parents.remove(board)
-				break
-
-	return chosen_parents
-	"""
 
 def uniform_random_parent_selection(population, offspring_count):
 	"""Create a population randomly
@@ -750,13 +1097,6 @@ def make_children(parents, config_dict):
 			# Make a baby! :D
 			children_list.append(order_crossover(parents[i], parents[i + 1], config_dict))
 			children_list.append(order_crossover(parents[i + 1], parents[i], config_dict))
-
-	
-	# If any shapes overlap with another shape, randomly place second overlapping shape
-	if config_dict['placement_algorithm'] != 'Minimize':
-		for board in children_list:
-			board.check_for_overlap()
-	
 
 	return children_list
 	"""
@@ -913,7 +1253,7 @@ def mutate_population(population, config_dict):
 	# If employing minimize strategy, minimize board
 	if config_dict['placement_algorithm'] == 'Minimize':
 		for board in population:
-			board.place_shapes()
+			board.place_shapes()		
 
 	return
 
@@ -1021,6 +1361,8 @@ def select_survivors(population, config_dict):
 	Returns:
 		Nothing, alters population
 	"""
+	update_all_boards_fitness(population, config_dict)
+
 	if config_dict['survivor_algorithm'] == 'Truncation':
 		survivor_selection_truncation(population, config_dict)
 	elif config_dict['survivor_algorithm'] == 'k-Tournament Selection without replacement':
@@ -1189,6 +1531,8 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	Board.set_placement_algorithm(config_dict['placement_algorithm'])
 	# Set Penalty Coefficient
 	Board.penalty_weight = config_dict['penalty_coefficent']
+	# Set MOEA width bool
+	Board.moea_width = config_dict['moea_width']
 
 	# Populate to capacity with Boards in random shape order with
 	# random orientation
@@ -1227,9 +1571,18 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 	previous_fitness = get_best_fitness_value(population)
 	previous_average_fitness = get_average_fitness_value(population)
 
+
+	best_width = 0
+	best_length = 0
+	if config_dict['moea_width'] == True:
+		population.sort(reverse=True)
+		best_width = population[0].width_fitness
+		best_length = population[0].length_fitness
+
 	# Row 0 of algorithm log 
-	algorithm_log_string += add_to_algorithm_log_string(config_dict, len(population), \
-			average_fitness=previous_average_fitness, best_fitness=previous_fitness)
+	algorithm_log_string += add_to_algorithm_log_string(population, config_dict, len(population), \
+			average_fitness=previous_average_fitness, best_fitness=previous_fitness, \
+			best_width=best_width, best_length=best_length)
 
 	# While not at stoping creteria, continue
 	while current_eval < config_dict['fitness_evaluations'] and same_fitness < config_dict['convergence'] and same_average_fitness < config_dict['convergence']:
@@ -1250,6 +1603,10 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 			children = make_children(parents, config_dict)
 			# Mutate children
 			mutate_population(children, config_dict)
+			# If any shapes overlap with another shape, randomly place second overlapping shape
+			if config_dict['placement_algorithm'] != 'Minimize':
+				for board in children:
+					board.check_for_overlap_and_outofbounds()
 		except:
 			pass
 
@@ -1262,8 +1619,16 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 			population = children
 
 		try:
+			# Check for overlap and out of bounds
+			for board in population:
+				board.check_for_overlap_and_outofbounds()
 			# Survival Selection
 			select_survivors(population, config_dict)
+			if config_dict['moea_width'] == True:
+				population.sort(reverse=True)
+				best_width = population[0].width_fitness
+				best_length = population[0].length_fitness
+			update_all_boards_fitness(population, config_dict, normal_fitness=True)
 		except:
 			pass
 
@@ -1298,8 +1663,9 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 			same_average_fitness = 0
 
 		### Algorithm Log ###
-		algorithm_log_string += add_to_algorithm_log_string(config_dict, current_eval, \
-			average_fitness=average_fitness, best_fitness=best_fitness)
+		algorithm_log_string += add_to_algorithm_log_string(population, config_dict, current_eval, \
+			average_fitness=average_fitness, best_fitness=best_fitness, \
+			best_width=best_width, best_length=best_length)
 		#####################
 
 
@@ -1308,7 +1674,9 @@ def ea_search(config_dict, max_height, shape_string_list, population_size, run_n
 		progress_bar.printProgressBar(config_dict['fitness_evaluations'])
 		print()
 
+	update_all_boards_fitness(population, config_dict)
 	population.sort(reverse=True)
+
 	# Put (algorithm log, best board) in return dictionary
 	return_dict[run_number] = (algorithm_log_string, population[0])
 

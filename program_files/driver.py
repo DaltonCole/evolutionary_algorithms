@@ -44,6 +44,8 @@ def main():
 		for line in f:
 			shapes.append(line)
 
+	config_dict['max_height'] = max_height
+
 	
 	# Start each run as different processes. 
 	# Last run should display the progress bar.
@@ -82,6 +84,21 @@ def main():
 
 	# Write to solution file best solution
 	create_solution_file(return_dict[best_index][1], config_dict['solution_file_path'], best_index + 1)
+
+	# Make picture
+	try:
+		make_picture(best_solution, config_dict)
+	except:
+		pass
+
+	# Create graph
+	try:
+		if config_dict['moea_width'] == True:
+			crease_moea_graph(config_dict, return_dict)
+		else:
+			create_graph(config_dict, return_dict)
+	except:
+		pass
 
 
 if __name__ == '__main__':

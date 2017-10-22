@@ -45,6 +45,12 @@ with open('all_graphs.tex', 'w') as file:
 			s += '\t\\includegraphics[width=\\textwidth]{../graphs/graphs/' + str(i) + '.pdf}\n'
 			s += '\\end{figure}\n\n\n'
 
+			s += '\\begin{figure}[!htb]\n'
+			s += "\t\\caption{Figure \\ref{fig:graph_" + str(i) + "} Representation" + "}\n"
+			s += '\t\\label{fig:picture_' + str(i) + '}\n'
+			s += '\t\\includegraphics[width=\\textwidth]{../graphs/picture/' + str(i) + '.pdf}\n'
+			s += '\\end{figure}\n\n\n'
+
 			file.write(s)
 
 			if i % 10 == 0:

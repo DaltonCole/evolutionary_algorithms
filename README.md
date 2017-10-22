@@ -92,6 +92,7 @@ The configuation file used to feed into the program. There are the following opt
 		* Rotate shape
 	* Switch
 		* Swap placement of two shapes (Only useful if using Placement Algorithm "Minimize")
+		* Note: Only useful with Placement Algorithm "Minimize"
 	* **Both** flip and switch
 	* Shuffle
 	  * Shuffles the shapes in-between two points of size (Mutation Rate * # of Shapes)
@@ -138,6 +139,9 @@ The configuation file used to feed into the program. There are the following opt
 * Penalty Coefficient
 	* Any Int
 	* ** 1 **
+* MOEA (Multi-Objective EA)
+	* **False**
+	* True
 
 
 If any of the above are null, then default values are used. The default "Random Seed" is time. Log and solution files generated have the same name as "Random Seed".

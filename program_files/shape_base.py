@@ -427,6 +427,16 @@ class Shape_base:
 		"""
 		return self.current_coordinates[-1][0] + self.x_offset
 
+	def max_y_value(self):
+		"""Find the max y value of the shape
+		Returns:
+			(int): The highest y value
+		"""
+		y_value = 0
+		for x, y in self.current_coordinates:
+			y_value = max(y_value, y)
+		return y_value + self.y_offset
+
 	def __eq__(self, other):
 		if self.original_order != other.original_order:
 			return False
