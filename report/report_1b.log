@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.21)  22 OCT 2017 14:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.21)  22 OCT 2017 22:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,336 +409,701 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+[1
 
-LaTeX Warning: Reference `fig:saMutation2' on page 1 undefined on input line 24
-.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
+pdfTeX warning: pdflatex (file ./t_test/1_mutation.pdf): PDF inclusion: found P
+DF version <1.7>, but at most version <1.5> allowed
+<./t_test/1_mutation.pdf, id=10, 614.295pt x 794.97pt>
+File: ./t_test/1_mutation.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `fig:saMutation2' on page 1 undefined on input line 24
-.
-
-
-LaTeX Warning: Reference `fig:mutFalse' on page 1 undefined on input line 26.
-
-
-LaTeX Warning: Reference `fig:mutTrue' on page 1 undefined on input line 26.
-
-
-LaTeX Warning: Reference `fig:mutFalsePicture' on page 1 undefined on input lin
-e 26.
-
-
-LaTeX Warning: Reference `fig:mutTruePicture' on page 1 undefined on input line
- 26.
-
-
-
-pdfTeX warning: pdflatex (file ./t_test/S-AMutationRate1.pdf): PDF inclusion: f
-ound PDF version <1.7>, but at most version <1.5> allowed
-<./t_test/S-AMutationRate1.pdf, id=1, 614.295pt x 794.97pt>
-File: ./t_test/S-AMutationRate1.pdf Graphic file (type pdf)
-
-<use ./t_test/S-AMutationRate1.pdf>
-Package pdftex.def Info: ./t_test/S-AMutationRate1.pdf used on input line 31.
+<use ./t_test/1_mutation.pdf>
+Package pdftex.def Info: ./t_test/1_mutation.pdf used on input line 45.
 (pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
- (./all_graphs.tex
-<../graphs/graphs/1001.pdf, id=2, 462.52798pt x 346.89601pt>
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_mutation_moea.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/1_mutation_moea.pdf, id=11, 614.295pt x 794.97pt>
+File: ./t_test/1_mutation_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/1_mutation_moea.pdf>
+Package pdftex.def Info: ./t_test/1_mutation_moea.pdf used on input line 50.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_parent1.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/1_parent1.pdf, id=12, 614.295pt x 794.97pt>
+File: ./t_test/1_parent1.pdf Graphic file (type pdf)
+
+<use ./t_test/1_parent1.pdf>
+Package pdftex.def Info: ./t_test/1_parent1.pdf used on input line 56.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_parent1_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/1_parent1_moea.pdf, id=13, 614.295pt x 794.97pt>
+File: ./t_test/1_parent1_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/1_parent1_moea.pdf>
+Package pdftex.def Info: ./t_test/1_parent1_moea.pdf used on input line 61.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_parent2.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/1_parent2.pdf, id=14, 614.295pt x 794.97pt>
+File: ./t_test/1_parent2.pdf Graphic file (type pdf)
+
+<use ./t_test/1_parent2.pdf>
+Package pdftex.def Info: ./t_test/1_parent2.pdf used on input line 67.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_parent2_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/1_parent2_moea.pdf, id=15, 614.295pt x 794.97pt>
+File: ./t_test/1_parent2_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/1_parent2_moea.pdf>
+Package pdftex.def Info: ./t_test/1_parent2_moea.pdf used on input line 72.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_parent3.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/1_parent3.pdf, id=16, 614.295pt x 794.97pt>
+File: ./t_test/1_parent3.pdf Graphic file (type pdf)
+
+<use ./t_test/1_parent3.pdf>
+Package pdftex.def Info: ./t_test/1_parent3.pdf used on input line 78.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/1_parent3_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/1_parent3_moea.pdf, id=17, 614.295pt x 794.97pt>
+File: ./t_test/1_parent3_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/1_parent3_moea.pdf>
+Package pdftex.def Info: ./t_test/1_parent3_moea.pdf used on input line 83.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_mutation.pdf): PDF inclusion: found P
+DF version <1.7>, but at most version <1.5> allowed
+<./t_test/2_mutation.pdf, id=18, 614.295pt x 794.97pt>
+File: ./t_test/2_mutation.pdf Graphic file (type pdf)
+
+<use ./t_test/2_mutation.pdf>
+Package pdftex.def Info: ./t_test/2_mutation.pdf used on input line 90.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_mutation_moea.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/2_mutation_moea.pdf, id=19, 614.295pt x 794.97pt>
+File: ./t_test/2_mutation_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/2_mutation_moea.pdf>
+Package pdftex.def Info: ./t_test/2_mutation_moea.pdf used on input line 95.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_parent1.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/2_parent1.pdf, id=20, 614.295pt x 794.97pt>
+File: ./t_test/2_parent1.pdf Graphic file (type pdf)
+
+<use ./t_test/2_parent1.pdf>
+Package pdftex.def Info: ./t_test/2_parent1.pdf used on input line 101.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_parent1_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/2_parent1_moea.pdf, id=21, 614.295pt x 794.97pt>
+File: ./t_test/2_parent1_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/2_parent1_moea.pdf>
+Package pdftex.def Info: ./t_test/2_parent1_moea.pdf used on input line 106.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_parent2.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/2_parent2.pdf, id=22, 614.295pt x 794.97pt>
+File: ./t_test/2_parent2.pdf Graphic file (type pdf)
+
+<use ./t_test/2_parent2.pdf>
+Package pdftex.def Info: ./t_test/2_parent2.pdf used on input line 112.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_parent2_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/2_parent2_moea.pdf, id=23, 614.295pt x 794.97pt>
+File: ./t_test/2_parent2_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/2_parent2_moea.pdf>
+Package pdftex.def Info: ./t_test/2_parent2_moea.pdf used on input line 117.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_parent3.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/2_parent3.pdf, id=24, 614.295pt x 794.97pt>
+File: ./t_test/2_parent3.pdf Graphic file (type pdf)
+
+<use ./t_test/2_parent3.pdf>
+Package pdftex.def Info: ./t_test/2_parent3.pdf used on input line 123.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/2_parent3_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/2_parent3_moea.pdf, id=25, 614.295pt x 794.97pt>
+File: ./t_test/2_parent3_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/2_parent3_moea.pdf>
+Package pdftex.def Info: ./t_test/2_parent3_moea.pdf used on input line 128.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_mutation.pdf): PDF inclusion: found P
+DF version <1.7>, but at most version <1.5> allowed
+<./t_test/3_mutation.pdf, id=26, 614.295pt x 794.97pt>
+File: ./t_test/3_mutation.pdf Graphic file (type pdf)
+
+<use ./t_test/3_mutation.pdf>
+Package pdftex.def Info: ./t_test/3_mutation.pdf used on input line 134.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_mutation_moea.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/3_mutation_moea.pdf, id=27, 614.295pt x 794.97pt>
+File: ./t_test/3_mutation_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/3_mutation_moea.pdf>
+Package pdftex.def Info: ./t_test/3_mutation_moea.pdf used on input line 139.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_parent1.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/3_parent1.pdf, id=28, 614.295pt x 794.97pt>
+File: ./t_test/3_parent1.pdf Graphic file (type pdf)
+
+<use ./t_test/3_parent1.pdf>
+Package pdftex.def Info: ./t_test/3_parent1.pdf used on input line 145.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_parent1_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/3_parent1_moea.pdf, id=29, 614.295pt x 794.97pt>
+File: ./t_test/3_parent1_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/3_parent1_moea.pdf>
+Package pdftex.def Info: ./t_test/3_parent1_moea.pdf used on input line 150.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_parent2.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/3_parent2.pdf, id=30, 614.295pt x 794.97pt>
+File: ./t_test/3_parent2.pdf Graphic file (type pdf)
+
+<use ./t_test/3_parent2.pdf>
+Package pdftex.def Info: ./t_test/3_parent2.pdf used on input line 156.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_parent2_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/3_parent2_moea.pdf, id=31, 614.295pt x 794.97pt>
+File: ./t_test/3_parent2_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/3_parent2_moea.pdf>
+Package pdftex.def Info: ./t_test/3_parent2_moea.pdf used on input line 161.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_parent3.pdf): PDF inclusion: found PD
+F version <1.7>, but at most version <1.5> allowed
+<./t_test/3_parent3.pdf, id=32, 614.295pt x 794.97pt>
+File: ./t_test/3_parent3.pdf Graphic file (type pdf)
+
+<use ./t_test/3_parent3.pdf>
+Package pdftex.def Info: ./t_test/3_parent3.pdf used on input line 167.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+
+
+pdfTeX warning: pdflatex (file ./t_test/3_parent3_moea.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<./t_test/3_parent3_moea.pdf, id=33, 614.295pt x 794.97pt>
+File: ./t_test/3_parent3_moea.pdf Graphic file (type pdf)
+
+<use ./t_test/3_parent3_moea.pdf>
+Package pdftex.def Info: ./t_test/3_parent3_moea.pdf used on input line 172.
+(pdftex.def)             Requested size: 469.75502pt x 607.9196pt.
+ [2] [3 <./t_test/1_mutation.pdf>] [4 <./t_test/1_mutation_moea.pdf>] [5 <./t_t
+est/1_parent1.pdf>] [6 <./t_test/1_parent1_moea.pdf>] [7 <./t_test/1_parent2.pd
+f>] [8 <./t_test/1_parent2_moea.pdf>] [9 <./t_test/1_parent3.pdf>] [10 <./t_tes
+t/1_parent3_moea.pdf>] [11 <./t_test/2_mutation.pdf>] [12 <./t_test/2_mutation_
+moea.pdf>] [13 <./t_test/2_parent1.pdf>]
+[14 <./t_test/2_parent1_moea.pdf>] [15 <./t_test/2_parent2.pdf>] [16 <./t_test/
+2_parent2_moea.pdf>] [17 <./t_test/2_parent3.pdf>] [18 <./t_test/2_parent3_moea
+.pdf>] [19 <./t_test/3_mutation.pdf>] [20 <./t_test/3_mutation_moea.pdf>]
+[21 <./t_test/3_parent1.pdf>] [22 <./t_test/3_parent1_moea.pdf>] [23 <./t_test/
+3_parent2.pdf>] [24 <./t_test/3_parent2_moea.pdf>] [25 <./t_test/3_parent3.pdf>
+] [26 <./t_test/3_parent3_moea.pdf>] (./all_graphs.tex
+<../graphs/graphs/1001.pdf, id=524, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1001.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1001.pdf>
 Package pdftex.def Info: ../graphs/graphs/1001.pdf used on input line 60.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1001.pdf, id=3, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1001_moea.pdf, id=525, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/1001_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/1001_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/1001_moea.pdf used on input line 67.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/1001.pdf, id=526, 462.52798pt x 346.89601pt>
 File: ../graphs/picture/1001.pdf Graphic file (type pdf)
 
 <use ../graphs/picture/1001.pdf>
-Package pdftex.def Info: ../graphs/picture/1001.pdf used on input line 67.
+Package pdftex.def Info: ../graphs/picture/1001.pdf used on input line 74.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1002.pdf, id=4, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1002.pdf, id=527, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1002.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1002.pdf>
-Package pdftex.def Info: ../graphs/graphs/1002.pdf used on input line 128.
+Package pdftex.def Info: ../graphs/graphs/1002.pdf used on input line 135.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1002.pdf, id=5, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1002_moea.pdf, id=528, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/1002_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/1002_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/1002_moea.pdf used on input line 142.
+
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/1002.pdf, id=529, 462.52798pt x 346.89601pt>
 File: ../graphs/picture/1002.pdf Graphic file (type pdf)
 
 <use ../graphs/picture/1002.pdf>
-Package pdftex.def Info: ../graphs/picture/1002.pdf used on input line 135.
+Package pdftex.def Info: ../graphs/picture/1002.pdf used on input line 149.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1003.pdf, id=6, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1003.pdf, id=530, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1003.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1003.pdf>
-Package pdftex.def Info: ../graphs/graphs/1003.pdf used on input line 196.
+Package pdftex.def Info: ../graphs/graphs/1003.pdf used on input line 210.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1003.pdf, id=7, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1003_moea.pdf, id=531, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/1003_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/1003_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/1003_moea.pdf used on input line 217.
+
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/1003.pdf, id=532, 462.52798pt x 346.89601pt>
 File: ../graphs/picture/1003.pdf Graphic file (type pdf)
 
 <use ../graphs/picture/1003.pdf>
-Package pdftex.def Info: ../graphs/picture/1003.pdf used on input line 203.
+Package pdftex.def Info: ../graphs/picture/1003.pdf used on input line 224.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1004.pdf, id=8, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1004.pdf, id=533, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1004.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1004.pdf>
-Package pdftex.def Info: ../graphs/graphs/1004.pdf used on input line 264.
+Package pdftex.def Info: ../graphs/graphs/1004.pdf used on input line 285.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1004.pdf, id=9, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1004_moea.pdf, id=534, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/1004_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/1004_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/1004_moea.pdf used on input line 292.
+
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/1004.pdf, id=535, 462.52798pt x 346.89601pt>
 File: ../graphs/picture/1004.pdf Graphic file (type pdf)
 
 <use ../graphs/picture/1004.pdf>
-Package pdftex.def Info: ../graphs/picture/1004.pdf used on input line 271.
+Package pdftex.def Info: ../graphs/picture/1004.pdf used on input line 299.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1005.pdf, id=10, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1005.pdf, id=536, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1005.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1005.pdf>
-Package pdftex.def Info: ../graphs/graphs/1005.pdf used on input line 332.
+Package pdftex.def Info: ../graphs/graphs/1005.pdf used on input line 360.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1005.pdf, id=11, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1005_moea.pdf, id=537, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/1005_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/1005_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/1005_moea.pdf used on input line 367.
+
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/1005.pdf, id=538, 462.52798pt x 346.89601pt>
 File: ../graphs/picture/1005.pdf Graphic file (type pdf)
 
 <use ../graphs/picture/1005.pdf>
-Package pdftex.def Info: ../graphs/picture/1005.pdf used on input line 339.
+Package pdftex.def Info: ../graphs/picture/1005.pdf used on input line 374.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
-
-<../graphs/graphs/1006.pdf, id=12, 462.52798pt x 346.89601pt>
+ [27] [28 <../graphs/graphs/1001.pdf>] [29 <../graphs/graphs/1001_moea.pdf>] [3
+0 <../graphs/picture/1001.pdf>] [31] [32 <../graphs/graphs/1002.pdf>] [33 <../g
+raphs/graphs/1002_moea.pdf>] [34 <../graphs/picture/1002.pdf>] [35 <../graphs/g
+raphs/1003.pdf>] [36 <../graphs/graphs/1003_moea.pdf>] [37 <../graphs/picture/1
+003.pdf>] [38] [39 <../graphs/graphs/1004.pdf>] [40 <../graphs/graphs/1004_moea
+.pdf>] [41 <../graphs/picture/1004.pdf>]
+[42 <../graphs/graphs/1005.pdf>] [43 <../graphs/graphs/1005_moea.pdf>] [44 <../
+graphs/picture/1005.pdf>]
+<../graphs/graphs/1006.pdf, id=1013, 462.52798pt x 346.89601pt>
 File: ../graphs/graphs/1006.pdf Graphic file (type pdf)
 
 <use ../graphs/graphs/1006.pdf>
-Package pdftex.def Info: ../graphs/graphs/1006.pdf used on input line 400.
+Package pdftex.def Info: ../graphs/graphs/1006.pdf used on input line 436.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1006.pdf, id=13, 462.52798pt x 346.89601pt>
+<../graphs/graphs/1006_moea.pdf, id=1014, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/1006_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/1006_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/1006_moea.pdf used on input line 443.
+
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/1006.pdf, id=1015, 462.52798pt x 346.89601pt>
 File: ../graphs/picture/1006.pdf Graphic file (type pdf)
 
 <use ../graphs/picture/1006.pdf>
-Package pdftex.def Info: ../graphs/picture/1006.pdf used on input line 407.
+Package pdftex.def Info: ../graphs/picture/1006.pdf used on input line 450.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1007.pdf, id=14, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1007.pdf Graphic file (type pdf)
+<../graphs/graphs/2001.pdf, id=1016, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2001.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1007.pdf>
-Package pdftex.def Info: ../graphs/graphs/1007.pdf used on input line 468.
+<use ../graphs/graphs/2001.pdf>
+Package pdftex.def Info: ../graphs/graphs/2001.pdf used on input line 511.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1007.pdf, id=15, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1007.pdf Graphic file (type pdf)
+<../graphs/graphs/2001_moea.pdf, id=1017, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2001_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1007.pdf>
-Package pdftex.def Info: ../graphs/picture/1007.pdf used on input line 475.
+<use ../graphs/graphs/2001_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/2001_moea.pdf used on input line 518.
+
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1008.pdf, id=16, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1008.pdf Graphic file (type pdf)
+<../graphs/picture/2001.pdf, id=1018, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/2001.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1008.pdf>
-Package pdftex.def Info: ../graphs/graphs/1008.pdf used on input line 536.
+<use ../graphs/picture/2001.pdf>
+Package pdftex.def Info: ../graphs/picture/2001.pdf used on input line 525.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1008.pdf, id=17, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1008.pdf Graphic file (type pdf)
+<../graphs/graphs/2002.pdf, id=1019, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2002.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1008.pdf>
-Package pdftex.def Info: ../graphs/picture/1008.pdf used on input line 543.
+<use ../graphs/graphs/2002.pdf>
+Package pdftex.def Info: ../graphs/graphs/2002.pdf used on input line 586.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1009.pdf, id=18, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1009.pdf Graphic file (type pdf)
+<../graphs/graphs/2002_moea.pdf, id=1020, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2002_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1009.pdf>
-Package pdftex.def Info: ../graphs/graphs/1009.pdf used on input line 604.
+<use ../graphs/graphs/2002_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/2002_moea.pdf used on input line 593.
+
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1009.pdf, id=19, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1009.pdf Graphic file (type pdf)
+<../graphs/picture/2002.pdf, id=1021, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/2002.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1009.pdf>
-Package pdftex.def Info: ../graphs/picture/1009.pdf used on input line 611.
+<use ../graphs/picture/2002.pdf>
+Package pdftex.def Info: ../graphs/picture/2002.pdf used on input line 600.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1010.pdf, id=20, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1010.pdf Graphic file (type pdf)
+<../graphs/graphs/2003.pdf, id=1022, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2003.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1010.pdf>
-Package pdftex.def Info: ../graphs/graphs/1010.pdf used on input line 672.
+<use ../graphs/graphs/2003.pdf>
+Package pdftex.def Info: ../graphs/graphs/2003.pdf used on input line 661.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1010.pdf, id=21, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1010.pdf Graphic file (type pdf)
+<../graphs/graphs/2003_moea.pdf, id=1023, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2003_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1010.pdf>
-Package pdftex.def Info: ../graphs/picture/1010.pdf used on input line 679.
-(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
- [1
+<use ../graphs/graphs/2003_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/2003_moea.pdf used on input line 668.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./t_test/S-AMutationRa
-te1.pdf>]
-
-LaTeX Warning: Text page 3 contains only floats.
-
-[3] [4 <../graphs/graphs/1001.pdf>] [5 <../graphs/picture/1001.pdf>] [6 <../gra
-phs/graphs/1002.pdf>] [7 <../graphs/picture/1002.pdf>] [8] [9 <../graphs/graphs
-/1003.pdf>] [10 <../graphs/picture/1003.pdf>] [11 <../graphs/graphs/1004.pdf>]
-[12 <../graphs/picture/1004.pdf>] [13] [14 <../graphs/graphs/1005.pdf>]
-[15 <../graphs/picture/1005.pdf>] [16 <../graphs/graphs/1006.pdf>] [17 <../grap
-hs/picture/1006.pdf>] [18] [19 <../graphs/graphs/1007.pdf>] [20 <../graphs/pict
-ure/1007.pdf>] [21 <../graphs/graphs/1008.pdf>] [22 <../graphs/picture/1008.pdf
->] [23] [24 <../graphs/graphs/1009.pdf>] [25 <../graphs/picture/1009.pdf>]
-[26 <../graphs/graphs/1010.pdf>] [27 <../graphs/picture/1010.pdf>]
-<../graphs/graphs/1011.pdf, id=636, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1011.pdf Graphic file (type pdf)
-
-<use ../graphs/graphs/1011.pdf>
-Package pdftex.def Info: ../graphs/graphs/1011.pdf used on input line 741.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1011.pdf, id=637, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1011.pdf Graphic file (type pdf)
+<../graphs/picture/2003.pdf, id=1024, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/2003.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1011.pdf>
-Package pdftex.def Info: ../graphs/picture/1011.pdf used on input line 748.
+<use ../graphs/picture/2003.pdf>
+Package pdftex.def Info: ../graphs/picture/2003.pdf used on input line 675.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1012.pdf, id=638, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1012.pdf Graphic file (type pdf)
+<../graphs/graphs/2004.pdf, id=1025, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2004.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1012.pdf>
-Package pdftex.def Info: ../graphs/graphs/1012.pdf used on input line 809.
+<use ../graphs/graphs/2004.pdf>
+Package pdftex.def Info: ../graphs/graphs/2004.pdf used on input line 736.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1012.pdf, id=639, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1012.pdf Graphic file (type pdf)
+<../graphs/graphs/2004_moea.pdf, id=1026, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2004_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1012.pdf>
-Package pdftex.def Info: ../graphs/picture/1012.pdf used on input line 816.
+<use ../graphs/graphs/2004_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/2004_moea.pdf used on input line 743.
+
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1013.pdf, id=640, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1013.pdf Graphic file (type pdf)
+<../graphs/picture/2004.pdf, id=1027, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/2004.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1013.pdf>
-Package pdftex.def Info: ../graphs/graphs/1013.pdf used on input line 877.
+<use ../graphs/picture/2004.pdf>
+Package pdftex.def Info: ../graphs/picture/2004.pdf used on input line 750.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1013.pdf, id=641, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1013.pdf Graphic file (type pdf)
+<../graphs/graphs/2005.pdf, id=1028, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2005.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1013.pdf>
-Package pdftex.def Info: ../graphs/picture/1013.pdf used on input line 884.
+<use ../graphs/graphs/2005.pdf>
+Package pdftex.def Info: ../graphs/graphs/2005.pdf used on input line 811.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1014.pdf, id=642, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1014.pdf Graphic file (type pdf)
+<../graphs/graphs/2005_moea.pdf, id=1029, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2005_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1014.pdf>
-Package pdftex.def Info: ../graphs/graphs/1014.pdf used on input line 945.
+<use ../graphs/graphs/2005_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/2005_moea.pdf used on input line 818.
+
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1014.pdf, id=643, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1014.pdf Graphic file (type pdf)
+<../graphs/picture/2005.pdf, id=1030, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/2005.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1014.pdf>
-Package pdftex.def Info: ../graphs/picture/1014.pdf used on input line 952.
+<use ../graphs/picture/2005.pdf>
+Package pdftex.def Info: ../graphs/picture/2005.pdf used on input line 825.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [45
+
+] [46 <../graphs/graphs/1006.pdf>] [47 <../graphs/graphs/1006_moea.pdf>] [48 <.
+./graphs/picture/1006.pdf>] [49 <../graphs/graphs/2001.pdf>] [50 <../graphs/gra
+phs/2001_moea.pdf>] [51 <../graphs/picture/2001.pdf>] [52] [53 <../graphs/graph
+s/2002.pdf>] [54 <../graphs/graphs/2002_moea.pdf>] [55 <../graphs/picture/2002.
+pdf>] [56 <../graphs/graphs/2003.pdf>]
+[57 <../graphs/graphs/2003_moea.pdf>] [58 <../graphs/picture/2003.pdf>]
+[59] [60 <../graphs/graphs/2004.pdf>] [61 <../graphs/graphs/2004_moea.pdf>]
+[62 <../graphs/picture/2004.pdf>] [63 <../graphs/graphs/2005.pdf>] [64 <../grap
+hs/graphs/2005_moea.pdf>] [65 <../graphs/picture/2005.pdf>]
+<../graphs/graphs/2006.pdf, id=1614, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2006.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/2006.pdf>
+Package pdftex.def Info: ../graphs/graphs/2006.pdf used on input line 887.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1015.pdf, id=644, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1015.pdf Graphic file (type pdf)
+<../graphs/graphs/2006_moea.pdf, id=1615, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/2006_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1015.pdf>
-Package pdftex.def Info: ../graphs/graphs/1015.pdf used on input line 1013.
+<use ../graphs/graphs/2006_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/2006_moea.pdf used on input line 894.
+
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1015.pdf, id=645, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1015.pdf Graphic file (type pdf)
+<../graphs/picture/2006.pdf, id=1616, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/2006.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1015.pdf>
-Package pdftex.def Info: ../graphs/picture/1015.pdf used on input line 1020.
+<use ../graphs/picture/2006.pdf>
+Package pdftex.def Info: ../graphs/picture/2006.pdf used on input line 901.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1016.pdf, id=646, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1016.pdf Graphic file (type pdf)
+<../graphs/graphs/3001.pdf, id=1617, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3001.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1016.pdf>
-Package pdftex.def Info: ../graphs/graphs/1016.pdf used on input line 1081.
+<use ../graphs/graphs/3001.pdf>
+Package pdftex.def Info: ../graphs/graphs/3001.pdf used on input line 962.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1016.pdf, id=647, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1016.pdf Graphic file (type pdf)
+<../graphs/graphs/3001_moea.pdf, id=1618, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3001_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1016.pdf>
-Package pdftex.def Info: ../graphs/picture/1016.pdf used on input line 1088.
+<use ../graphs/graphs/3001_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/3001_moea.pdf used on input line 969.
+
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1017.pdf, id=648, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1017.pdf Graphic file (type pdf)
+<../graphs/picture/3001.pdf, id=1619, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/3001.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1017.pdf>
-Package pdftex.def Info: ../graphs/graphs/1017.pdf used on input line 1149.
+<use ../graphs/picture/3001.pdf>
+Package pdftex.def Info: ../graphs/picture/3001.pdf used on input line 976.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1017.pdf, id=649, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1017.pdf Graphic file (type pdf)
+<../graphs/graphs/3002.pdf, id=1620, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3002.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1017.pdf>
-Package pdftex.def Info: ../graphs/picture/1017.pdf used on input line 1156.
+<use ../graphs/graphs/3002.pdf>
+Package pdftex.def Info: ../graphs/graphs/3002.pdf used on input line 1037.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/graphs/1018.pdf, id=650, 462.52798pt x 346.89601pt>
-File: ../graphs/graphs/1018.pdf Graphic file (type pdf)
+<../graphs/graphs/3002_moea.pdf, id=1621, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3002_moea.pdf Graphic file (type pdf)
 
-<use ../graphs/graphs/1018.pdf>
-Package pdftex.def Info: ../graphs/graphs/1018.pdf used on input line 1217.
+<use ../graphs/graphs/3002_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/3002_moea.pdf used on input line 1044
+.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
-<../graphs/picture/1018.pdf, id=651, 462.52798pt x 346.89601pt>
-File: ../graphs/picture/1018.pdf Graphic file (type pdf)
+<../graphs/picture/3002.pdf, id=1622, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/3002.pdf Graphic file (type pdf)
 
-<use ../graphs/picture/1018.pdf>
-Package pdftex.def Info: ../graphs/picture/1018.pdf used on input line 1224.
+<use ../graphs/picture/3002.pdf>
+Package pdftex.def Info: ../graphs/picture/3002.pdf used on input line 1051.
 (pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
-) [28
 
-] [29 <../graphs/graphs/1011.pdf>]
-[30 <../graphs/picture/1011.pdf>] [31 <../graphs/graphs/1012.pdf>] [32 <../grap
-hs/picture/1012.pdf>] [33] [34 <../graphs/graphs/1013.pdf>] [35 <../graphs/pict
-ure/1013.pdf>] [36 <../graphs/graphs/1014.pdf>] [37 <../graphs/picture/1014.pdf
->] [38] [39 <../graphs/graphs/1015.pdf>] [40 <../graphs/picture/1015.pdf>]
-[41 <../graphs/graphs/1016.pdf>] [42 <../graphs/picture/1016.pdf>] [43]
-[44 <../graphs/graphs/1017.pdf>] [45 <../graphs/picture/1017.pdf>] [46 <../grap
-hs/graphs/1018.pdf>] [47 <../graphs/picture/1018.pdf>] (./report_1b.aux)
+<../graphs/graphs/3003.pdf, id=1623, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3003.pdf Graphic file (type pdf)
 
-LaTeX Warning: There were undefined references.
+<use ../graphs/graphs/3003.pdf>
+Package pdftex.def Info: ../graphs/graphs/3003.pdf used on input line 1112.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
 
- ) 
+<../graphs/graphs/3003_moea.pdf, id=1624, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3003_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3003_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/3003_moea.pdf used on input line 1119
+.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/3003.pdf, id=1625, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/3003.pdf Graphic file (type pdf)
+
+<use ../graphs/picture/3003.pdf>
+Package pdftex.def Info: ../graphs/picture/3003.pdf used on input line 1126.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3004.pdf, id=1626, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3004.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3004.pdf>
+Package pdftex.def Info: ../graphs/graphs/3004.pdf used on input line 1187.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3004_moea.pdf, id=1627, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3004_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3004_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/3004_moea.pdf used on input line 1194
+.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/3004.pdf, id=1628, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/3004.pdf Graphic file (type pdf)
+
+<use ../graphs/picture/3004.pdf>
+Package pdftex.def Info: ../graphs/picture/3004.pdf used on input line 1201.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3005.pdf, id=1629, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3005.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3005.pdf>
+Package pdftex.def Info: ../graphs/graphs/3005.pdf used on input line 1262.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3005_moea.pdf, id=1630, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3005_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3005_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/3005_moea.pdf used on input line 1269
+.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/3005.pdf, id=1631, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/3005.pdf Graphic file (type pdf)
+
+<use ../graphs/picture/3005.pdf>
+Package pdftex.def Info: ../graphs/picture/3005.pdf used on input line 1276.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+ [66
+
+] [67 <../graphs/graphs/2006.pdf>] [68 <../graphs/graphs/2006_moea.pdf>] [69 <.
+./graphs/picture/2006.pdf>] [70 <../graphs/graphs/3001.pdf>] [71 <../graphs/gra
+phs/3001_moea.pdf>] [72 <../graphs/picture/3001.pdf>] [73] [74 <../graphs/graph
+s/3002.pdf>] [75 <../graphs/graphs/3002_moea.pdf>] [76 <../graphs/picture/3002.
+pdf>] [77 <../graphs/graphs/3003.pdf>]
+[78 <../graphs/graphs/3003_moea.pdf>] [79 <../graphs/picture/3003.pdf>]
+[80] [81 <../graphs/graphs/3004.pdf>] [82 <../graphs/graphs/3004_moea.pdf>]
+[83 <../graphs/picture/3004.pdf>] [84 <../graphs/graphs/3005.pdf>] [85 <../grap
+hs/graphs/3005_moea.pdf>] [86 <../graphs/picture/3005.pdf>]
+<../graphs/graphs/3006.pdf, id=2233, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3006.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3006.pdf>
+Package pdftex.def Info: ../graphs/graphs/3006.pdf used on input line 1338.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/graphs/3006_moea.pdf, id=2234, 462.52798pt x 346.89601pt>
+File: ../graphs/graphs/3006_moea.pdf Graphic file (type pdf)
+
+<use ../graphs/graphs/3006_moea.pdf>
+Package pdftex.def Info: ../graphs/graphs/3006_moea.pdf used on input line 1345
+.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+
+<../graphs/picture/3006.pdf, id=2235, 462.52798pt x 346.89601pt>
+File: ../graphs/picture/3006.pdf Graphic file (type pdf)
+
+<use ../graphs/picture/3006.pdf>
+Package pdftex.def Info: ../graphs/picture/3006.pdf used on input line 1352.
+(pdftex.def)             Requested size: 469.75502pt x 352.33656pt.
+) [87
+
+] [88 <../graphs/graphs/3006.pdf>]
+[89 <../graphs/graphs/3006_moea.pdf>] [90 <../graphs/picture/3006.pdf>]
+(./report_1b.aux) ) 
 Here is how much of TeX's memory you used:
- 5360 strings out of 493029
- 79720 string characters out of 6136234
- 211645 words of memory out of 5000000
- 8751 multiletter control sequences out of 15000+600000
- 8716 words of font info for 32 fonts, out of 8000000 for 9000
+ 5598 strings out of 493029
+ 86164 string characters out of 6136234
+ 192058 words of memory out of 5000000
+ 8950 multiletter control sequences out of 15000+600000
+ 8408 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,7n,38p,1022b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on report_1b.pdf (47 pages, 742251 bytes).
+ 43i,7n,38p,1022b,286s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on report_1b.pdf (90 pages, 7705046 bytes).
 PDF statistics:
- 1169 PDF objects out of 1200 (max. 8388607)
- 386 compressed objects within 4 object streams
+ 2355 PDF objects out of 2487 (max. 8388607)
+ 884 compressed objects within 9 object streams
  0 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 391 words of extra memory for PDF output out of 10000 (max. 10000000)
 

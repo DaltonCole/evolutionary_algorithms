@@ -1,10 +1,10 @@
-# EC Assignment 1c
+# EC Assignment 1d
 
 ## General Info
 
 * Name: Dalton Cole
 * Email: drcgy5@mst.edu
-* Assignment: COMP SCI 5401 FS2017 Assignment 1c
+* Assignment: COMP SCI 5401 FS2017 Assignment 1d
 
 ## Description
 
@@ -151,6 +151,10 @@ NOTE: If there are duplicates in the population, the duplicate is removed and a 
 ### logs/
 
 The default file path for log files.
+
+### config_files/
+
+Contains the config files used to run the experiments contained in the logs/
 
 ### solutions/\<random seed\>/
 

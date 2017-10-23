@@ -27,7 +27,8 @@ with open('all_graphs.tex', 'w') as file:
 			# Table
 			s = "\\begin{table}[!htb]\n"
 			s += "\t\\centering\n"
-			s += "\t\\caption{Figure \\ref{fig:graph_" + str(i) + "} Configuration File" + "}\n"
+			s += "\t\\caption{Figures \\ref{fig:graph_" + str(i) + "}" + " and " +\
+				 "\\ref{fig:graph_" + str(i) + "_moea} Configuration File" + "}\n"
 			s += "\t\\label{tab:graph_" + str(i) + "}\n"
 			s += "\t\\begin{tabular}{| c | c |}\n"
 			s += "\t\t\\hline\n"
@@ -40,9 +41,15 @@ with open('all_graphs.tex', 'w') as file:
 			s += '\\end{table}\n'
 
 			s += '\\begin{figure}[!htb]\n'
-			s += '\t\\caption{Input ' + str(i)[0] + '}\n'
+			s += '\t\\caption{Input ' + str(i)[0] + ' Length Fitness}\n'
 			s += '\t\\label{fig:graph_' + str(i) + '}\n'
 			s += '\t\\includegraphics[width=\\textwidth]{../graphs/graphs/' + str(i) + '.pdf}\n'
+			s += '\\end{figure}\n\n\n'
+
+			s += '\\begin{figure}[!htb]\n'
+			s += '\t\\caption{Input ' + str(i)[0] + ' Width Fitness}\n'
+			s += '\t\\label{fig:graph_' + str(i) + '_moea}\n'
+			s += '\t\\includegraphics[width=\\textwidth]{../graphs/graphs/' + str(i) + '_moea.pdf}\n'
 			s += '\\end{figure}\n\n\n'
 
 			s += '\\begin{figure}[!htb]\n'
@@ -53,7 +60,7 @@ with open('all_graphs.tex', 'w') as file:
 
 			file.write(s)
 
-			if i % 10 == 0:
+			if i % 5 == 0:
 				file.write('\\clearpage\n')
 
 	file.write('\\end{document}\n')

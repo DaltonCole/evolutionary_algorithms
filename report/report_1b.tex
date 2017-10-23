@@ -12,25 +12,170 @@
 \usepackage{standalone}
 \maxdeadcycles=100000
 \begin{document}
-	\title{COMP SCI 5401 FS2017 Assignment 1c}
+	\title{COMP SCI 5401 FS2017 Assignment 1d}
 	\author{Dalton Cole \\ drcgy5@mst.edu}
-	\date{\formatdate{9}{10}{2017}}
+	\date{\formatdate{22}{10}{2017}}
 	\maketitle
 
-	\section{Self-Adaptive EA Strategy Parameter}
-	In this experiment, mutation rate was used as the self-adaptive EA strategy parameter. If the average or best fitness for the current population decreased compared to the previous population, then the mutation rate doubles, with 1 being the max possible value. If the average or best fitness increases or stays the same, then the mutation rate goes back to its original value from the configuration file. The purpose of the change in mutation rate is to increase exploration. 
+	\section{MOEA}
+	For this experiment, the second objective of the multi-objective EA is to minimize the width parameter of the stock. To determine fitness, a Pareto Front was created. Fitness was thus determined as the number of other boards in the population that a board dominates. To dominate, a board has to be greater than or equal to in one attribute and strictly greater than in the other attribute. 
 
-	\section{Self-Adaptive Performance}
-	As can be seen from Figure \ref{fig:saMutation1}, Figure \ref{fig:saMutation2}, and Figure \ref{fig:saMutation2}, although having self-adaptive mutation rate, increases the mean fitness value, there is no statistical difference between using the self-adaptive mutation rate strategy employed vs not using it. This is likely due to the fact that mutation resets anytime a non-decrease in fitness happens. Another appropriate strategy would be to involve the current evaluation number in the equation, such that the higher the evaluation number, the lower the mutation rate. This would increase exploration in the beginning, but decrease it as the EA narrows down on a solution.
+	\section{Mutation}
+	Move and flip were compared as the mutation operations. For all three inputs, move proved better for minimizing stock length. This result can be seen in Figures \ref{fig:1mutation}, \ref{fig:2mutation}, and \ref{fig:3mutation}. As for stock width, neither operator proved more efficient, as can be seen in Figures \ref{fig:1mutation_moea}, \ref{fig:2mutation_moea}, and \ref{fig:3mutation_moea}. This might be because in length, there is more material to work with, so, generally speaking, it's easier to minimize a bigger number than a smaller number when crunching the shapes close together.
 
-	Figures \ref{fig:mutFalse} and \ref{fig:mutTrue} show graphs for using self-adaptive mutation rate and not. Figures \ref{fig:mutFalsePicture} and \ref{fig:mutTruePicture} show the corresponding pictures.
+	\section{K-Tournament W/ Replacement (k-tour) vs Fitness Proportional Selection (FPS)}
+	When k-tour with FPS, neither parent selection operator proved better for minimizing stock length. This can be seen in Figures \ref{fig:1parent1}, \ref{fig:2parent1}, and \ref{fig:3parent1}. As for stock width, Inputs 1 and 2 yielded no significant difference between the two, as can be seen in Figures \ref{fig:1parent1_moea} and \ref{fig:2parent1_moea}. For Input 3, k-tour was significantly better as can be seen in Figure \ref{fig:3parent1_moea}. This may have been the case because there was less restrictive evolutionary pressure on the tournament than on the FPS, thus yielding more diverse solutions for the stock width, which should be noted, has a smaller space of possible values it can take.
+
+	\section{K-Tournament W/ Replacement vs Uniform Random}
+	For stock length, k-tour proved to be significantly better than uniform random for all inputs. This can be seen in Figures \ref{fig:1parent2}, \ref{fig:2parent2}, and \ref{fig:3parent2}. This result was also true for Input 3 of stock width, shown in Figure \ref{fig:3parent2_moea}. For Inputs 1 and 2, there was no significant difference. For these two cases, there may not have been enough selective pressure given the tournament size of 5. K-tour may prove to be significantly better with a k-tour size of 2 for example. To decrease randomness of k-tour, a lower tournament size should be explored. Figures \ref{fig:1parent2_moea} and \ref{fig:2parent2_moea} show these cases.
+
+	\section{Fitness Proportional Selection vs Uniform Random}
+	FPS proved to be significantly better for all instances of stock length as shown in Figures \ref{fig:1parent3}, \ref{fig:2parent3}, and \ref{fig:3parent3}. For stock width, all inputs showed that neither parent selection method was superior, as shown in Figures \ref{fig:1parent3_moea}, \ref{fig:2parent3_moea}, and \ref{fig:3parent3_moea}. A lower tournament size should be explored to see if stock width is impacted in a positive light, while also impacting stock length positively.
+
+	\section{Conclusions}
+	The above analysis along with the graphs shown in the Figures section shows that Inputs 1 and 2 are largely not affected by having a multi-objective EA. Stock length is largely minimized, while stock width is barely changed from previous assignments. As for Input 3, having a MOEA affected both objectives. The stock length is larger, but the stock width is smaller than in previous assignments. This may show that with larger data sets, such as the one provided for Input 3, MOEAs are more effective than with smaller inputs. It is possible that having a larger width aided in this as well. More tests are needed to come to a conclusion however.
+
+	\section{Note}
+	All graphs, pictures, and configurations are shown in the Figures section of this report. 
+
 
 	\begin{figure}
-		\caption{Self Adaptive Mutation Rate F and t tests for Input 1}
-		\label{fig:saMutation1}
-		\includegraphics[width=\textwidth]{./t_test/S-AMutationRate1}
+		\caption{Move vs Flip Tests for Input 1 Length}
+		\label{fig:1mutation}
+		\includegraphics[width=\textwidth]{./t_test/1_mutation.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{Move vs Flip Tests for Input 1 Width}
+		\label{fig:1mutation_moea}
+		\includegraphics[width=\textwidth]{./t_test/1_mutation_moea.pdf}
 	\end{figure}
 
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Fitness Proportional Selection Tests for Input 1 Length}
+		\label{fig:1parent1}
+		\includegraphics[width=\textwidth]{./t_test/1_parent1.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Fitness Proportional Selection Tests for Input 1 Width}
+		\label{fig:1parent1_moea}
+		\includegraphics[width=\textwidth]{./t_test/1_parent1_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Uniform Random Tests for Input 1 Length}
+		\label{fig:1parent2}
+		\includegraphics[width=\textwidth]{./t_test/1_parent2.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Uniform Random Tests for Input 1 Width}
+		\label{fig:1parent2_moea}
+		\includegraphics[width=\textwidth]{./t_test/1_parent2_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Fitness Proportional Selection vs Uniform Random Tests for Input 1 Length}
+		\label{fig:1parent3}
+		\includegraphics[width=\textwidth]{./t_test/1_parent3.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{Fitness Proportional Selection vs Uniform Random Tests for Input 1 Width}
+		\label{fig:1parent3_moea}
+		\includegraphics[width=\textwidth]{./t_test/1_parent3_moea.pdf}
+	\end{figure}
+
+
+		\begin{figure}
+		\caption{Move vs Flip Tests for Input 2 Length}
+		\label{fig:2mutation}
+		\includegraphics[width=\textwidth]{./t_test/2_mutation.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{Move vs Flip Tests for Input 2 Width}
+		\label{fig:2mutation_moea}
+		\includegraphics[width=\textwidth]{./t_test/2_mutation_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Fitness Proportional Selection Tests for Input 2 Length}
+		\label{fig:2parent1}
+		\includegraphics[width=\textwidth]{./t_test/2_parent1.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Fitness Proportional Selection Tests for Input 2 Width}
+		\label{fig:2parent1_moea}
+		\includegraphics[width=\textwidth]{./t_test/2_parent1_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Uniform Random Tests for Input 2 Length}
+		\label{fig:2parent2}
+		\includegraphics[width=\textwidth]{./t_test/2_parent2.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Uniform Random Tests for Input 2 Width}
+		\label{fig:2parent2_moea}
+		\includegraphics[width=\textwidth]{./t_test/2_parent2_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Fitness Proportional Selection vs Uniform Random Tests for Input 2 Length}
+		\label{fig:2parent3}
+		\includegraphics[width=\textwidth]{./t_test/2_parent3.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{Fitness Proportional Selection vs Uniform Random Tests for Input 2 Width}
+		\label{fig:2parent3_moea}
+		\includegraphics[width=\textwidth]{./t_test/2_parent3_moea.pdf}
+	\end{figure}
+
+		\begin{figure}
+		\caption{Move vs Flip Tests for Input 3 Length}
+		\label{fig:3mutation}
+		\includegraphics[width=\textwidth]{./t_test/3_mutation.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{Move vs Flip Tests for Input 3 Width}
+		\label{fig:3mutation_moea}
+		\includegraphics[width=\textwidth]{./t_test/3_mutation_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Fitness Proportional Selection Tests for Input 3 Length}
+		\label{fig:3parent1}
+		\includegraphics[width=\textwidth]{./t_test/3_parent1.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Fitness Proportional Selection Tests for Input 3 Width}
+		\label{fig:3parent1_moea}
+		\includegraphics[width=\textwidth]{./t_test/3_parent1_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Uniform Random Tests for Input 3 Length}
+		\label{fig:3parent2}
+		\includegraphics[width=\textwidth]{./t_test/3_parent2.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{K-Tournament w/ Replacement vs Uniform Random Tests for Input 3 Width}
+		\label{fig:3parent2_moea}
+		\includegraphics[width=\textwidth]{./t_test/3_parent2_moea.pdf}
+	\end{figure}
+
+	\begin{figure}
+		\caption{Fitness Proportional Selection vs Uniform Random Tests for Input 3 Length}
+		\label{fig:3parent3}
+		\includegraphics[width=\textwidth]{./t_test/3_parent3.pdf}
+	\end{figure}
+	\begin{figure}
+		\caption{Fitness Proportional Selection vs Uniform Random Tests for Input 3 Width}
+		\label{fig:3parent3_moea}
+		\includegraphics[width=\textwidth]{./t_test/3_parent3_moea.pdf}
+	\end{figure}	
+
+
+
+
+	\newpage
 
 	\section{Figures}
 	\input{all_graphs.tex}
